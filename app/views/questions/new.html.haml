@@ -1,0 +1,68 @@
+%nav.navbar.navbar-expand-lg.navbar-dark.bg-dark.sticky-top
+  .container
+    %a.navbar-brand{:href => "/"} 吃音相談サイト kistuon
+    %button.navbar-toggler{"aria-controls" => "navbarNavDropdown", "aria-expanded" => "false", "aria-label" => "Toggle navigation", "data-target" => "#navbarNavDropdown", "data-toggle" => "collapse", :type => "button"}
+      %span.navbar-toggler-icon
+    #navbarNavDropdown.collapse.navbar-collapse
+      / この下の行に mr-auto クラスを付与するだけ
+      %ul.navbar-nav.mr-auto
+        　
+        %li.nav-item
+          %a.nav-link{:href => "#"} Home
+        %li.nav-item
+          %a.nav-link{:href => "#"} About
+      %ul.navbar-nav
+        %li.nav-item.dropdown
+          %a#navbarDropdown.nav-link.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
+            Dropdown
+          .dropdown-menu{"aria-labelledby" => "navbarDropdown"}
+            %a.dropdown-item{:href => "#"} Action
+            %a.dropdown-item{:href => "#"} Another action
+            .dropdown-divider
+            %a.dropdown-item{:href => "#"} Something else here
+        %li.nav-item
+          %a.nav-link{:href => "#"} メンバー登録
+        %li.nav-item
+          %a.nav-link{:href => "#"} ログイン
+.container-fluid
+  .row
+    .col-md-2
+    .col-md-8
+      .row
+        .col-md-8
+          .border.mt-md-5.mb-md-5.px-md-5
+            %h4.border-bottom.border-success.pt-md-4 相談フォーム
+            %h5.border-bottom.border-success.pt-md-3 あなた
+            %ul.list-unstyled.small
+              %li 櫻井
+              %li 男性
+              %li ２０代後半
+              %li 社会人
+              %li 吃音当事者
+            = form_for @question do |f|
+              .form-group
+                %h5.border-bottom.border-success.pt-md-3 タイトル
+                =f.text_field :title, class: "form-control",placeholder: "title"
+                / %input#exampleFormControlInput1.form-control{:placeholder => "title", :type => "text"}
+              .form-group
+                %h5.border-bottom.border-success.pt-md-3 質問のジャンルを選択
+                = f.select( :body ,[["学校", "学校"], ["仕事", "仕事"], ["就活", "就活"], ["恋愛", "恋愛"], ["その他", "その他"]], {}, { class: 'form-control'})
+              .form-group
+                %h5.border-bottom.border-success.pt-md-3 相談内容
+                = f.text_area :body, class: 'form-control', placeholder: '相談内容',rows: "10"
+              = f.submit '相談する',type: "submit", class: 'btn btn-success mb-md-3'
+%footer.footer.border-top.pt-md-2
+  .container
+    .row
+      .col-md-2
+      .col-md-8
+        .row
+          .col-md-3
+            %p プライバシーポリシー
+          .col-md-3
+            %p 運営に関して
+          .col-md-3
+            %p コンセプト
+          .col-md-3
+            %p 掲示板のルール
+      .col-md-2
