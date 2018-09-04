@@ -33,6 +33,7 @@ Things you may want to cover:
 |occupation|string|null: false|
 |old|string|null: false|
 |stuttering|string|null: false|
+
 ### Association
 - has_many :questions
 - has_many :answers
@@ -43,18 +44,19 @@ Things you may want to cover:
 - has_many :answers, through: :answer_likes
 
 
-## rails generate model
+## questionテーブル
 |Column|Type|Options|
 |------|----|-------|
 |user|references|null: false, foreign_key: true|
+|genre|string|null: false|
 |title|string|null: false|
 |body|text|null: false|
+
 ### Association
 - belongs_to :user
 - has_many :answers
 - has_many :question_likes
 - has_many :users , through: :question_likes
-
 
 
 ## question_likesテーブル
@@ -74,12 +76,12 @@ Things you may want to cover:
 |user|references|null: false, foreign_key: true|
 |title|string|null: false|
 |body|text|null: false|
+
 ### Association
 - belongs_to :user
 - belongs_to :thank
 - has_many :answer_likes
 - has_many :users , through: :answer_likes
-
 
 
 ## answer_likesテーブル
