@@ -1,29 +1,4 @@
-%nav.navbar.navbar-expand-lg.navbar-dark.bg-dark.sticky-top
-  .container
-    %a.navbar-brand{:href => "/"} 吃音相談サイト kistuon
-    %button.navbar-toggler{"aria-controls" => "navbarNavDropdown", "aria-expanded" => "false", "aria-label" => "Toggle navigation", "data-target" => "#navbarNavDropdown", "data-toggle" => "collapse", :type => "button"}
-      %span.navbar-toggler-icon
-    #navbarNavDropdown.collapse.navbar-collapse
-      / この下の行に mr-auto クラスを付与するだけ
-      %ul.navbar-nav.mr-auto
-        　
-        %li.nav-item
-          %a.nav-link{:href => "#"} Home
-        %li.nav-item
-          %a.nav-link{:href => "#"} About
-      %ul.navbar-nav
-        %li.nav-item.dropdown
-          %a#navbarDropdown.nav-link.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
-            Dropdown
-          .dropdown-menu{"aria-labelledby" => "navbarDropdown"}
-            %a.dropdown-item{:href => "#"} Action
-            %a.dropdown-item{:href => "#"} Another action
-            .dropdown-divider
-            %a.dropdown-item{:href => "#"} Something else here
-        %li.nav-item
-          %a.nav-link{:href => "#"} メンバー登録
-        %li.nav-item
-          %a.nav-link{:href => "#"} ログイン
+= render "partial/header"
 .container-fluid
   .row.pt-md-5
     .col-md-2
@@ -70,87 +45,19 @@
                 %p
                   仕事に関する悩み
           .row
-            .col-md-4.pt-md-3
-              .card
-                %h6.card-header
-                  タイトル
-                .card-body
-                  %p.card-text
-                    私は就活中です。どうしたらよろしいでしょうか？？
-                .card-footer
-                  タグ 櫻井さん 20代後半 学生
-            .col-md-4.pt-md-3
-              .card
-                %h6.card-header
-                  タイトル
-                .card-body
-                  %p.card-text
-                    私は就活中です。どうしたらよろしいでしょうか？？
-                .card-footer
-                  タグ 櫻井さん 20代後半 学生
-            .col-md-4.pt-md-3
-              .card
-                %h6.card-header
-                  タイトル
-                .card-body
-                  %p.card-text
-                    私は就活中です。どうしたらよろしいでしょうか？？
-                .card-footer
-                  タグ 櫻井さん 20代後半 学生
-            .col-md-4.pt-md-3
-              .card
-                %h6.card-header
-                  タイトル
-                .card-body
-                  %p.card-text
-                    私は就活中です。どうしたらよろしいでしょうか？？
-                .card-footer
-                  タグ 櫻井さん 20代後半 学生
-            .col-md-4.pt-md-3
-              .card
-                %h6.card-header
-                  タイトル
-                .card-body
-                  %p.card-text
-                    私は就活中です。どうしたらよろしいでしょうか？？
-                .card-footer
-                  タグ 櫻井さん 20代後半 学生
-            .col-md-4.pt-md-3
-              .card
-                %h6.card-header
-                  タイトル
-                .card-body
-                  %p.card-text
-                    私は就活中です。どうしたらよろしいでしょうか？？
-                .card-footer
-                  タグ 櫻井さん 20代後半 学生
-            .col-md-4.pt-md-3
-              .card
-                %h6.card-header
-                  タイトル
-                .card-body
-                  %p.card-text
-                    私は就活中です。どうしたらよろしいでしょうか？？
-                .card-footer
-                  タグ 櫻井さん 20代後半 学生
-            .col-md-4.pt-md-3
-              .card
-                %h6.card-header
-                  タイトル
-                .card-body
-                  %p.card-text
-                    私は就活中です。どうしたらよろしいでしょうか？？
-                .card-footer
-                  タグ 櫻井さん 20代後半 学生
-            .col-md-4.pt-md-3
-              .card
-                %h6.card-header
-                  タイトル
-                .card-body
-                  %p.card-text
-                    私は就活中です。どうしたらよろしいでしょうか？？
-                .card-footer
-                  タグ 櫻井さん 20代後半 学生
+            = render "partial/questionCard"
+            = render "partial/questionCard"
+            = render "partial/questionCard"
+            = render "partial/questionCard"
+            = render "partial/questionCard"
+            = render "partial/questionCard"
+            = render "partial/questionCard"
+            = render "partial/questionCard"
+            = render "partial/questionCard"
+            = render "partial/questionCard"
+            = render "partial/questionCard"
+            = render "partial/questionCard"
+
           %nav.pt-md-5.pb-md-3
             %ul.pagination
               %li.page-item
@@ -192,20 +99,6 @@
             .col-md-6.pt-md-2
               .card
                 %h5 その他の悩み
-%footer.footer.border-top.pt-md-2
-  .container
-    .row
-      .col-md-2
-      .col-md-8
-        .row
-          .col-md-3
-            %p プライバシーポリシー
-          .col-md-3
-            %p 運営に関して
-          .col-md-3
-            %p コンセプト
-          .col-md-3
-            %p 掲示板のルール
-      .col-md-2
+= render "partial/footer"
 
 
