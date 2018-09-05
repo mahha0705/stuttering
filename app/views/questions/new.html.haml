@@ -4,7 +4,6 @@
     %button.navbar-toggler{"aria-controls" => "navbarNavDropdown", "aria-expanded" => "false", "aria-label" => "Toggle navigation", "data-target" => "#navbarNavDropdown", "data-toggle" => "collapse", :type => "button"}
       %span.navbar-toggler-icon
     #navbarNavDropdown.collapse.navbar-collapse
-      / この下の行に mr-auto クラスを付与するだけ
       %ul.navbar-nav.mr-auto
         　
         %li.nav-item
@@ -43,7 +42,6 @@
               .form-group
                 %h5.border-bottom.border-success.pt-md-3 タイトル
                 =f.text_field :title, class: "form-control",placeholder: "title"
-                / %input#exampleFormControlInput1.form-control{:placeholder => "title", :type => "text"}
               .form-group
                 %h5.border-bottom.border-success.pt-md-3 質問のジャンルを選択
                 = f.select( :body ,[["学校", "学校"], ["仕事", "仕事"], ["就活", "就活"], ["恋愛", "恋愛"], ["その他", "その他"]], {}, { class: 'form-control'})
