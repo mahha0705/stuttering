@@ -1,17 +1,13 @@
-%h2 Log in
-= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
-  .field
-    = f.label :email
-    %br/
-    = f.email_field :email, autofocus: true, autocomplete: "email"
-  .field
-    = f.label :password
-    %br/
-    = f.password_field :password, autocomplete: "current-password"
-  - if devise_mapping.rememberable?
-    .field
-      = f.check_box :remember_me
-      = f.label :remember_me
-  .actions
-    = f.submit "Log in"
-= render "devise/shared/links"
+.container
+  .row
+    .col-md-3
+    .col-md-6
+      %form.pt-md-4
+        %label.h3 ログイン
+        .form-group
+          %label{:for => "exampleFormControlInput1"} Email アドレス
+          %input#exampleFormControlInput1.form-control{:placeholder => "name@example.com", :type => "email"}/
+        .form-group
+          %label{:for => "exampleFormControlInput1"} パスワード
+          %input#exampleFormControlInput1.form-control{:placeholder => "パスワード", :type => "passwaord"}/
+        %button.btn.btn-primary{:type => "submit"} ログイン
