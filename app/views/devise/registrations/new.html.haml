@@ -14,9 +14,9 @@
         .form-group
           = f.label :password,"パスワード"
           = f.password_field :password, class: "form-control", placeholder: "パスワード"
-        / .form-group
-        /   = f.label :password,"パスワード(確認)"
-        /   = f.text_field :password, class: "form-control", placeholder: "パスワード(確認)"
+        .form-group
+          = f.label :password_confirmation,"パスワード(確認)"
+          = f.password_field :password_confirmation, class: "form-control", placeholder: "パスワード(確認)"
         .form-group
           = f.label :sex, "性別"
           = f.select( :sex, [['男性', '男性'], ['女性', '女性'],['それ以外', 'それ以外'],['無回答', '無回答']],{},{class: "form-control"})
