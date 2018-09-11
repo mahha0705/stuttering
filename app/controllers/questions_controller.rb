@@ -1,6 +1,6 @@
 class QuestionsController < ApplicationController
   def index
-   @test = 'hello'
+
   end
 
   def new
