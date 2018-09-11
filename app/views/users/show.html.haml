@@ -1,0 +1,29 @@
+.container-fluid
+  .row
+    .col-md-2
+    .col-md-8
+      .row
+        .col-md-8
+          .border.mt-md-5.mb-md-5.px-md-5
+            %label マイページ
+            = link_to "マイページを編集", "/users/#{current_user.id}/edit"
+            %table
+              %tr
+                %td 名前 :
+                %td #{@user.name}
+              %tr
+                %td 性別 :
+                %td #{@user.sex}
+              %tr
+                %td 職業 :
+                %td #{@user.occupation}
+              %tr
+                %td 年齢 :
+                %td #{@user.old}
+              %tr
+                %td 吃音の程度 :
+                %td #{@user.stuttering}
+              %tr
+                %td 自己紹介 :
+                %td #{@user.about}
+
