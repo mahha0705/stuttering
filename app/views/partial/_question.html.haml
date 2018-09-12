@@ -1,0 +1,9 @@
+.col-md-4.pt-md-3
+  .card
+    %h6.card-header
+      #{question.title}
+    .card-body
+      %p.card-text
+        #{question.body}
+    .card-footer
+      #{question.genre} #{question.user.name} #{question.user.old}

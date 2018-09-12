@@ -44,18 +44,7 @@
                 %p
                   仕事に関する悩み
           .row
-            = render "partial/questionCard"
-            = render "partial/questionCard"
-            = render "partial/questionCard"
-            = render "partial/questionCard"
-            = render "partial/questionCard"
-            = render "partial/questionCard"
-            = render "partial/questionCard"
-            = render "partial/questionCard"
-            = render "partial/questionCard"
-            = render "partial/questionCard"
-            = render "partial/questionCard"
-            = render "partial/questionCard"
+            = render partial: "partial/question" ,collection: @questions
 
           %nav.pt-md-5.pb-md-3
             %ul.pagination
