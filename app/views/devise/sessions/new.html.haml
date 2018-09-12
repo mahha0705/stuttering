@@ -2,12 +2,14 @@
   .row
     .col-md-3
     .col-md-6
-      %form.pt-md-4
-        %label.h3 ログイン
-        .form-group
-          %label{:for => "exampleFormControlInput1"} Email アドレス
-          %input#exampleFormControlInput1.form-control{:placeholder => "name@example.com", :type => "email"}/
-        .form-group
-          %label{:for => "exampleFormControlInput1"} パスワード
-          %input#exampleFormControlInput1.form-control{:placeholder => "パスワード", :type => "passwaord"}/
-        %button.btn.btn-primary{:type => "submit"} ログイン
+      .pt-md-4
+        = form_for resource, as: resource_name, url: session_path(resource_name) do |f|
+          = devise_error_messages!
+          %label.h3 ログイン
+          .form-group
+            = f.label :email,"Email アドレス"
+            = f.email_field :email , class: "form-control", placeholder: "name@example.com"
+          .form-group
+            = f.label :password,"パスワード"
+            = f.password_field :password, class: "form-control", placeholder: "パスワード"
+          = f.submit "登録",class: "btn btn-primary"
