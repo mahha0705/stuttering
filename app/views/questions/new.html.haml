@@ -9,11 +9,11 @@
             %h4.border-bottom.border-success.pt-md-4 相談フォーム
             %h5.border-bottom.border-success.pt-md-3 あなた
             %ul.list-unstyled.small
-              %li 櫻井
-              %li 男性
-              %li ２０代後半
-              %li 社会人
-              %li 吃音当事者
+              %li 名前: #{current_user.name}
+              %li 性別: #{current_user.sex}
+              %li 年齢: #{current_user.old}
+              %li 属性: #{current_user.occupation}
+              %li 吃音: #{current_user.stuttering}
             = form_for @question do |f|
               .form-group
                 %h5.border-bottom.border-success.pt-md-3 タイトル
