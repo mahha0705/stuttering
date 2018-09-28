@@ -1,9 +1,24 @@
-.col-md-4.pt-md-3
-  .card
-    %h6.card-header
-      #{question.title}
-    .card-body
-      %p.card-text
-        #{question.body}
-    .card-footer
-      #{question.genre} #{question.user.name} #{question.user.old}
+.card.rounded-0.mb-3.p-3
+  %h5
+    #{question.title}
+  %p.small.text-secondary
+    %i.far.fa-edit
+    １週間前
+  %p
+    #{question.body}
+  %ul.list-inline.text-secondary
+    %li.list-inline-item
+      .badge.badge-secondary
+        #{question.genre}
+    %li.list-inline-item
+      %i.far.fa-user
+      #{question.user.name}
+    %li.list-inline-item
+      #{question.user.old}
+    %li.list-inline-item
+      %i.far.fa-eye
+      5
+    %li.list-inline-item
+      %i.far.fa-comment
+      3
+

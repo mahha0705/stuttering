@@ -14,7 +14,13 @@
  *= require_self
  */
 
-/*@import "reset";*/
+@import "reset";
+@import "variable";
+
 body {
   background-color: #f7f7f7;
+}
+
+.main-color {
+  background-color: #dd9b9d;
 }

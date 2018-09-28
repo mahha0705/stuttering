@@ -1,25 +1,25 @@
-%nav.navbar.navbar-expand-lg.navbar-dark.bg-dark.sticky-top
+%nav.navbar.navbar-expand-lg.navbar-dark.sticky-top.main-color
   .container
-    %a.navbar-brand{:href => "/"} 吃音相談サイト kistuon
-    %button.navbar-toggler{"aria-controls" => "navbarNavDropdown", "aria-expanded" => "false", "aria-label" => "Toggle navigation", "data-target" => "#navbarNavDropdown", "data-toggle" => "collapse", :type => "button"}
+    %a.navbar-brand{href: "/"} 吃音相談サイト kistuon
+    %button.navbar-toggler{"aria-controls": "navbarNavDropdown", "aria-expanded": "false", "aria-label": "Toggle navigation", "data-target": "#navbarNavDropdown", "data-toggle": "collapse", type: "button"}
       %span.navbar-toggler-icon
     #navbarNavDropdown.collapse.navbar-collapse
       / この下の行に mr-auto クラスを付与するだけ
       %ul.navbar-nav.mr-auto
         　
+        / %li.nav-item
+        /   %a.nav-link{href: "#"} Home
         %li.nav-item
-          %a.nav-link{:href => "#"} Home
-        %li.nav-item
-          %a.nav-link{:href => "#"} About
+          %a.nav-link{href: "#"} このサイトについて
       %ul.navbar-nav
         %li.nav-item.dropdown
-          %a#navbarDropdown.nav-link.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
+          %a#navbarDropdown.nav-link.dropdown-toggle{"aria-expanded": "false", "aria-haspopup": "true", "data-toggle": "dropdown", href: "#", role: "button"}
             Dropdown
-          .dropdown-menu{"aria-labelledby" => "navbarDropdown"}
-            %a.dropdown-item{:href => "#"} Action
-            %a.dropdown-item{:href => "#"} Another action
+          .dropdown-menu{"aria-labelledby": "navbarDropdown"}
+            %a.dropdown-item{href: "#"} Action
+            %a.dropdown-item{href: "#"} Another action
             .dropdown-divider
-            %a.dropdown-item{:href => "#"} Something else here
+            %a.dropdown-item{href: "#"} Something else here
         - if user_signed_in?
           %li.nav-item
             = link_to "ログアウト", destroy_user_session_path, method: :delete, class: 'nav-link'

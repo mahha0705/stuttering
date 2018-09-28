@@ -1,92 +1,70 @@
 = render "partial/header"
 .container-fluid
-  .row.pt-md-5
-    .col-md-2
-    .col-md-8
-      .row
-        .col-md-8
-          %h2
-            吃音相談サイト kitsuon
-          %p
-            このサイトは、吃音当事者同士が助け合う相談サイトです。
-            吃音者当事者の経験は、ある悩みを抱えた吃音者当事者にとって、すごく価値のある経験だと信じています。
-            その価値ある経験を、悩みのある吃音当事者に提供してみませんか？？
-            またこのサイトを利用する際は、優しい気持ちを持って回答し、感謝の気持ちを持ってお礼をしましょう。
-          %p
-            %a.btn{:href => "#"} このサイトを立ち上げた思い »
-        .col-md-4.pt-md-5.pl-md-5
-          = link_to "相談してみる" , new_question_path , class: " btn btn-lg btn-success"
-    .col-md-2
   .row
-    .col-md-2
-    .col-md-8
-      .row
-        .col-md-10
-          #tabs-210391.tabbable
-            %ul.nav.nav-tabs
-              %li.nav-item
-                %a.nav-link.active{"data-toggle" => "tab", :href => "#tab1"} 新しい質問
-              %li.nav-item
-                %a.nav-link{"data-toggle" => "tab", :href => "#tab2"} 学校
-              %li.nav-item
-                %a.nav-link{"data-toggle" => "tab", :href => "#tab2"} 仕事
-              %li.nav-item
-                %a.nav-link{"data-toggle" => "tab", :href => "#tab2"} 就活
-              %li.nav-item
-                %a.nav-link{"data-toggle" => "tab", :href => "#tab2"} 恋愛
-              %li.nav-item
-                %a.nav-link{"data-toggle" => "tab", :href => "#tab2"} その他
-            .tab-content
-              #panel-27700.tab-pane.active.pt-md-3
-                %p
-                  学校に関する悩み
-              #tab2.tab-pane.pt-md-3
-                %p
-                  仕事に関する悩み
-          .row
-            = render partial: "partial/question" ,collection: @questions
-
-          %nav.pt-md-5.pb-md-3
-            %ul.pagination
-              %li.page-item
-                %a.page-link{:href => "#"} Previous
-              %li.page-item
-                %a.page-link{:href => "#"} 1
-              %li.page-item
-                %a.page-link{:href => "#"} 2
-              %li.page-item
-                %a.page-link{:href => "#"} 3
-              %li.page-item
-                %a.page-link{:href => "#"} 4
-              %li.page-item
-                %a.page-link{:href => "#"} 5
-              %li.page-item
-                %a.page-link{:href => "#"} Next
-        .col-md-2
-    .col-md-2
+    .col-1
+    .col-10.mt-3
+      = render "partial/top_index"
+    .col-1
   .row
-    .col-md-2
-    .col-md-8
-      %h3.text-left
-        質問一覧
+    .col-1
+    .col-10
       .row
-        .col-md-10.pb-md-4
-          .row
-            .col-md-6.pt-md-2
-              .card
-                %h5 学校に関する悩み
-            .col-md-6.pt-md-2
-              .card
-                %h5 仕事に関する悩み
-            .col-md-6.pt-md-2
-              .card
-                %h5 就活に関する悩み
-            .col-md-6.pt-md-2
-              .card
-                %h5 恋愛に関する悩み
-            .col-md-6.pt-md-2
-              .card
-                %h5 その他の悩み
+        .col-12.mt-4
+          %ul.nav.nav-tabs
+            %li.nav-item
+              %a.nav-link.active{"data-toggle": "tab", href: "#newest_question"} 新しい質問
+            %li.nav-item
+              %a.nav-link{"data-toggle": "tab", href: "#school"} 学校
+            %li.nav-item
+              %a.nav-link{"data-toggle": "tab", href: "#work"} 仕事
+            %li.nav-item
+              %a.nav-link{"data-toggle": "tab", href: "#job_hunting"} 就活
+            %li.nav-item
+              %a.nav-link{"data-toggle": "tab", href: "#relationship"} 恋愛
+            %li.nav-item
+              %a.nav-link{"data-toggle": "tab", href: "#other"} その他
+        .col-8.pt-3
+          .tab-content
+            #newest_question.tab-pane.active
+              = render partial: "partial/question" ,collection: @questions
+        .col-4.pt-3
+          .card.p-2.mb-3.rounded-0
+            .mx-auto
+              = form_tag('/users', method: :get, class: "form-inline") do
+                = text_field_tag :name, "",placeholder: "質問検索",class: 'form-control mr-sm-1 form-control-sm',name: "keyword",autocomplete: "off"
+                = button_tag(type: "submit", class: "btn btn-default mr-sm-2 search-btn-color") do
+                  %i.fas.fa-search
+          .card.p-2.rounded-0
+            %h6 新着の質問
+            %p title
+            %p title
+            %p title
+            %p title
+            %h6 学校に関する質問
+            %p title
+            %p title
+            %p title
+            %p title
+            %h6 仕事に関する質問
+            %p title
+            %p title
+            %p title
+            %p title
+            %h6 就活に関する質問
+            %p title
+            %p title
+            %p title
+            %p title
+            %h6 恋愛に関する質問
+            %p title
+            %p title
+            %p title
+            %p title
+            %h6 その他の質問
+            %p title
+            %p title
+            %p title
+            %p title
 = render "partial/footer"
 
 
