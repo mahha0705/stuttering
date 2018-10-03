@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_04_055051) do
+ActiveRecord::Schema.define(version: 2018_10_01_095506) do
 
   create_table "answer_likes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "user_id", null: false
@@ -43,7 +43,7 @@ ActiveRecord::Schema.define(version: 2018_09_04_055051) do
 
   create_table "questions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "user_id", null: false
-    t.string "genre", null: false
+    t.integer "genre", limit: 1, default: 0, null: false
     t.string "title", null: false
     t.text "body", null: false
     t.datetime "created_at", null: false

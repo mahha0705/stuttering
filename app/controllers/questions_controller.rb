@@ -1,6 +1,7 @@
 class QuestionsController < ApplicationController
   def index
-    @questions = Question.all
+    # @questions = Question.all
+    @questions = Question.order("created_at DESC")
   end
 
   def new
@@ -9,7 +10,15 @@ class QuestionsController < ApplicationController
 
   def create
     @question = Question.create(question_params)
-    redirect_to :root
+    if @question.save
+      redirect_to root_path , notice: '投稿完了しました'
+    else
+      render 'new'
+    end
+  end
+
+  def show
+    @question = Question.find(params[:id])
   end
 
   private

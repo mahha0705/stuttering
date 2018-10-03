@@ -1,0 +1,26 @@
+.card.rounded-0.mb-3.p-3
+  = link_to question_path(question) do
+    %h5
+      #{question.title}
+  %ul
+    %li.list-inline-item
+      .badge.badge-secondary
+        #{question.genre_i18n}
+    %li.list-inline-item.small.text-secondary
+      %i.far.fa-clock
+      #{question.created_at.to_s(:human)}
+  %p.mt-2
+    #{simple_format question.body.truncate(100)}
+  %ul.list-inline.text-secondary
+    %li.list-inline-item
+      %i.far.fa-user
+      #{question.user.name}
+    %li.list-inline-item
+      #{question.user.old}
+    %li.list-inline-item
+      %i.far.fa-eye
+      %span.badge 4
+    %li.list-inline-item
+      %i.far.fa-comment
+      %span.badge 4
+

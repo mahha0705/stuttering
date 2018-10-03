@@ -81,6 +81,8 @@ GEM
       railties (>= 4.1.0, < 6.0)
       responders
       warden (~> 1.2.3)
+    enum_help (0.0.17)
+      activesupport (>= 3.0.0)
     erb2haml (0.1.5)
       html2haml
     erubi (1.7.1)
@@ -162,6 +164,9 @@ GEM
       nokogiri (>= 1.6)
     rails-html-sanitizer (1.0.4)
       loofah (~> 2.2, >= 2.2.2)
+    rails-i18n (5.1.1)
+      i18n (>= 0.7, < 2)
+      railties (>= 5.0, < 6)
     railties (5.2.1)
       actionpack (= 5.2.1)
       activesupport (= 5.2.1)
@@ -240,6 +245,7 @@ DEPENDENCIES
   chromedriver-helper
   coffee-rails (~> 4.2)
   devise
+  enum_help
   erb2haml
   font-awesome-rails
   haml-rails
@@ -249,6 +255,7 @@ DEPENDENCIES
   pry-rails
   puma (~> 3.11)
   rails (~> 5.2.1)
+  rails-i18n
   sass-rails (~> 5.0)
   selenium-webdriver
   spring

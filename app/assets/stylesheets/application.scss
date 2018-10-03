@@ -22,5 +22,9 @@ body {
 }
 
 .main-color {
-  background-color: #dd9b9d;
+  background-color: $base-color;
+}
+
+.main-color-bottom-border{
+  border-bottom: 2px solid $base-color;
 }

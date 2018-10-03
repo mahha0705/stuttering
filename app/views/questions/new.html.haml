@@ -1,28 +1,35 @@
 = render "partial/header"
 .container-fluid
   .row
-    .col-md-2
-    .col-md-8
-      .row
-        .col-md-8
-          .border.mt-md-5.mb-md-5.px-md-5
-            %h4.border-bottom.border-success.pt-md-4 相談フォーム
-            %h5.border-bottom.border-success.pt-md-3 あなた
-            %ul.list-unstyled.small
-              %li 名前: #{current_user.name}
-              %li 性別: #{current_user.sex}
-              %li 年齢: #{current_user.old}
-              %li 属性: #{current_user.occupation}
-              %li 吃音: #{current_user.stuttering}
-            = form_for @question do |f|
-              .form-group
-                %h5.border-bottom.border-success.pt-md-3 タイトル
-                =f.text_field :title, class: "form-control",placeholder: "title"
-              .form-group
-                %h5.border-bottom.border-success.pt-md-3 質問のジャンルを選択
-                = f.select( :genre ,[["学校", "学校"], ["仕事", "仕事"], ["就活", "就活"], ["恋愛", "恋愛"], ["その他", "その他"]], {}, { class: 'form-control'})
-              .form-group
-                %h5.border-bottom.border-success.pt-md-3 相談内容
-                = f.text_area :body, class: 'form-control', placeholder: '相談内容',rows: "10"
-              = f.submit '相談する', class: 'btn btn-success mb-md-3'
+    .col-3
+    .col-6
+      .card.rounded-0.my-5.p-4
+        - if @question.errors.any?
+          %ul.alert.alert-warning{role: "alert"}
+            %li
+              %h4
+                = @question.errors.count
+                件のエラーがあります
+            - @question.errors.full_messages.each do |msg|
+              %li
+                = msg
+        %h4.py-2.main-color.text-white.text-center 相談フォーム
+        %h5.mt-3.main-color-bottom-border あなたの登録情報
+        %ul.m-2.list-unstyled
+          %li.py-1 名前: #{current_user.name}
+          %li.py-1 性別: #{current_user.sex}
+          %li.py-1 年齢: #{current_user.old}
+          %li.py-1 属性: #{current_user.occupation}
+          %li.py-1 吃音: #{current_user.stuttering}
+        = form_for @question do |f|
+          .form-group
+            %h5.main-color-bottom-border タイトル
+            =f.text_field :title, class: "form-control ",placeholder: "タイトル"
+          .form-group
+            %h5.main-color-bottom-border 質問のジャンルを選択
+            = f.select( :genre ,Question.genres_i18n.map { |k, v| [v, k]},{},{ class: 'form-control'})
+          .form-group
+            %h5.main-color-bottom-border 相談内容
+            = f.text_area :body, class: 'form-control', placeholder: '相談内容',rows: "15"
+          = f.submit '相談する', class: 'btn btn-success mb-3'
 = render "partial/footer"

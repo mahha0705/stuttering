@@ -1,8 +1,11 @@
+- if flash[:notice]
+  #foo.alert.alert-success.mb-0.text-center.rounded-0
+    = flash[:notice]
 = render "partial/header"
 .container-fluid
   .row
     .col-1
-    .col-10.mt-3
+    .col-10.mt-5
       = render "partial/top_index"
     .col-1
   .row
@@ -26,7 +29,7 @@
         .col-8.pt-3
           .tab-content
             #newest_question.tab-pane.active
-              = render partial: "partial/question" ,collection: @questions
+              = render partial: "partial/index_question_card" ,collection: @questions, as:"question"
         .col-4.pt-3
           .card.p-2.mb-3.rounded-0
             .mx-auto
@@ -34,37 +37,7 @@
                 = text_field_tag :name, "",placeholder: "質問検索",class: 'form-control mr-sm-1 form-control-sm',name: "keyword",autocomplete: "off"
                 = button_tag(type: "submit", class: "btn btn-default mr-sm-2 search-btn-color") do
                   %i.fas.fa-search
-          .card.p-2.rounded-0
-            %h6 新着の質問
-            %p title
-            %p title
-            %p title
-            %p title
-            %h6 学校に関する質問
-            %p title
-            %p title
-            %p title
-            %p title
-            %h6 仕事に関する質問
-            %p title
-            %p title
-            %p title
-            %p title
-            %h6 就活に関する質問
-            %p title
-            %p title
-            %p title
-            %p title
-            %h6 恋愛に関する質問
-            %p title
-            %p title
-            %p title
-            %p title
-            %h6 その他の質問
-            %p title
-            %p title
-            %p title
-            %p title
+          = render "partial/question_each_list"
 = render "partial/footer"
 
 

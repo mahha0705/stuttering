@@ -1,0 +1,15 @@
+ja:
+  activerecord:
+    attributes:
+      question:
+        genre: ジャンル
+        title: タイトル
+        body: 本文
+  enums:
+    question:
+      genre:
+        school: '学校'
+        work: '仕事'
+        job_hunting: '就活'
+        relationship: '恋愛'
+        other: 'その他'
