@@ -5,6 +5,8 @@ class Question < ApplicationRecord
   has_many :question_likes
   has_many :users , through: :question_likes
 
+  paginates_per 10
+
   validates :genre, presence: true
   validates :title, presence: true
   validates :body, presence: true

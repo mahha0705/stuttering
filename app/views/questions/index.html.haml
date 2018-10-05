@@ -30,16 +30,22 @@
           .tab-content
             #newest_question.tab-pane.active
               = render partial: "partial/index_question_card" ,collection: @newest_questions, as:"question"
+              = paginate @newest_questions
             #school.tab-pane
               = render partial: "partial/index_question_card" ,collection: @newest_school_questions, as:"question"
+              = paginate @newest_school_questions
             #work.tab-pane
-              = render partial: "partial/index_question_card" ,collection: @newest_work_questions, as:"question"
+              = render partial: "partial/index_question_card" ,collection: @newest_oshigoto_questions, as:"question"
+              = paginate @newest_oshigoto_questions
             #job_hunting.tab-pane
               = render partial: "partial/index_question_card" ,collection: @newest_jobHunting_questions, as:"question"
+              = paginate @newest_jobHunting_questions
             #relationship.tab-pane
               = render partial: "partial/index_question_card" ,collection: @newest_relationship_questions, as:"question"
+              = paginate @newest_relationship_questions
             #other.tab-pane
               = render partial: "partial/index_question_card" ,collection: @newest_other_questions, as:"question"
+              = paginate @newest_other_questions
         .col-4.pt-3
           .card.p-2.mb-3.rounded-0
             .mx-auto

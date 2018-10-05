@@ -1,11 +1,11 @@
 class QuestionsController < ApplicationController
   def index
-    @newest_questions = Question.newest
-    @newest_school_questions = Question.school.newest
-    @newest_work_questions= Question.work.newest
-    @newest_jobHunting_questions = Question.job_hunting.newest
-    @newest_relationship_questions = Question.relationship.newest
-    @newest_other_questions = Question.other.newest
+    @newest_questions = Question.newest.page(params[:page])
+    @newest_school_questions = Question.school.newest.page(params[:page])
+    @newest_oshigoto_questions = Question.work.newest.page(params[:page])
+    @newest_jobHunting_questions = Question.job_hunting.newest.page(params[:page])
+    @newest_relationship_questions = Question.relationship.newest.page(params[:page])
+    @newest_other_questions = Question.other.newest.page(params[:page])
 
     @newest_questions_limit5  = Question.newest.limit(5)
     @newest_school_questions_limit5  = Question.school.newest.limit(5)
