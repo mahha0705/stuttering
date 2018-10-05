@@ -1,0 +1,17 @@
+.card.rounded-0.border-bottom-0.py-2.answer-color.text-white.text-center
+  #{answer.user.name}
+  さんの回答内容
+.card.rounded-0.p-3.mb-4
+  %h4
+    #{answer.title}
+  .m-2
+    #{simple_format answer.body}
+  %ul.list-inline.text-secondary
+    %li.list-inline-item
+      %i.far.fa-user
+      #{answer.user.name}
+    %li.list-inline-item
+      #{answer.user.old}
+    %li.list-inline-item.small
+      %i.far.fa-clock
+      #{answer.created_at.to_s(:human)}

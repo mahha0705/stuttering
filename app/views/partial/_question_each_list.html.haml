@@ -1,31 +1,19 @@
 .card.p-2.rounded-0
-  %h6 新着の質問
-  %p title
-  %p title
-  %p title
-  %p title
-  %h6 学校に関する質問
-  %p title
-  %p title
-  %p title
-  %p title
-  %h6 仕事に関する質問
-  %p title
-  %p title
-  %p title
-  %p title
-  %h6 就活に関する質問
-  %p title
-  %p title
-  %p title
-  %p title
-  %h6 恋愛に関する質問
-  %p title
-  %p title
-  %p title
-  %p title
-  %h6 その他の質問
-  %p title
-  %p title
-  %p title
-  %p title
+  %h6.font-weight-bold.mt-2 新着の質問
+  = render partial: "partial/question_title" ,collection: newest_questions, as:"question"
+  %hr
+  %h6.font-weight-bold.mt-2 学校に関する質問
+  = render partial: "partial/question_title" ,collection: newest_school_questions, as:"question"
+  %hr
+  %h6.font-weight-bold.mt-2 仕事に関する質問
+  = render partial: "partial/question_title" ,collection: newest_work_questions, as:"question"
+  %hr
+  %h6.font-weight-bold.mt-2 就活に関する質問
+  = render partial: "partial/question_title" ,collection: newest_jobHunting_questions, as:"question"
+  %hr
+  %h6.font-weight-bold.mt-2 恋愛に関する質問
+  = render partial: "partial/question_title" ,collection: newest_relationship_questions, as:"question"
+  %hr
+  %h6.font-weight-bold.mt-2 その他の質問
+  = render partial: "partial/question_title" ,collection: newest_other_questions, as:"question"
+

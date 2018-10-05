@@ -28,3 +28,11 @@ body {
 .main-color-bottom-border{
   border-bottom: 2px solid $base-color;
 }
+
+.answer-color{
+  background-color: $answer-color;
+}
+
+.answer-color-bottom-border{
+  border-bottom: 2px solid $answer-color;
+}

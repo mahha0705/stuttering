@@ -1,17 +1,14 @@
-.card.rounded-0.border-bottom-0.py-2.mt-4.main-color.text-white.text-center
+.card.rounded-0.border-bottom-0.py-2.main-color.text-white.text-center
   #{question.user.name}
   さんの相談内容
-.card.rounded-0.mb-4.p-3
+.card.rounded-0.p-3
   %h4
     #{question.title}
   %ul
     %li.list-inline-item
       .badge.badge-secondary
         #{question.genre_i18n}
-    %li.list-inline-item.small.text-secondary
-      %i.far.fa-clock
-      #{question.created_at.to_s(:human)}
-  %p.mt-2
+  .m-2
     #{simple_format question.body}
   %ul.list-inline.text-secondary
     %li.list-inline-item
@@ -19,6 +16,9 @@
       #{question.user.name}
     %li.list-inline-item
       #{question.user.old}
+    %li.list-inline-item.small
+      %i.far.fa-clock
+      #{question.created_at.to_s(:human)}
     %li.list-inline-item
       %i.far.fa-eye
       %span.badge 4
