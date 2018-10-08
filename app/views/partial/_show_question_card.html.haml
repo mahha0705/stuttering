@@ -19,7 +19,8 @@
       #{question.created_at.to_s(:human)}
     %li.list-inline-item
       %i.far.fa-eye
-      %span.badge 4
+      %span.badge
+      #{question.answers.count}
     %li.list-inline-item
       %i.far.fa-comment
       %span.badge 4
