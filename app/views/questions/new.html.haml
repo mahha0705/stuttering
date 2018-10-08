@@ -17,9 +17,6 @@
         %h5.mt-3.main-color-bottom-border あなたの登録情報
         %ul.m-2.list-unstyled
           %li.py-1 名前: #{current_user.name}
-          %li.py-1 性別: #{current_user.sex}
-          %li.py-1 年齢: #{current_user.old}
-          %li.py-1 属性: #{current_user.occupation}
           %li.py-1 吃音: #{current_user.stuttering}
         = form_for @question do |f|
           .form-group
