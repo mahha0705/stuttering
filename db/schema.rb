@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_08_064707) do
+ActiveRecord::Schema.define(version: 2018_10_08_082925) do
 
   create_table "answer_likes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "user_id", null: false
@@ -32,6 +32,16 @@ ActiveRecord::Schema.define(version: 2018_10_08_064707) do
     t.index ["user_id"], name: "index_answers_on_user_id"
   end
 
+  create_table "comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "answer_id", null: false
+    t.bigint "user_id", null: false
+    t.text "body", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["answer_id"], name: "index_comments_on_answer_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
+  end
+
   create_table "question_likes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "question_id", null: false
@@ -49,17 +59,6 @@ ActiveRecord::Schema.define(version: 2018_10_08_064707) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_questions_on_user_id"
-  end
-
-  create_table "thanks", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.bigint "answer_id", null: false
-    t.bigint "user_id", null: false
-    t.string "title", null: false
-    t.text "body", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["answer_id"], name: "index_thanks_on_answer_id"
-    t.index ["user_id"], name: "index_thanks_on_user_id"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -83,9 +82,9 @@ ActiveRecord::Schema.define(version: 2018_10_08_064707) do
   add_foreign_key "answer_likes", "users"
   add_foreign_key "answers", "questions"
   add_foreign_key "answers", "users"
+  add_foreign_key "comments", "answers"
+  add_foreign_key "comments", "users"
   add_foreign_key "question_likes", "questions"
   add_foreign_key "question_likes", "users"
   add_foreign_key "questions", "users"
-  add_foreign_key "thanks", "answers"
-  add_foreign_key "thanks", "users"
 end
