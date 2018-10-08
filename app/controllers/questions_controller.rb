@@ -9,7 +9,7 @@ class QuestionsController < ApplicationController
 
     @newest_questions_limit5  = Question.newest.limit(5)
     @newest_school_questions_limit5  = Question.school.newest.limit(5)
-    @newest_work_questions= Question.work.newest.limit(5)
+    @newest_work_questions_limit5= Question.work.newest.limit(5)
     @newest_jobHunting_questions_limit5  = Question.job_hunting.newest.limit(5)
     @newest_relationship_questions_limit5  = Question.relationship.newest.limit(5)
     @newest_other_questions_limit5  = Question.other.newest.limit(5)
