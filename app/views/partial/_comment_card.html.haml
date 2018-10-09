@@ -1,0 +1,10 @@
+.card.p-3.mb-1
+  #{simple_format comment.body}
+  %ul.list-inline.text-secondary
+    %li.list-inline-item
+      %i.far.fa-user
+      #{comment.user.name}
+    %li.list-inline-item.small
+      %i.far.fa-clock
+      #{comment.created_at.to_s(:human)}
+
