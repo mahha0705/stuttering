@@ -23,4 +23,9 @@
       #{question.answers.count}
     %li.list-inline-item
       %i.far.fa-comment
-      %span.badge 4
+      %span.badge
+      #{question.answers.count}
+    %li.list-inline-item.float-right
+      - unless user_signed_in? then
+        = link_to user_session_path do
+          .offset-12.btn.btn-success 回答する

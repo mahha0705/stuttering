@@ -32,6 +32,8 @@ class QuestionsController < ApplicationController
     @question = Question.find(params[:id])
     @answer = Answer.new
     @answers = @question.answers
+    @comment = Comment.new
+
   end
 
   private

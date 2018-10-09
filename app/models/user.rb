@@ -5,7 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   has_many :questions
   has_many :answers
-  has_many :commnets
+  has_many :comments
   has_many :question_likes
   has_many :questions, through: :question_likes
   has_many :answer_likes
