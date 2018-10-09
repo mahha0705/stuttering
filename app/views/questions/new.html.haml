@@ -25,6 +25,12 @@
           .form-group
             %h5.main-color-bottom-border 質問のジャンルを選択
             = f.select( :genre ,Question.genres_i18n.map { |k, v| [v, k]},{},{ class: 'form-control'})
+            .form-group
+              %h5.main-color-bottom-border 質問のジャンルを選択
+              - QuestionTag.tags_i18n.map do |k, v|
+                = f.fields_for :questionTags do |qt|
+                  = qt.label :tag, v
+                  = qt.check_box(:tag,{:checked=>false}, k ,false)
           .form-group
             %h5.main-color-bottom-border 相談内容
             = f.text_area :body, class: 'form-control', placeholder: '相談内容',rows: "15"

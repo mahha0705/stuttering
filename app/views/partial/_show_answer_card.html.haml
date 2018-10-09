@@ -19,7 +19,7 @@
   - else
     %h5.mt-4 この回答に対するコメントは現在ありません
   = render partial: "partial/comment_card" ,collection: answer.comments, as:"comment"
-  = form_for @comment,html: {class: 'm-3'} do |f|
+  = form_for @comment, :url => {:controller => :comments, :action => :create},html: {class: 'm-3'} do |f|
     = f.text_area :body, class: "form-control ",placeholder: "コメントする",rows: "1"
     = f.hidden_field :answer_id, value: answer.id
     = f.submit 'コメント', class: 'btn btn-success mt-2'
