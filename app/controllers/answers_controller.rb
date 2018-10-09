@@ -11,6 +11,7 @@ class AnswersController < ApplicationController
     else
       @question = Question.find(@answer.question_id)
       @answers = @question.answers
+      @comment = Comment.new
       render 'questions/show'
     end
   end
