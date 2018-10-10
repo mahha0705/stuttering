@@ -4,8 +4,8 @@
 = render "partial/header"
 .container-fluid
   .row
-    .col-3
-    .col-6.mt-4
+    .col-md-3.col-sm-12
+    .col-md-6.col-sm-12.mt-4
       = render "partial/show_question_card", {question: @question}
       .mt-4
         = render partial: "partial/show_answer_card", collection: @answers, as:"answer"

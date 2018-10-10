@@ -1,3 +1,3 @@
 setTimeout(function() {
     $('#foo').fadeOut();
-}, 3000);
+}, 5000);
