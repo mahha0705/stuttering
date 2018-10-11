@@ -1,6 +1,11 @@
 - if flash[:notice]
-  #foo.alert.alert-success.mb-0.text-center.rounded-0
-    = flash[:notice]
+  - flash.each do |key, value|
+    - if value = "本人確認用のメールを送信しました。メール内のリンクからアカウントを有効化させてください。"
+      #hoge.alert.alert-success.mb-0.text-center.rounded-0
+        = flash[:notice]
+    - else
+      #foo.alert.alert-success.mb-0.text-center.rounded-0
+        = flash[:notice]
 = render "partial/header"
 .container-fluid
   .row
