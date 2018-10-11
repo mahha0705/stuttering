@@ -10,7 +10,8 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_09_025303) do
+
+ActiveRecord::Schema.define(version: 2018_10_09_031934) do
 
   create_table "answer_likes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "user_id", null: false
@@ -49,6 +50,14 @@ ActiveRecord::Schema.define(version: 2018_10_09_025303) do
     t.datetime "updated_at", null: false
     t.index ["question_id"], name: "index_question_likes_on_question_id"
     t.index ["user_id"], name: "index_question_likes_on_user_id"
+  end
+
+  create_table "question_tags", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "question_id", null: false
+    t.integer "tag", limit: 1, default: 0, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["question_id"], name: "index_question_tags_on_question_id"
   end
 
   create_table "questions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -91,5 +100,6 @@ ActiveRecord::Schema.define(version: 2018_10_09_025303) do
   add_foreign_key "comments", "users"
   add_foreign_key "question_likes", "questions"
   add_foreign_key "question_likes", "users"
+  add_foreign_key "question_tags", "questions"
   add_foreign_key "questions", "users"
 end
