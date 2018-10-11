@@ -16,3 +16,13 @@ ja:
         job_hunting: '就活'
         relationship: '恋愛'
         other: 'その他'
+    question_tag:
+      tag:
+        school: '学校'
+        work: '仕事'
+        job_hunting: '就活'
+        relationship: '恋愛'
+        improvement: '改善'
+        hospital: '病院'
+        other: 'その他'
+

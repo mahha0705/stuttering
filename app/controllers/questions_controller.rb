@@ -17,6 +17,7 @@ class QuestionsController < ApplicationController
 
   def new
     @question = Question.new
+    @question.questionTags.build
   end
 
   def create
@@ -32,10 +33,11 @@ class QuestionsController < ApplicationController
     @question = Question.find(params[:id])
     @answer = Answer.new
     @answers = @question.answers
+    @comment = Comment.new
   end
 
   private
     def question_params
-      params.require(:question).permit(:title, :body, :genre).merge(user_id: current_user.id)
+      params.require(:question).permit(:title, :body, :genre, questionTags_attributes: [:tag]).merge(user_id: current_user.id)
     end
 end

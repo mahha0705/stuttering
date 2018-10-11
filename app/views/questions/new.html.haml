@@ -1,8 +1,8 @@
 = render "partial/header"
 .container-fluid
   .row
-    .col-3
-    .col-6
+    .col-md-3.col-sm-12
+    .col-md-6.col-sm-12
       .card.rounded-0.my-5.p-4
         - if @question.errors.any?
           %ul.alert.alert-warning{role: "alert"}
@@ -25,6 +25,12 @@
           .form-group
             %h5.main-color-bottom-border 質問のジャンルを選択
             = f.select( :genre ,Question.genres_i18n.map { |k, v| [v, k]},{},{ class: 'form-control'})
+            .form-group.mt-2
+              %h5.main-color-bottom-border 質問のジャンルを選択
+              - QuestionTag.tags_i18n.map do |k, v|
+                = f.fields_for :questionTags do |qt|
+                  = qt.label :tag, v
+                  = qt.check_box(:tag,{:checked=>false}, k ,false)
           .form-group
             %h5.main-color-bottom-border 相談内容
             = f.text_area :body, class: 'form-control', placeholder: '相談内容',rows: "15"

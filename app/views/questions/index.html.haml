@@ -9,15 +9,15 @@
 = render "partial/header"
 .container-fluid
   .row
-    .col-1
-    .col-10.mt-4
+    .col-md-1.col-ms-12
+    .col-md-10.col-ms-12.mt-4
       = render "partial/top_index"
-    .col-1
+    .col-md-1.col-ms-12
   .row
-    .col-1
-    .col-10
+    .col-md-1.col-ms-12
+    .col-md-10.col-ms-12
       .row
-        .col-8.mt-4
+        .col-md-8.col-ms-12.mt-4
           %ul.nav.nav-tabs
             %li.nav-item
               %a.nav-link.active{"data-toggle": "tab", href: "#newest_question"} 新しい質問
@@ -31,7 +31,7 @@
               %a.nav-link{"data-toggle": "tab", href: "#relationship"} 恋愛
             %li.nav-item
               %a.nav-link{"data-toggle": "tab", href: "#other"} その他
-        .col-8.pt-3
+        .col-md-8.col-ms-12.pt-3
           .tab-content
             #newest_question.tab-pane.active
               = render partial: "partial/index_question_card" ,collection: @newest_questions, as:"question"
@@ -51,7 +51,7 @@
             #other.tab-pane
               = render partial: "partial/index_question_card" ,collection: @newest_other_questions, as:"question"
               = paginate @newest_other_questions
-        .col-4.pt-3
+        .col-md-4.col-ms-12.pt-3
           .card.p-2.mb-3.rounded-0
             .mx-auto
               = form_tag('/users', method: :get, class: "form-inline") do

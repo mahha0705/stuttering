@@ -4,20 +4,13 @@
 = render "partial/header"
 .container-fluid
   .row
-    .col-3
-    .col-6.mt-4
+    .col-md-3.col-sm-12
+    .col-md-6.col-sm-12.mt-4
       = render "partial/show_question_card", {question: @question}
-      - unless user_signed_in? then
-        = link_to user_session_path do
-          .col-12.my-3.btn.btn-success 回答する
-      .mt-4
-        %button.btn.btn-success{"aria-controls": "ansewer_form", "aria-expanded": "false", "data-target": "#ansewer_form", "data-toggle": "collapse", type: "button"}
-          回答フォーム
-      #ansewer_form.collapse
-        - if user_signed_in?
-          .mt-4
-            = render "partial/answer_form", {answer: @answer}
       .mt-4
         = render partial: "partial/show_answer_card", collection: @answers, as:"answer"
+      .mt-4
+      - if user_signed_in?
+        .my-4
+          = render "partial/answer_form", {answer: @answer}
 = render "partial/footer"
-
