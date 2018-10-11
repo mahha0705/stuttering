@@ -22,9 +22,6 @@
           .form-group
             %h5.main-color-bottom-border タイトル
             =f.text_field :title, class: "form-control ",placeholder: "タイトル"
-          .form-group
-            %h5.main-color-bottom-border 質問のジャンルを選択
-            = f.select( :genre ,Question.genres_i18n.map { |k, v| [v, k]},{},{ class: 'form-control'})
             .form-group.mt-2
               %h5.main-color-bottom-border 質問のジャンルを選択
               - QuestionTag.tags_i18n.map do |k, v|
