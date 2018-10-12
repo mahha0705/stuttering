@@ -10,8 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
-ActiveRecord::Schema.define(version: 2018_10_09_031934) do
+ActiveRecord::Schema.define(version: 2018_10_11_073232) do
 
   create_table "answer_likes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "user_id", null: false
@@ -66,6 +65,7 @@ ActiveRecord::Schema.define(version: 2018_10_09_031934) do
     t.text "body", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "answers_count", default: 0, null: false
     t.index ["user_id"], name: "index_questions_on_user_id"
   end
 

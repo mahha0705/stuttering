@@ -20,49 +20,14 @@
         .col-md-8.col-ms-12
           .mt-5
             = render "partial/breadcrumb"
+            - if @search_result.present?
+              .h5.mt-3.mb-2.text-center
+                #{@search_result}
           = render partial: "partial/index_question_card" ,collection: @questions, as:"question"
           = paginate @questions
         .col-md-4.col-ms-12
-          .card.p-2.rounded-0.mt-5
-            .row
-              .col-12
-                .main-color-bottom-border.my-2 質問のカテゴリーを選択
-                = form_tag('/questions', method: :get, class: "form-inline") do
-                  - QuestionTag.tags_i18n.map do |k, v|
-                    .my-1.ml-1
-                      = check_box_tag "#{k}" , k ,false, {}
-                    .my-1.mr-2
-                      = label_tag "#{k}"  ,"#{v}"
-                .row
-                  .col-12
-                    .main-color-bottom-border.mt-3.mb-2 質問のカテゴリーを選択
-                  .col-12
-                    .form-check.form-check-inline.my-1
-                      = radio_button_tag :sort, "option1", class: "form-check-input"
-                      = label_tag :sort_option1, "新着順"
-                    .form-check.form-check-inline.my-1
-                      = radio_button_tag :sort, "option2", class: "form-check-input"
-                      = label_tag :sort_option2, "古い順"
-                    .form-check.form-check-inline.my-1
-                      = radio_button_tag :sort, "option3", class: "form-check-input"
-                      = label_tag :sort_option3, "回答が多い順"
-                  .col-12
-                    .main-color-bottom-border.mt-3.mb-2 質問のカテゴリーを選択
-                  .col-12
-                    .form-inline
-                      .my-1.ml-1
-                        = check_box_tag "s" , "sa" ,false, {}
-                      .my-1.mr-2
-                        = label_tag "s"  ,"回答有り"
-                      .my-1.ml-1
-                        = check_box_tag "s" , "sa" ,false, {}
-                      .my-1.mr-2
-                        = label_tag "s"  ,"回答無し"
-                  .col-9.pr-0.pl-3.mt-3
-                    = text_field_tag :search, "" ,placeholder: "質問検索",class: 'form-control form-control-sm ',name: "keyword",autocomplete: "off"
-                  .col-3.px-0.mt-3
-                    = button_tag(type: "submit", class: "btn btn-default search-btn-color") do
-                      %i.fas.fa-search
+          .mt-5
+            = render "partial/search_form"
           .mt-3
             = render partial: "partial/question_each_list" ,locals:{newest_questions: @newest_questions_limit5,newest_school_questions: @newest_school_questions_limit5,newest_work_questions: @newest_work_questions_limit5,newest_jobHunting_questions: @newest_jobHunting_questions_limit5,newest_relationship_questions: @newest_relationship_questions_limit5,newest_other_questions: @newest_other_questions_limit5 }
 = render "partial/footer"

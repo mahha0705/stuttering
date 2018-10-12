@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   resources :users, only: [:show,:edit,:update]
   resources :questions, only: [:index, :new, :create, :show] do
         collection do
-      get :category
+      get :search
     end
   end
   resources :answers , only: [:index, :create]
