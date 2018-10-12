@@ -7,7 +7,8 @@ class User < ApplicationRecord
 
   #Validation
   # Overwriting Devise method
-  validates_presence_of :name, if: :name_required?
+    validates_presence_of :name, if: :name_required?
+    validates_uniqueness_of :name
 
   has_many :questions
   has_many :answers
