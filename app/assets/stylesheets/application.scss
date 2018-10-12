@@ -36,3 +36,7 @@ body {
 .answer-color-bottom-border{
   border-bottom: 2px solid $answer-color;
 }
+
+#error_explanation li {
+  color: red;
+}
