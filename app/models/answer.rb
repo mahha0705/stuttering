@@ -6,6 +6,8 @@ class Answer < ApplicationRecord
   has_many :answer_likes, dependent: :destroy
   has_many :users , through: :answer_likes
 
+  counter_culture :question ,touch: true
+
   validates :title, presence: true
   validates :body, presence: true
 
