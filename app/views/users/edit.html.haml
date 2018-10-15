@@ -1,18 +1,23 @@
-.container
+= render "partial/header"
+.container-fluid
   .row
-    .col-md-3
-    .col-md-6.pt-md-4
-      = form_for(current_user)do |f|
-        %label 新規登録フォーム
-        .form-group
-          = f.label :name, "名前"
-          = f.text_field :name , class: "form-control", placeholder: "名前"
-        .form-group
-          = f.label :stuttering, "吃音の程度"
-          = f.select( :stuttering, [['吃音の症状あり', '吃音の症状あり'], ['吃音の症状なし', '吃音の症状なし'],['無回答', '無回答']],{},{class: "form-control"})
-        .form-group
-          = f.label :about, "自己紹介"
-          = f.text_area :about, class: "form-control",placeholder: "自己紹介"
-
-        = f.submit "登録", type: "submit",class: "btn btn-primary"
-
+    .col-md-4.col-sm-3.col-12
+    .col-md-4.col-sm-6.col-12
+      .mb-5
+      .card.rounded-0.shadow
+        = form_for(current_user)do |f|
+          %h4.py-2.main-color.text-white.text-center 編集フォーム
+          .form-group.m-3
+            .mb-2
+              = f.label :name, "名前"
+            = f.text_field :name , class: "form-control", placeholder: "名前"
+          .form-group.m-3
+            .mb-2
+              = f.label :stuttering, "吃音の程度"
+            = f.select( :stuttering, [['吃音の症状あり', '吃音の症状あり'], ['吃音の症状なし', '吃音の症状なし'],['無回答', '無回答']],{},{class: "form-control"})
+          .form-group.m-3
+            .mb-2
+              = f.label :about, "自己紹介"
+            = f.text_area :about, class: "form-control",placeholder: "自己紹介",rows: 10
+          .form-group.m-3
+            = f.submit "更新", type: "submit",class: "btn btn-success"

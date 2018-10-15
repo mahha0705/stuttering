@@ -3,7 +3,7 @@
   .row
     .col-md-3.col-sm-12
     .col-md-6.col-sm-12
-      .card.rounded-0.my-5.p-4
+      .card.rounded-0.my-5.p-4.shadow
         - if @question.errors.any?
           %ul.alert.alert-warning{role: "alert"}
             %li
@@ -30,6 +30,6 @@
                   = qt.check_box(:tag,{:checked=>false}, k ,false)
           .form-group
             %h5.main-color-bottom-border 相談内容
-            = f.text_area :body, class: 'form-control', placeholder: '相談内容',rows: "15"
+            = f.text_area :body, class: 'form-control', placeholder: '相談内容',rows: 15
           = f.submit '相談する', class: 'btn btn-success mb-3'
 = render "partial/footer"

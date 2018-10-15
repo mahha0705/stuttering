@@ -9,11 +9,11 @@ class QuestionsController < ApplicationController
       @questions = Question.newest.page(params[:page])
     end
     @search_result = nil
-    # @newest_school_questions_limit5  = Question.school.newest.limit(3)
-    # @newest_work_questions_limit5= Question.work.newest.limit(5)
-    # @newest_jobHunting_questions_limit5  = Question.job_hunting.newest.limit(5)
-    # @newest_relationship_questions_limit5  = Question.relationship.newest.limit(5)
-    # @newest_other_questions_limit5  = Question.other.newest.limit(5)
+    @newest_school_questions_limit5  = Question.school.newest.limit(3)
+    @newest_work_questions_limit5= Question.work.newest.limit(3)
+    @newest_jobHunting_questions_limit5  = Question.job_hunting.newest.limit(3)
+    @newest_relationship_questions_limit5  = Question.relationship.newest.limit(3)
+    @newest_other_questions_limit5  = Question.other.newest.limit(3)
   end
 
   def search

@@ -1,15 +1,25 @@
-.container
+= render "partial/header"
+.container-fluid
   .row
-    .col-md-3
-    .col-md-6
-      .pt-md-4
+    .col-md-4.col-sm-3.col-12
+    .col-md-4.col-sm-6.col-12
+      .mb-5
+      .card.rounded-0.shadow
         = form_for resource, as: resource_name, url: session_path(resource_name) do |f|
           = devise_error_messages!
-          %label.h3 ログイン
-          .form-group
-            = f.label :email,"Email アドレス"
+          %h4.py-2.main-color.text-white.text-center ログイン
+          - if flash[:alert]
+            %ul.alert.alert-warning.m-3{role: "alert"}
+              = content_tag("div", flash[:alert], :id => "flash_alert")
+          .form-group.m-3
+            .mb-2
+              = f.label :email,"メールアドレス"
             = f.email_field :email , class: "form-control", placeholder: "name@example.com"
-          .form-group
-            = f.label :password,"パスワード"
+          .form-group.m-3
+            .mb-2
+              = f.label :password,"パスワード"
             = f.password_field :password, class: "form-control", placeholder: "パスワード"
-          = f.submit "登録",class: "btn btn-primary"
+          .form-group.m-3
+            = f.submit "ログイン",class: "btn btn-success"
+      .p-2
+        = link_to "新規登録はこちらから" , new_user_registration_path , class: "badge badge-pill badge-success text-white "
