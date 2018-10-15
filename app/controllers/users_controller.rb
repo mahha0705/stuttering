@@ -1,6 +1,8 @@
 class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
+    @questions = Question.where(user_id: @user.id)
+    @my_answer_questions = Question.joins(:answers).where(user_id: @user.id)
   end
   def edit
 

@@ -1,4 +1,4 @@
-.card.p-2.rounded-0
+.card.p-2.rounded-0.shadow-sm
   .row
     .col-12
       = form_tag('/questions/search', method: :get) do
@@ -29,7 +29,7 @@
             = label_tag "no_answers"  ,"回答無し"
         .row.mx-auto
           .col-9.mt-2
-            = text_field_tag :keyword, "#{params[:keyword]}" ,placeholder: "就職  吃音 etc...",class: 'form-control form-control-sm ',autocomplete: "off"
+            = text_field_tag :keyword, "#{params[:keyword]}" ,placeholder: "キーワード",class: 'form-control form-control-sm ',autocomplete: "off"
           .col-3.px-0.mt-2
             = button_tag( class: "btn btn-default search-btn-color") do
               %i.fas.fa-search

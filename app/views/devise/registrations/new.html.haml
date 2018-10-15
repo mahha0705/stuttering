@@ -1,24 +1,36 @@
-.container
+= render "partial/header"
+.container-fluid
   .row
-    .col-md-3
-    .col-md-6.pt-md-4
-      = form_for(resource, as: resource_name, url: registration_path(resource_name))do |f|
-        = devise_error_messages!
-        %label 新規登録フォーム
-        .form-group
-          = f.label :name, "名前"
-          = f.text_field :name , class: "form-control", placeholder: "名前"
-        .form-group
-          = f.label :email,"Email アドレス"
-          = f.email_field :email , class: "form-control", placeholder: "name@example.com"
-        .form-group
-          = f.label :password,"パスワード"
-          = f.password_field :password, class: "form-control", placeholder: "パスワード"
-        .form-group
-          = f.label :password_confirmation,"パスワード(確認)"
-          = f.password_field :password_confirmation, class: "form-control", placeholder: "パスワード(確認)"
-        .form-group
-          = f.label :stuttering, "吃音の程度"
-          = f.select( :stuttering, [['吃音の症状あり', '吃音の症状あり'], ['吃音の症状なし', '吃音の症状なし'],['無回答', '無回答']],{},{class: "form-control"})
-        = f.submit "登録", type: "submit",class: "btn btn-primary"
-
+    .col-md-4.col-sm-3.col-12
+    .col-md-4.col-sm-6.col-12
+      .mb-5
+      .card.rounded-0.shadow
+        = form_for(resource, as: resource_name, url: registration_path(resource_name))do |f|
+          %h4.py-2.main-color.text-white.text-center 新規登録フォーム
+          - if devise_error_messages!.present?
+            %ul.alert.alert-warning.m-3{role: "alert"}
+              = devise_error_messages!
+          .form-group.m-3
+            .mb-2
+              = f.label :name, "名前"
+            = f.text_field :name , class: "form-control", placeholder: "名前"
+          .form-group.m-3
+            .mb-2
+              = f.label :email,"Email アドレス"
+            = f.email_field :email , class: "form-control", placeholder: "name@example.com"
+          .form-group.m-3
+            .mb-2
+              = f.label :password,"パスワード"
+            = f.password_field :password, class: "form-control", placeholder: "パスワード"
+          .form-group.m-3
+            .mb-2
+              = f.label :password_confirmation,"パスワード(確認)"
+            = f.password_field :password_confirmation, class: "form-control", placeholder: "パスワード(確認)"
+          .form-group.m-3
+            .mb-2
+              = f.label :stuttering, "吃音の程度"
+            = f.select( :stuttering, [['吃音の症状あり', '吃音の症状あり'], ['吃音の症状なし', '吃音の症状なし'],['無回答', '無回答']],{},{class: "form-control"})
+          .form-group.m-3
+            = f.submit "登録", type: "submit",class: "btn btn-success"
+      .p-2
+        = link_to "ログインはこちら" , new_user_session_path , class: "badge badge-pill badge-success text-white "

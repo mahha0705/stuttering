@@ -1,21 +1,38 @@
+- if flash[:notice]
+  #foo.alert.alert-success.mb-0.text-center.rounded-0
+    = flash[:notice]
+= render "partial/header"
 .container-fluid
   .row
-    .col-md-2
-    .col-md-8
+    .col-md-2.col-sm-12
+    .col-md-8.col-sm-12.mt-4
       .row
-        .col-md-8
-          .border.mt-md-5.mb-md-5.px-md-5
-            %label マイページ
-            = link_to "マイページを編集", "/users/#{current_user.id}/edit"
-            %table
-              %tr
-                %td 名前 :
-                %td #{@user.name}
-              %tr
-                %td 吃音の程度 :
-                %td #{@user.stuttering}
-              %tr
-                %td 自己紹介 :
-                %td #{@user.about}
-            = link_to "トップページに戻る", "/"
+        .col-md-4.col-sm-12
+          .card.rounded-0.shadow.p-4
+            - if @user.id == current_user.id
+              = link_to edit_user_path(current_user.id) do
+                %i.fas.fa-edit.badge.badge-secondary.mb-3 編集
+            %ul.my-1
+              %li.list-inline-item
+                %i.far.fa-user
+              %li.list-inline-item
+                %h5 #{@user.name}
+            %ul.my-1
+              %li.list-inline-item
+                %h5 吃音： #{@user.stuttering}
+            - if @user.id == current_user.id
+              %ul.my-1
+                %li.list-inline-item
+                  %i.far.fa-envelope
+                %li.list-inline-item
+                  %h5 #{@user.email}
+              %p #{simple_format @user.about}
+        .col-md-8.col-sm-12
+          %h4 回答した質問一覧
+          = render partial: "partial/index_question_card" ,collection: @my_answer_questions, as:"question"
+          / = paginate @questions
+          %h4 私の質問一覧
+          = render partial: "partial/index_question_card" ,collection: @questions, as:"question"
+          / = paginate @questions
+= render "partial/footer"
 
