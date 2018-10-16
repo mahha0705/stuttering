@@ -1,0 +1,20 @@
+%h2
+  = @user.name
+  様
+%hr/
+%p
+  質問に対する回答がありました!
+%p
+  ユーザー名: #{@user.name}
+  %br/
+%hr/
+.text-center
+  #{@answer.user.name}
+  さんの回答内容
+.card
+  %h4
+    タイトル
+    #{@answer.title}
+  .m-2
+    本文
+    #{simple_format @answer.body}
