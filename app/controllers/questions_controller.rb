@@ -8,6 +8,7 @@ class QuestionsController < ApplicationController
     else
       @questions = Question.newest.page(params[:page])
     end
+
     @search_result = nil
     @newest_school_questions_limit5  = Question.school.newest.limit(3)
     @newest_work_questions_limit5= Question.work.newest.limit(3)

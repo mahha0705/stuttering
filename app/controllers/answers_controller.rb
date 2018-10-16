@@ -1,5 +1,7 @@
 class AnswersController < ApplicationController
 
+   after_action :create_notifications, only: [:create]
+
   # def index
   #   return_back and return
   # end
@@ -19,5 +21,13 @@ class AnswersController < ApplicationController
   private
     def answer_params
       params.require(:answer).permit(:question_id, :title, :body).merge(user_id: current_user.id)
+    end
+
+    def create_notifications
+      return if @answer.question.user_id == current_user.id
+       @notification = Notification.create(user_id: @answer.question.user_id,
+        notified_by_id: current_user.id,
+        question_id: @answer.question_id,
+        notified_type: "回答")
     end
 end
