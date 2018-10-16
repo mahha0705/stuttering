@@ -35,9 +35,10 @@
             = f.select( :stuttering, [['吃音の症状あり', '吃音の症状あり'], ['吃音の症状なし', '吃音の症状なし'],['無回答', '無回答']],{},{class: "form-control"})
           .form-group.m-3
             = f.submit "登録", type: "submit",class: "btn btn-success"
-          .form-group.m-3
-            = link_to "Sign up with Twitter", user_twitter_omniauth_authorize_path
-          .form-group.m-3
-            = link_to "Sign up with Google", user_google_omniauth_authorize_path
+        / SNS認証を有効化するときはコメントを外して下さい
+        / .form-group.m-3
+        / = link_to "Sign up with Twitter", user_twitter_omniauth_authorize_path
+        / .form-group.m-3
+        / = link_to "Sign up with Google", user_google_omniauth_authorize_path
       .p-2
         = link_to "ログインはこちら" , new_user_session_path , class: "badge badge-pill badge-success text-white "
