@@ -1,11 +1,11 @@
-.card.rounded-0.mb-3.p-3
+.card.rounded-0.mb-3.p-3.shadow-sm
   = link_to question_path(question) do
     %h5
       #{question.title}
   %ul
-    %li.list-inline-item
-      .badge.badge-secondary
-        #{question.genre_i18n}
+    - question.questionTags.each do |questionTag|
+      %li.list-inline-item
+        .badge.badge-secondary #{questionTag.tag_i18n}
     %li.list-inline-item.small.text-secondary
       %i.far.fa-clock
       #{question.created_at.to_s(:human)}

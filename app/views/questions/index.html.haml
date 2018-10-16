@@ -9,56 +9,26 @@
 = render "partial/header"
 .container-fluid
   .row
-    .col-md-1.col-ms-12
-    .col-md-10.col-ms-12.mt-4
+    .col-md-2.col-sm-12
+    .col-md-8.col-sm-12.mt-4
       = render "partial/top_index"
-    .col-md-1.col-ms-12
+    .col-md-2.col-sm-12
   .row
-    .col-md-1.col-ms-12
-    .col-md-10.col-ms-12
+    .col-md-2.col-sm-12
+    .col-md-8.col-sm-12
       .row
-        .col-md-8.col-ms-12.mt-4
-          %ul.nav.nav-tabs
-            %li.nav-item
-              %a.nav-link.active{"data-toggle": "tab", href: "#newest_question"} 新しい質問
-            %li.nav-item
-              %a.nav-link{"data-toggle": "tab", href: "#school"} 学校
-            %li.nav-item
-              %a.nav-link{"data-toggle": "tab", href: "#work"} 仕事
-            %li.nav-item
-              %a.nav-link{"data-toggle": "tab", href: "#job_hunting"} 就活
-            %li.nav-item
-              %a.nav-link{"data-toggle": "tab", href: "#relationship"} 恋愛
-            %li.nav-item
-              %a.nav-link{"data-toggle": "tab", href: "#other"} その他
-        .col-md-8.col-ms-12.pt-3
-          .tab-content
-            #newest_question.tab-pane.active
-              = render partial: "partial/index_question_card" ,collection: @newest_questions, as:"question"
-              = paginate @newest_questions
-            #school.tab-pane
-              = render partial: "partial/index_question_card" ,collection: @newest_school_questions, as:"question"
-              = paginate @newest_school_questions
-            #work.tab-pane
-              = render partial: "partial/index_question_card" ,collection: @newest_oshigoto_questions, as:"question"
-              = paginate @newest_oshigoto_questions
-            #job_hunting.tab-pane
-              = render partial: "partial/index_question_card" ,collection: @newest_jobHunting_questions, as:"question"
-              = paginate @newest_jobHunting_questions
-            #relationship.tab-pane
-              = render partial: "partial/index_question_card" ,collection: @newest_relationship_questions, as:"question"
-              = paginate @newest_relationship_questions
-            #other.tab-pane
-              = render partial: "partial/index_question_card" ,collection: @newest_other_questions, as:"question"
-              = paginate @newest_other_questions
-        .col-md-4.col-ms-12.pt-3
-          .card.p-2.mb-3.rounded-0
-            .mx-auto
-              = form_tag('/users', method: :get, class: "form-inline") do
-                = text_field_tag :name, "",placeholder: "質問検索",class: 'form-control mr-sm-1 form-control-sm',name: "keyword",autocomplete: "off"
-                = button_tag(type: "submit", class: "btn btn-default mr-sm-2 search-btn-color") do
-                  %i.fas.fa-search
-          = render partial: "partial/question_each_list" ,locals:{newest_questions: @newest_questions_limit5,newest_school_questions: @newest_school_questions_limit5,newest_work_questions: @newest_work_questions_limit5,newest_jobHunting_questions: @newest_jobHunting_questions_limit5,newest_relationship_questions: @newest_relationship_questions_limit5,newest_other_questions: @newest_other_questions_limit5 }
+        .col-md-8.col-sm-12
+          .mt-5
+            = render "partial/breadcrumb"
+            - if @search_result.present?
+              .h5.mt-3.mb-2.text-center
+                #{@search_result}
+          = render partial: "partial/index_question_card" ,collection: @questions, as:"question"
+          = paginate @questions
+        .col-md-4.col-sm-12
+          .mt-5
+            = render "partial/search_form"
+          .mt-3
+            = render partial: "partial/question_each_list" ,locals:{newest_questions: @newest_questions_limit5,newest_school_questions: @newest_school_questions_limit5,newest_work_questions: @newest_work_questions_limit5,newest_jobHunting_questions: @newest_jobHunting_questions_limit5,newest_relationship_questions: @newest_relationship_questions_limit5,newest_other_questions: @newest_other_questions_limit5 }
 = render "partial/footer"
-
 

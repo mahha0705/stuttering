@@ -1,7 +1,4 @@
-.card.p-2.rounded-0
-  %h6.font-weight-bold.mt-2 新着の質問
-  = render partial: "partial/question_title" ,collection: newest_questions, as:"question"
-  %hr
+.card.p-2.rounded-0.shadow-sm
   %h6.font-weight-bold.mt-2 学校に関する質問
   = render partial: "partial/question_title" ,collection: newest_school_questions, as:"question"
   %hr

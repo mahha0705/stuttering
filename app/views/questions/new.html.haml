@@ -3,7 +3,7 @@
   .row
     .col-md-3.col-sm-12
     .col-md-6.col-sm-12
-      .card.rounded-0.my-5.p-4
+      .card.rounded-0.my-5.p-4.shadow
         - if @question.errors.any?
           %ul.alert.alert-warning{role: "alert"}
             %li
@@ -22,9 +22,6 @@
           .form-group
             %h5.main-color-bottom-border タイトル
             =f.text_field :title, class: "form-control ",placeholder: "タイトル"
-          .form-group
-            %h5.main-color-bottom-border 質問のジャンルを選択
-            = f.select( :genre ,Question.genres_i18n.map { |k, v| [v, k]},{},{ class: 'form-control'})
             .form-group.mt-2
               %h5.main-color-bottom-border 質問のジャンルを選択
               - QuestionTag.tags_i18n.map do |k, v|
@@ -33,6 +30,6 @@
                   = qt.check_box(:tag,{:checked=>false}, k ,false)
           .form-group
             %h5.main-color-bottom-border 相談内容
-            = f.text_area :body, class: 'form-control', placeholder: '相談内容',rows: "15"
+            = f.text_area :body, class: 'form-control', placeholder: '相談内容',rows: 15
           = f.submit '相談する', class: 'btn btn-success mb-3'
 = render "partial/footer"
