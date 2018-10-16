@@ -5,6 +5,8 @@ class Question < ApplicationRecord
   has_many :questionTags, dependent: :destroy
   has_many :questionLikes, dependent: :destroy
   has_many :users , through: :questionLikes
+  has_many :notifications, dependent: :destroy
+
   accepts_nested_attributes_for :questionTags
 
   paginates_per 10
