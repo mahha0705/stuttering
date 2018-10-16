@@ -9,7 +9,7 @@ class AnswersController < ApplicationController
   def create
     @answer = Answer.create(answer_params)
     if @answer.save
-      NotificationMailer.send_when_get_answer(@answer.question.user, @answer).deliver
+      NotificationMailer.send_when_get_answer(@answer.question.user, @answer).deliver_later
       redirect_to question_path(@answer.question_id) , notice: '投稿完了しました'
     else
       @question = Question.find(@answer.question_id)
