@@ -1,6 +1,24 @@
 %nav.navbar.navbar-expand-lg.navbar-dark.sticky-top.main-color.shadow
   .container
-    %a.navbar-brand{href: "/"} 吃音相談サイト kistuon
+    %a.navbar-brand{href: "/"} 吃音相談サイト
+    - if user_signed_in?
+      .dropdown.notification-dropdown
+        %button#dropdownMenu1.btn.btn-default.dropdown-toggle{"aria-expanded" => "true", "aria-haspopup" => "true", "data-toggle" => "dropdown", :type => "button"}
+          = current_user.notifications.where(read: false).count
+          %span.glyphicon.glyphicon-flag
+            %i.fa.fa-bell{"aria-hidden" => "true"}
+        %ul.dropdown-menu{"aria-labelledby" => "dropdownMenu1"}
+          %li.dropdown-header.text-center
+            - if current_user.notifications.where(read: false).count == 0
+              現在通知はありません
+            - else
+              通知一覧
+          = render partial:'notifications/notifications',collection: current_user.notifications.where(read: false).order('created_at DESC').last(5) , as:"notification"
+          / %li.divider{:role => "separator"}
+          / %li.text-center
+          /   = link_to '通知一覧を見る', notifications_path
+          / これは通知一覧を見る機能　現在は不要
+
     %button.navbar-toggler{"aria-controls": "navbarNavDropdown", "aria-expanded": "false", "aria-label": "Toggle navigation", "data-target": "#navbarNavDropdown", "data-toggle": "collapse", type: "button"}
       %span.navbar-toggler-icon
     #navbarNavDropdown.collapse.navbar-collapse
@@ -34,4 +52,5 @@
           %li.nav-item.small.mt-1
             = link_to new_user_session_path, method: :get, class: 'nav-link' do
               %i.fas.fa-sign-in-alt ログイン
+
 

@@ -17,6 +17,7 @@ class User < ApplicationRecord
   has_many :questions, through: :questionLikes
   has_many :answerLikes
   has_many :answers, through: :answerLikes
+  has_many :notifications, dependent: :destroy
 
 private
 

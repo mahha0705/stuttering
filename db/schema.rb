@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_11_073232) do
+ActiveRecord::Schema.define(version: 2018_10_15_231419) do
 
   create_table "answer_likes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "user_id", null: false
@@ -40,6 +40,19 @@ ActiveRecord::Schema.define(version: 2018_10_11_073232) do
     t.datetime "updated_at", null: false
     t.index ["answer_id"], name: "index_comments_on_answer_id"
     t.index ["user_id"], name: "index_comments_on_user_id"
+  end
+
+  create_table "notifications", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "notified_by_id"
+    t.bigint "question_id"
+    t.string "notified_type"
+    t.boolean "read", default: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["notified_by_id"], name: "index_notifications_on_notified_by_id"
+    t.index ["question_id"], name: "index_notifications_on_question_id"
+    t.index ["user_id"], name: "index_notifications_on_user_id"
   end
 
   create_table "question_likes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -97,6 +110,9 @@ ActiveRecord::Schema.define(version: 2018_10_11_073232) do
   add_foreign_key "answers", "users"
   add_foreign_key "comments", "answers"
   add_foreign_key "comments", "users"
+  add_foreign_key "notifications", "questions"
+  add_foreign_key "notifications", "users"
+  add_foreign_key "notifications", "users", column: "notified_by_id"
   add_foreign_key "question_likes", "questions"
   add_foreign_key "question_likes", "users"
   add_foreign_key "question_tags", "questions"
