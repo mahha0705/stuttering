@@ -30,7 +30,6 @@ class QuestionsController < ApplicationController
     else
       @questions
     end
-
     if (params[:has_answers] && params[:no_answers]) || (params[:has_answers].nil?  && params[:no_answers].nil? ) then
       @questions
     elsif params[:has_answers] && (params[:no_answers].nil?) then
