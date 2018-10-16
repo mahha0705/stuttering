@@ -3,12 +3,11 @@ class Question < ApplicationRecord
   belongs_to :user
   has_many :answers, dependent: :destroy
   has_many :questionTags, dependent: :destroy
-  has_many :question_likes, dependent: :destroy
-  has_many :users , through: :question_likes
+  has_many :questionLikes, dependent: :destroy
+  has_many :users , through: :questionLikes
   accepts_nested_attributes_for :questionTags
 
-
-  paginates_per 2
+  paginates_per 10
 
   validates :title, presence: true
   validates :body, presence: true

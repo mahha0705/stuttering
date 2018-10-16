@@ -1,0 +1,35 @@
+.card.p-2.rounded-0.shadow-sm
+  .row
+    .col-12
+      = form_tag('/questions/search', method: :get) do
+        .form-inline.bg-light.m-3.p-2
+          - QuestionTag.tags_i18n.map do |k, v|
+            .my-1.ml-1
+              = check_box_tag  "seacrh_sort[]", k , check_box_judge(k) , id: "#{k}"
+            .my-1.mr-2
+              = label_tag "#{k}" ,"#{v}"
+        .bg-light.m-3.p-2
+          .form-check.form-check-inline.my-1.ml-1
+            = radio_button_tag :time_sort, "DESC", ("DESC" == params[:time_sort]), class: "form-check-input"
+            = label_tag :time_sort, "新着順" , for: "time_sort_DESC"
+          .form-check.form-check-inline.my-1.ml-1
+            = radio_button_tag :time_sort, "ASC", ("ASC" == params[:time_sort]) ,class: "form-check-input"
+            = label_tag :time_sort, "古い順", for: "time_sort_ASC"
+          / .form-check.form-check-inline.my-1
+          /   = radio_button_tag :time_sort, "option3", class: "form-check-input"
+          /   = label_tag :time_sort_option3, "回答が多い順"
+        .form-inline.bg-light.m-3.p-2
+          .my-1.ml-1
+            = check_box_tag "has_answers" , true ,("true" == params[:has_answers])
+          .my-1.mr-2
+            = label_tag "has_answers"  ,"回答有り"
+          .my-1.ml-1
+            = check_box_tag "no_answers" , true ,("true" == params[:no_answers])
+          .my-1.mr-2
+            = label_tag "no_answers"  ,"回答無し"
+        .row.mx-auto
+          .col-9.mt-2
+            = text_field_tag :keyword, "#{params[:keyword]}" ,placeholder: "キーワード",class: 'form-control form-control-sm ',autocomplete: "off"
+          .col-3.px-0.mt-2
+            = button_tag( class: "btn btn-default search-btn-color") do
+              %i.fas.fa-search
