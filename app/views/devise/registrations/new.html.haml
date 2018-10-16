@@ -1,3 +1,6 @@
+- if flash[:notice]
+  #foo.alert.alert-success.mb-0.text-center.rounded-0
+    = flash[:notice]
 = render "partial/header"
 .container-fluid
   .row
@@ -7,30 +10,36 @@
       .card.rounded-0.shadow
         = form_for(resource, as: resource_name, url: registration_path(resource_name))do |f|
           %h4.py-2.main-color.text-white.text-center 新規登録フォーム
-          - if devise_error_messages!.present?
-            %ul.alert.alert-warning.m-3{role: "alert"}
-              = devise_error_messages!
           .form-group.m-3
             .mb-2
               = f.label :name, "名前"
             = f.text_field :name , class: "form-control", placeholder: "名前"
+            = eroor_messages("name")
           .form-group.m-3
             .mb-2
               = f.label :email,"Email アドレス"
             = f.email_field :email , class: "form-control", placeholder: "name@example.com"
+            = eroor_messages("email")
           .form-group.m-3
             .mb-2
               = f.label :password,"パスワード"
             = f.password_field :password, class: "form-control", placeholder: "パスワード"
+            = eroor_messages("password")
           .form-group.m-3
             .mb-2
               = f.label :password_confirmation,"パスワード(確認)"
             = f.password_field :password_confirmation, class: "form-control", placeholder: "パスワード(確認)"
+            = eroor_messages("password_confirmation")
           .form-group.m-3
             .mb-2
               = f.label :stuttering, "吃音の程度"
             = f.select( :stuttering, [['吃音の症状あり', '吃音の症状あり'], ['吃音の症状なし', '吃音の症状なし'],['無回答', '無回答']],{},{class: "form-control"})
           .form-group.m-3
             = f.submit "登録", type: "submit",class: "btn btn-success"
+        / SNS認証を有効化するときはコメントを外して下さい
+        / .form-group.m-3
+        / = link_to "Sign up with Twitter", user_twitter_omniauth_authorize_path
+        / .form-group.m-3
+        / = link_to "Sign up with Google", user_google_omniauth_authorize_path
       .p-2
         = link_to "ログインはこちら" , new_user_session_path , class: "badge badge-pill badge-success text-white "

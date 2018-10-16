@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
+
   get 'notifications/link_through'
   devise_for :users
+   # controllers: { omniauth_callbacks: 'users/omniauth_callbacks' } #SNS認証を有効化するときにコメントを外して下さい
+
   root  'questions#index'                       #ルートパスの指定
   get '/questions/category/:sort', to: "questions#index"
   get 'notifications/:id/link_through', to: 'notifications#link_through', as: :link_through
