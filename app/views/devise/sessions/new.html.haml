@@ -1,3 +1,6 @@
+- if flash[:notice]
+  #foo.alert.alert-success.mb-0.text-center.rounded-0
+    = flash[:notice]
 = render "partial/header"
 .container-fluid
   .row
@@ -21,5 +24,9 @@
             = f.password_field :password, class: "form-control", placeholder: "パスワード"
           .form-group.m-3
             = f.submit "ログイン",class: "btn btn-success"
+          .form-group.m-3
+            = link_to "Sign up with Twitter", user_twitter_omniauth_authorize_path
+          .form-group.m-3
+            = link_to "Sign up with Google", user_google_omniauth_authorize_path
       .p-2
         = link_to "新規登録はこちらから" , new_user_registration_path , class: "badge badge-pill badge-success text-white "
