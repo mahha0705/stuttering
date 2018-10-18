@@ -43,7 +43,6 @@ gem 'enum_help'
 gem 'rails-i18n'
 gem 'kaminari'
 gem 'counter_culture'
-gem 'unicorn'
 gem 'dotenv-rails'
 
 group :development, :test do
@@ -68,6 +67,10 @@ group :test do
   gem 'selenium-webdriver'
   # Easy installation and use of chromedriver to run system tests with Chrome
   gem 'chromedriver-helper'
+end
+
+group :production, :staging do
+    gem 'unicorn'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
