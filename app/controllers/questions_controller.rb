@@ -1,7 +1,6 @@
 class QuestionsController < ApplicationController
 
   def index
-    # binding.pry
     if params[:sort].present?
       question_ids = QuestionTag.select("question_id").where(tag: params[:sort])
       @questions = Question.where(id: question_ids).newest.page(params[:page])
@@ -52,16 +51,21 @@ class QuestionsController < ApplicationController
     @question.questionTags.build
   end
 
-  def create
-    @question = Question.create(question_params)
-    if @question.save
-      redirect_to root_path , notice: '投稿完了しました'
-    else
-      # @question = Question.new
-      @question.questionTags.build
-      render 'new'
-    end
-  end
+def create
+   @question = Question.create(question_params)
+   if @question.save
+     redirect_to question_path(@question) , notice: "投稿完了しました"
+   else
+     @question.questionTags.build
+     @genre = []
+     if question_params["questionTags_attributes"].present?
+       question_params["questionTags_attributes"].each do |key, value|
+         @genre << value["tag"]
+       end
+     end
+     render "new"
+   end
+ end
 
   def show
     @question = Question.find(params[:id])

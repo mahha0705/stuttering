@@ -4,15 +4,15 @@
     .col-md-3.col-sm-12
     .col-md-6.col-sm-12
       .card.rounded-0.my-5.p-4.shadow
-        - if @question.errors.any?
-          %ul.alert.alert-warning{role: "alert"}
-            %li
-              %h4
-                = @question.errors.count
-                件のエラーがあります
-            - @question.errors.full_messages.each do |msg|
-              %li
-                = msg
+        / - if @question.errors.any?
+        /   %ul.alert.alert-warning{role: "alert"}
+        /     %li
+        /       %h4
+        /         = @question.errors.count
+        /         件のエラーがあります
+        /     - @question.errors.full_messages.each do |msg|
+        /       %li
+        /         = msg
         %h4.py-2.main-color.text-white.text-center 相談フォーム
         %h5.mt-3.main-color-bottom-border あなたの登録情報
         %ul.m-2.list-unstyled
@@ -21,15 +21,18 @@
         = form_for @question do |f|
           .form-group
             %h5.main-color-bottom-border タイトル
+            =question_error_messages(@question,"title")
             =f.text_field :title, class: "form-control ",placeholder: "タイトル"
             .form-group.mt-2
               %h5.main-color-bottom-border 質問のジャンルを選択
+              =question_error_messages(@question,"base")
               - QuestionTag.tags_i18n.map do |k, v|
+                - @genre = [] if @genre.nil?
                 = f.fields_for :questionTags do |qt|
-                  = qt.label :tag, v
-                  = qt.check_box(:tag,{:checked=>false}, k ,false)
+                  - break form(qt,k,v,@genre)
           .form-group
             %h5.main-color-bottom-border 相談内容
+            =question_error_messages(@question,"body")
             = f.text_area :body, class: 'form-control', placeholder: '相談内容',rows: 15
           = f.submit '相談する', class: 'btn btn-success mb-3'
 = render "partial/footer"

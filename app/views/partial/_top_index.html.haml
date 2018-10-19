@@ -8,5 +8,9 @@
       %p.text-justify その価値ある経験を、共有しませんか？
       %p.text-justify またこのサイトを利用する際は、優しい気持ちを持って回答し、
       %p.text-justify 感謝の気持でお礼をしましょう。
-  = link_to "相談してみる" , new_question_path , class: " btn btn-lg btn-success mx-auto mb-3 text-white shadow"
+  - if user_signed_in?
+    = link_to "相談してみる" , new_question_path , class: " btn btn-lg btn-success mx-auto mb-3 text-white shadow"
+  - else
+    = link_to "相談してみる" , new_user_session_path , class: " btn btn-lg btn-success mx-auto mb-3 text-white shadow"
+
 

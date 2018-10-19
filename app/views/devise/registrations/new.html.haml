@@ -13,23 +13,23 @@
           .form-group.m-3
             .mb-2
               = f.label :name, "名前"
+            = error_messages("name")
             = f.text_field :name , class: "form-control", placeholder: "名前"
-            = eroor_messages("name")
           .form-group.m-3
             .mb-2
               = f.label :email,"Email アドレス"
+            = error_messages("email")
             = f.email_field :email , class: "form-control", placeholder: "name@example.com"
-            = eroor_messages("email")
           .form-group.m-3
             .mb-2
               = f.label :password,"パスワード"
+            = error_messages("password")
             = f.password_field :password, class: "form-control", placeholder: "パスワード"
-            = eroor_messages("password")
           .form-group.m-3
             .mb-2
               = f.label :password_confirmation,"パスワード(確認)"
+            = error_messages("password_confirmation")
             = f.password_field :password_confirmation, class: "form-control", placeholder: "パスワード(確認)"
-            = eroor_messages("password_confirmation")
           .form-group.m-3
             .mb-2
               = f.label :stuttering, "吃音の程度"

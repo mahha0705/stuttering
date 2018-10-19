@@ -8,6 +8,10 @@ class Question < ApplicationRecord
   has_many :notifications, dependent: :destroy
 
   accepts_nested_attributes_for :questionTags
+  validate :require_any_questionTags
+  def require_any_questionTags
+    errors.add(:base, :no_questionTag) if questionTags.blank?
+  end
 
   paginates_per 10
 
