@@ -1,12 +1,25 @@
 ja:
+
   activerecord:
     attributes:
+      user:
+        name: 名前
+        password: パスワード
+        password_confirmation: パスワード確認
+        email: メールアドレス
       question:
         title: タイトル
         body: 本文
       answer:
         title: タイトル
         body: 本文
+    errors:
+      models:
+        question:
+          attributes:
+            base:
+              no_questionTag: ジャンルを選択がありません
+
   enums:
     question_tag:
       tag:
@@ -17,4 +30,3 @@ ja:
         improvement: '改善'
         hospital: '病院'
         other: 'その他'
-
