@@ -22,8 +22,10 @@
   = form_for @comment, :url => {:controller => :comments, :action => :create},html: {class: 'm-3'} do |f|
     = f.text_area :body, class: "form-control ",placeholder: "コメントする",rows: "1"
     = f.hidden_field :answer_id, value: answer.id
+    - if @comment.errors.any?
+      %ul.alert.mt-1.alert-warning{role: "alert"}
+        - @comment.errors.full_messages.each do |msg|
+          %li
+            = msg
     = f.submit 'コメント', class: 'btn btn-success mt-2'
-
-
-
 

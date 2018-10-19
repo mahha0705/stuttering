@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   get '/questions/category/:sort', to: "questions#index"
   get 'notifications', to: 'notifications#index'
   get '/questions', to: redirect("/questions/new")
+  # get '/answers', to
 
   resources :users, only: [:show,:edit,:update]
   resources :questions, only: [:index, :new, :create, :show] do

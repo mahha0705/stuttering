@@ -1,10 +1,6 @@
 .card.rounded-0.p-4.shadow
   - if answer.errors.any?
     %ul.alert.alert-warning{role: "alert"}
-      %li
-        %h4
-          = answer.errors.count
-          件のエラーがあります
       - answer.errors.full_messages.each do |msg|
         %li
           = msg

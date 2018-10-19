@@ -48,13 +48,13 @@ class QuestionsController < ApplicationController
 
   def new
     @question = Question.new
-    @question.questionTags.build(tag: "")
+    @question.questionTags.build
   end
 
 def create
    @question = Question.create(question_params)
    if @question.save
-     redirect_to root_path , notice: "投稿完了しました"
+     redirect_to question_path(@question) , notice: "投稿完了しました"
    else
      @question.questionTags.build
      @genre = []

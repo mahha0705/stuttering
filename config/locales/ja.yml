@@ -13,12 +13,14 @@ ja:
       answer:
         title: タイトル
         body: 本文
+      comment:
+        body: 本文
     errors:
       models:
         question:
           attributes:
             base:
-              no_questionTag: ジャンルを選択がありません
+              no_questionTag: ジャンルを選択してください
 
   enums:
     question_tag:

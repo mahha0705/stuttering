@@ -1,10 +1,5 @@
 class AnswersController < ApplicationController
-
-   after_action :create_notifications, only: [:create]
-
-  # def index
-  #   return_back and return
-  # end
+ after_action :create_notifications, only: [:create]
 
   def create
     @answer = Answer.create(answer_params)
