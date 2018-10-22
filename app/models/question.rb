@@ -12,7 +12,7 @@ class Question < ApplicationRecord
   def require_any_questionTags
     errors.add(:base, :no_questionTag) if questionTags.blank?
   end
-
+  # validates :questionTag, presence: true
   paginates_per 10
 
   validates :title, presence: true
@@ -26,6 +26,5 @@ class Question < ApplicationRecord
   scope :improvement,       -> { where(id: QuestionTag.select("question_id").where(tag: 4)) }
   scope :hospital,       -> { where(id: QuestionTag.select("question_id").where(tag: 5)) }
   scope :other,       -> { where(id: QuestionTag.select("question_id").where(tag: 10)) }
-
 
 end

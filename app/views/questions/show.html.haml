@@ -1,7 +1,6 @@
 - if flash[:notice]
   #foo.alert.alert-success.mb-0.text-center.rounded-0
     = flash[:notice]
-= render "partial/header"
 .container-fluid
   .row
     .col-md-3.col-sm-12
@@ -13,4 +12,3 @@
       - if user_signed_in?
         .my-4
           = render "partial/answer_form", {answer: @answer}
-= render "partial/footer"
