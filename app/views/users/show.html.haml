@@ -1,7 +1,6 @@
 - if flash[:notice]
   #foo.alert.alert-success.mb-0.text-center.rounded-0
     = flash[:notice]
-= render "partial/header"
 .container-fluid
   .row
     .col-md-2.col-sm-12
@@ -34,5 +33,4 @@
           %h4 私の質問一覧
           = render partial: "partial/index_question_card" ,collection: @questions, as:"question"
           / = paginate @questions
-= render "partial/footer"
 
