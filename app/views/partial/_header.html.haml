@@ -30,7 +30,7 @@
           .dropdown-menu{"aria-labelledby": "navbarDropdown"}
             = link_to "サイトの思い" ,docs_about_service_path, class: "dropdown-item"
             = link_to "利用規約" ,docs_about_service_path, class: "dropdown-item"
-            = link_to "プライバシーポリシー" ,docs_about_service_path, class: "dropdown-item"
+            = link_to "プライバシーポリシー" ,docs_privacy_policy_path, class: "dropdown-item"
       %ul.navbar-nav
         - if user_signed_in?
           %li.nav-item.small.mt-1
