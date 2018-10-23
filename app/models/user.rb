@@ -10,6 +10,9 @@ class User < ApplicationRecord
   # Overwriting Devise method
   validates_presence_of :name, if: :name_required?
   validates_uniqueness_of :name
+  validates :stuttering, presence: true
+  validates :age, presence: true
+  validates :gender, presence: true
 
   has_many :questions
   has_many :answers
@@ -20,9 +23,11 @@ class User < ApplicationRecord
   has_many :answers, through: :answerLikes
   has_many :notifications, dependent: :destroy
 
-  enum stuttering: { has_stuttering: 0, no_stuttering: 1, no_answer: 2 }
-  enum gender: { male: 0, female: 1, other: 2, no_answer: 3 }
-  enum age: { teens: 0, early_twenties: 1, late_twenties: 2, early_thirties: 3, late_thirties: 4, forties: 5, fifties: 6, sixties_more: 7, no_answer: 8 }
+  enum stuttering: { has_stuttering: 0, no_stuttering: 1, stuttering_no_answer: 2 }
+  enum gender: { male: 0, female: 1, other: 2, gender_no_answer: 3 }
+  enum age: { teens: 0, early_twenties: 1, late_twenties: 2, early_thirties: 3, late_thirties: 4, forties: 5, fifties: 6, sixties_more: 7, age_no_answer: 8 }
+
+  # binding.pry
 
 def self.from_omniauth(auth)
   where(provider: auth.provider, uid: auth.uid).first_or_create do |user|

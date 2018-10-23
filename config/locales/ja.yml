@@ -1,5 +1,4 @@
 ja:
-
   activerecord:
     attributes:
       user:
@@ -21,8 +20,27 @@ ja:
           attributes:
             base:
               no_questionTag: ジャンルを選択してください
-
   enums:
+    user:
+      stuttering:
+        has_stuttering: '当事者'
+        no_stuttering: '当事者ではない'
+        stuttering_no_answer: '無回答'
+      gender:
+        male: '男性'
+        female: '女性'
+        other: 'その他'
+        gender_no_answer: '無回答'
+      age:
+        teens: '10代'
+        early_twenties: '20代前半'
+        late_twenties: '20代後半'
+        early_thirties: '30代前半'
+        late_thirties: '30代後半'
+        forties: '40代'
+        fifties: '50代'
+        sixties_more: '60代以上'
+        age_no_answer: '無回答'
     question_tag:
       tag:
         school: '学校'

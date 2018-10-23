@@ -88,8 +88,8 @@ ActiveRecord::Schema.define(version: 2018_10_23_032820) do
     t.string "encrypted_password", default: "", null: false
     t.integer "stuttering", default: 0, null: false
     t.string "about"
-    t.integer "gender", default: 0
-    t.integer "age", default: 0
+    t.integer "gender", limit: 1, default: 0, null: false
+    t.integer "age", limit: 1, default: 0, null: false
     t.string "avatar"
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
