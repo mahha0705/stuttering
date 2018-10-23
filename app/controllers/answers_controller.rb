@@ -10,6 +10,7 @@ class AnswersController < ApplicationController
       @question = Question.find(@answer.question_id)
       @answers = @question.answers
       @comment = Comment.new
+      @question_comment = QuestionComment.new
       render 'questions/show'
     end
   end

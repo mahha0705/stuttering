@@ -69,15 +69,15 @@ def create
 
   def show
     @question = Question.find(params[:id])
+    @question_comments = @question.questionComments
     @answer = Answer.new
     @answers = @question.answers
     @comment = Comment.new
+    @question_comment = QuestionComment.new
   end
-
 
   private
     def question_params
       params.require(:question).permit(:title, :body, questionTags_attributes: [:tag]).merge(user_id: current_user.id)
     end
-
 end
