@@ -6,7 +6,6 @@
     - else
       #foo.alert.alert-success.mb-0.text-center.rounded-0
         = flash[:notice]
-= render "partial/header"
 .container-fluid
   .row
     .col-md-2.col-sm-12
@@ -30,5 +29,3 @@
             = render "partial/search_form"
           .mt-3
             = render partial: "partial/question_each_list" ,locals:{newest_questions: @newest_questions_limit5,newest_school_questions: @newest_school_questions_limit5,newest_work_questions: @newest_work_questions_limit5,newest_jobHunting_questions: @newest_jobHunting_questions_limit5,newest_relationship_questions: @newest_relationship_questions_limit5,newest_other_questions: @newest_other_questions_limit5 }
-= render "partial/footer"
-
