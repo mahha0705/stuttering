@@ -2,12 +2,12 @@ class AnswersController < ApplicationController
  after_action :create_notifications, only: [:create]
 
   def create
+    @question = Question.find(params[:question_id])
     @answer = Answer.create(answer_params)
     if @answer.save
-      NotificationMailer.send_when_get_answer(@answer.question.user, @answer).deliver_later
-      redirect_to question_path(@answer.question_id) , notice: '投稿完了しました'
+      NotificationMailer.send_when_get_answer(@question.user, @answer).deliver_later
+      redirect_to question_path(@question), notice: '投稿完了しました'
     else
-      @question = Question.find(@answer.question_id)
       @answers = @question.answers
       @comment = Comment.new
       @question_comment = QuestionComment.new
@@ -17,7 +17,7 @@ class AnswersController < ApplicationController
 
   private
     def answer_params
-      params.require(:answer).permit(:question_id, :title, :body).merge(user_id: current_user.id)
+      params.require(:answer).permit(:title, :body).merge(user_id: current_user.id, question_id: params[:question_id])
     end
 
     def create_notifications

@@ -15,6 +15,5 @@ class QuestionCommentsController < ApplicationController
   private
     def question_comment_params
       params.require(:question_comment).permit(:body).merge(question_id: params[:question_id])
-      # binding.pry
     end
 end
