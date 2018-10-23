@@ -3,6 +3,7 @@ class Question < ApplicationRecord
   belongs_to :user
   has_many :answers, dependent: :destroy
   has_many :questionTags, dependent: :destroy
+  has_many :questionComments, dependent: :destroy
   has_many :questionLikes, dependent: :destroy
   has_many :users , through: :questionLikes
   has_many :notifications, dependent: :destroy

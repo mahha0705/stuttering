@@ -7,7 +7,7 @@ class CommentsController < ApplicationController
       @question = Question.find(@comment.answer.question_id)
       @answers = @question.answers
       @answer = Answer.new
-      # binding.pry
+      @question_comment = QuestionComment.new
       render 'questions/show'
     end
   end

@@ -28,3 +28,16 @@
       - unless user_signed_in? then
         = link_to user_session_path do
           .offset-12.btn.btn-success 回答する
+    - if question.questionComments.present?
+      %hr.mt-4
+      %h6.mt-4 追記
+    = render partial: "partial/question_comment_card" ,collection: @question_comments, as:"comment"
+    - if user_signed_in? && current_user.id == question.user_id
+      = form_for [@question,@question_comment],html: {class: 'm-3'} do |f|
+        = f.text_area :body, class: "form-control ",placeholder: "追記する(質問者のみ追記可能)",rows: "1"
+        - if @question_comment.errors.any?
+          %ul.alert.mt-1.alert-warning{role: "alert"}
+            - @question_comment.errors.full_messages.each do |msg|
+              %li
+                = msg
+        = f.submit '追記する', class: 'btn btn-success mt-2'
