@@ -20,6 +20,10 @@ class User < ApplicationRecord
   has_many :answers, through: :answerLikes
   has_many :notifications, dependent: :destroy
 
+  enum stuttering: { has_stuttering: 0, no_stuttering: 1, no_answer: 2 }
+  enum gender: { male: 0, female: 1, other: 2, no_answer: 3 }
+  enum age: { teens: 0, early_twenties: 1, late_twenties: 2, early_thirties: 3, late_thirties: 4, forties: 5, fifties: 6, sixties_more: 7, no_answer: 8 }
+
 def self.from_omniauth(auth)
   where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
     user.email = auth.info.email || User.dummy_email(auth)
