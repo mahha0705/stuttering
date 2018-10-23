@@ -1,16 +1,15 @@
 .card.rounded-0.p-4.shadow
-  - if answer.errors.any?
+  - if @answer.errors.any?
     %ul.alert.alert-warning{role: "alert"}
-      - answer.errors.full_messages.each do |msg|
+      - @answer.errors.full_messages.each do |msg|
         %li
           = msg
   %h4.py-2.answer-color.text-white.text-center 回答する
-  = form_for answer do |f|
+  = form_for [@question , @answer] do |f|
     .form-group
       %h5.answer-color-bottom-border タイトル
       = f.text_field :title, class: "form-control ",placeholder: "タイトル"
     .form-group
       %h5.answer-color-bottom-border 回答内容
       = f.text_area :body, class: 'form-control', placeholder: '回答内容',rows: "7"
-    = f.hidden_field :question_id, value: @question.id
     = f.submit '回答する', class: 'btn btn-success mb-3'

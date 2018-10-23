@@ -8,6 +8,8 @@ Rails.application.routes.draw do
   get '/questions/category/:sort', to: "questions#index"
   get '/questions', to: redirect("/questions/new")
   get '/questions/:question_id/question_comments', to: redirect("/questions/%{question_id}")
+  get '/questions/:question_id/answers', to: redirect("/questions/%{question_id}")
+  get '/questions/:question_id/answers/:answer_id/comments', to: redirect("/questions/%{question_id}")
   get 'notifications/link_through'
   get 'notifications/:id/link_through', to: 'notifications#link_through', as: :link_through
   get 'notifications', to: 'notifications#index'
@@ -22,11 +24,12 @@ Rails.application.routes.draw do
   resources :users, only: [:show,:edit,:update]
   resources :questions, only: [:index, :new, :create, :show] do
     resources :question_comments , only: [:create]
+    resources :answers , only: [:index, :create] do
+      resources :comments , only: [:create]
+    end
         collection do
       get :search
     end
   end
-  resources :answers , only: [:index, :create]
-  resources :comments , only: [:create]
 end
 
