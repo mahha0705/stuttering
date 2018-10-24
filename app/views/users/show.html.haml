@@ -4,34 +4,45 @@
 .container-fluid
   .row
     .col-md-2.col-sm-12
-    .col-md-8.col-sm-12.mt-4
-      .row
-        .col-md-4.col-sm-12
-          .card.rounded-0.shadow.p-4
-            - if user_signed_in? && current_user.id == @user.id
-              = link_to edit_user_path(current_user.id) do
-                %i.fas.fa-edit.badge.badge-secondary.mb-3 編集
-            %ul.my-1
-              %li.list-inline-item
-                %i.far.fa-user
-              %li.list-inline-item
-                %h5 #{@user.name}
-            %ul.my-1
-              %li.list-inline-item
-                %h5 吃音： #{@user.stuttering}
-            - if user_signed_in? && current_user.id == @user.id
-              %ul.my-1
-                %li.list-inline-item
-                  %i.far.fa-envelope
-                %li.list-inline-item
-                  %h5 #{@user.email}
-            %p #{simple_format @user.about}
+    .col-md-8.col-sm-12.mt-3
+      .card.rounded-0.shadow-sm.p-3
+        %ul.my-1
+          %li.list-inline-item
+            %i.fas.fa-user 名前
+          %li.list-inline-item
+            %h5 #{@user.name} さん
+        %ul.my-1
+          %li.list-inline-item
+            %i.fas.fa-transgender-alt 性別
+          %li.list-inline-item
+            %h5 #{@user.gender_i18n}
+        %ul.my-1
+          %li.list-inline-item
+            %p 年齢層:
+          %li.list-inline-item
+            %h5 #{@user.age_i18n}
+        %ul
+          %li.list-inline-item
+            %p 吃音の有無:
+          %li.list-inline-item
+            %h5 #{@user.stuttering_i18n}
         - if user_signed_in? && current_user.id == @user.id
-          .col-md-8.col-sm-12
-            %h4 回答した質問一覧
-            = render partial: "partial/index_question_card" ,collection: @my_answer_questions, as:"question"
-            = paginate @my_answer_questions
-            %h4 私の質問一覧
-            = render partial: "partial/index_question_card" ,collection: @questions, as:"question"
-            = paginate @questions
+          %ul
+            %li.list-inline-item
+              %i.far.fa-envelope
+            %li.list-inline-item
+              %h5 #{@user.email}
+        %ul.my-3
+          %li.list-inline-item
+            %h6 #{simple_format @user.about}
+        - if user_signed_in? && current_user.id == @user.id
+          = link_to edit_user_path(current_user.id) do
+            %button.fas.fa-edit.btn.btn-success{type: "button"} 編集
+      - if user_signed_in? && current_user.id == @user.id
+        %h4.text-center.mt-5 回答した質問一覧
+        = render partial: "partial/index_question_card" ,collection: @my_answer_questions, as:"question"
+        = paginate @my_answer_questions
+        %h4.text-center.mt-5 回答した質問一覧
+        = render partial: "partial/index_question_card" ,collection: @questions, as:"question"
+        = paginate @questions
 
