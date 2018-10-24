@@ -7,8 +7,10 @@
     .col-md-6.col-sm-12.mt-4
       = render "partial/show_question_card", {question: @question}
       .mt-4
-        = render partial: "partial/show_answer_card", collection: @answers, as:"answer"
-      .mt-4
-      - if user_signed_in?
-        .my-4
-          = render "partial/answer_form"
+        - if @answers.present?
+          = render partial: "partial/show_answer_card", collection: @answers, as:"answer"
+        - else
+          %p 現在回答がありません
+      .mt-4.my-4
+      - if user_signed_in? && current_user.id != @question.user_id
+        = render "partial/answer_form"
