@@ -9,12 +9,12 @@ class QuestionsController < ApplicationController
       @questions = Question.newest.page(params[:page])
     end
 
-    @search_result = nil
-    @newest_school_questions_limit5  = Question.school.newest.limit(3)
-    @newest_work_questions_limit5= Question.work.newest.limit(3)
-    @newest_jobHunting_questions_limit5  = Question.job_hunting.newest.limit(3)
-    @newest_relationship_questions_limit5  = Question.relationship.newest.limit(3)
-    @newest_other_questions_limit5  = Question.other.newest.limit(3)
+    # @search_result = nil
+    # @newest_school_questions_limit5  = Question.school.newest.limit(3)
+    # @newest_work_questions_limit5= Question.work.newest.limit(3)
+    # @newest_jobHunting_questions_limit5  = Question.job_hunting.newest.limit(3)
+    # @newest_relationship_questions_limit5  = Question.relationship.newest.limit(3)
+    # @newest_other_questions_limit5  = Question.other.newest.limit(3)
   end
 
   def search
@@ -57,6 +57,7 @@ def create
    if @question.save
      redirect_to question_path(@question) , notice: "投稿完了しました"
    else
+     @question.questionTags.clear
      @question.questionTags.build
      @genre = []
      if question_params["questionTags_attributes"].present?
