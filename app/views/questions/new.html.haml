@@ -13,11 +13,11 @@
         = form_for @question do |f|
           .form-group.mt-2
             %h5.main-color-bottom-border タイトル
-            = question_error_messages(@question,"title")
+            = error_messages(@question,"title")
             = f.text_field :title, class: "form-control ",placeholder: "タイトル"
             .form-group.mt-3.mb-1
               %h5.main-color-bottom-border 質問のジャンルを選択
-              = question_error_messages(@question,"base")
+              = error_messages(@question,"base")
               - QuestionTag.tags_i18n.map do |k, v|
                 - @genre = [] if @genre.nil?
                 = f.fields_for :questionTags do |qt|
@@ -25,6 +25,6 @@
             .small *複数選択可
           .form-group.mt-2
             %h5.main-color-bottom-border 相談内容
-            =question_error_messages(@question,"body")
+            =error_messages(@question,"body")
             = f.text_area :body, class: 'form-control', placeholder: '相談内容',rows: 15
           = f.submit '相談する', class: 'btn btn-success mb-3'
