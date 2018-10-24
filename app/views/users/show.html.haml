@@ -8,7 +8,7 @@
       .row
         .col-md-4.col-sm-12
           .card.rounded-0.shadow.p-4
-            - if @user.id == current_user.id
+            - if user_signed_in? && current_user.id == @user.id
               = link_to edit_user_path(current_user.id) do
                 %i.fas.fa-edit.badge.badge-secondary.mb-3 編集
             %ul.my-1
@@ -19,18 +19,19 @@
             %ul.my-1
               %li.list-inline-item
                 %h5 吃音： #{@user.stuttering}
-            - if @user.id == current_user.id
+            - if user_signed_in? && current_user.id == @user.id
               %ul.my-1
                 %li.list-inline-item
                   %i.far.fa-envelope
                 %li.list-inline-item
                   %h5 #{@user.email}
-              %p #{simple_format @user.about}
-        .col-md-8.col-sm-12
-          %h4 回答した質問一覧
-          = render partial: "partial/index_question_card" ,collection: @my_answer_questions, as:"question"
-          / = paginate @questions
-          %h4 私の質問一覧
-          = render partial: "partial/index_question_card" ,collection: @questions, as:"question"
-          / = paginate @questions
+            %p #{simple_format @user.about}
+        - if user_signed_in? && current_user.id == @user.id
+          .col-md-8.col-sm-12
+            %h4 回答した質問一覧
+            = render partial: "partial/index_question_card" ,collection: @my_answer_questions, as:"question"
+            = paginate @my_answer_questions
+            %h4 私の質問一覧
+            = render partial: "partial/index_question_card" ,collection: @questions, as:"question"
+            = paginate @questions
 

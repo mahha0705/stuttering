@@ -1,11 +1,13 @@
 class UsersController < ApplicationController
+  before_action :authenticate_user!, only: [:edit, :update]
+
   def show
     @user = User.find(params[:id])
-    @questions = Question.where(user_id: @user.id)
-    @my_answer_questions = Question.joins(:answers).where(user_id: @user.id)
+    @questions = Question.where(user_id: @user.id).page(params[:page])
+    @my_answer_questions = Question.joins(:answers).where(user_id: @user.id).page(params[:page])
   end
-  def edit
 
+  def edit
   end
 
   def update
@@ -16,8 +18,9 @@ class UsersController < ApplicationController
     end
   end
 
+
   private
   def user_params
-    params.require(:user).permit(:name,:stuttering,:about,:avatar,:age,:gender)
+    params.require(:user).permit(:name, :stuttering, :about, :avatar, :age, :gender)
   end
 end

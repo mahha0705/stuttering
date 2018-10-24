@@ -1,5 +1,6 @@
 class AnswersController < ApplicationController
- after_action :create_notifications, only: [:create]
+  before_action :authenticate_user!, only: [:create]
+  after_action :create_notifications, only: [:create]
 
   def create
     @question = Question.find(params[:question_id])
