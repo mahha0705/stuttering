@@ -1,19 +1,48 @@
+- if flash[:notice]
+  #foo.alert.alert-success.mb-0.text-center.rounded-0
+    = flash[:notice]
 .container-fluid
   .row
-    .col-md-4.col-sm-3.col-12
-    .col-md-4.col-sm-6.col-12
-      .mb-5
-      .card.rounded-0.shadow
-        = form_for(current_user)do |f|
+    .col-lg-4.col-md-3.col-sm-12
+    .col-lg-4.col-md-6.col-sm-12
+      .card.rounded-0.shadow.mt-3
+        = form_for (current_user) do |f|
           %h4.py-2.main-color.text-white.text-center 編集フォーム
           .form-group.m-3
             .mb-2
               = f.label :name, "名前"
+            = error_messages(current_user,"name")
             = f.text_field :name , class: "form-control", placeholder: "名前"
+          / .form-group.m-3
+          /   .mb-2
+          /     = f.label :email,"Email アドレス"
+          /   = error_messages(current_user, "email")
+          /   = f.email_field :email , class: "form-control", placeholder: "name@example.com"
+          / .form-group.m-3
+          /   .mb-2
+          /     = f.label :password,"パスワード"
+          /   = error_messages(current_user, "password")
+          /   = f.password_field :password, class: "form-control", placeholder: "パスワード"
+          / .form-group.m-3
+          /   .mb-2
+          /     = f.label :password_confirmation,"パスワード(確認)"
+          /   = error_messages(current_user, "password_confirmation")
+          /   = f.password_field :password_confirmation, class: "form-control", placeholder: "パスワード(確認)"
           .form-group.m-3
             .mb-2
-              = f.label :stuttering, "吃音の程度"
-            = f.select( :stuttering, [['吃音の症状あり', '吃音の症状あり'], ['吃音の症状なし', '吃音の症状なし'],['無回答', '無回答']],{},{class: "form-control"})
+              = f.label :gender ,"性別"
+            = error_messages(current_user, "gender")
+            = f.select( :gender ,User.genders_i18n.map { |k, v| [v, k]},{},{ class: 'form-control'})
+          .form-group.m-3
+            .mb-2
+              = f.label :age ,"年齢"
+            = error_messages(current_user, "age")
+            = f.select( :age ,User.ages_i18n.map { |k, v| [v, k]},{},{ class: 'form-control'})
+          .form-group.m-3
+            .mb-2
+              = f.label :stuttering ,"吃音に関して"
+            = error_messages(current_user, "stuttering")
+            = f.select( :stuttering ,User.stutterings_i18n.map { |k, v| [v, k]},{},{ class: 'form-control'})
           .form-group.m-3
             .mb-2
               = f.label :about, "自己紹介"

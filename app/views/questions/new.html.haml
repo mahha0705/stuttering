@@ -2,34 +2,28 @@
   .row
     .col-md-3.col-sm-12
     .col-md-6.col-sm-12
-      .card.rounded-0.my-5.p-4.shadow
-        / - if @question.errors.any?
-        /   %ul.alert.alert-warning{role: "alert"}
-        /     %li
-        /       %h4
-        /         = @question.errors.count
-        /         件のエラーがあります
-        /     - @question.errors.full_messages.each do |msg|
-        /       %li
-        /         = msg
+      .card.rounded-0.my-3.p-4.shadow
         %h4.py-2.main-color.text-white.text-center 相談フォーム
         %h5.mt-3.main-color-bottom-border あなたの登録情報
-        %ul.m-2.list-unstyled
-          %li.py-1 名前: #{current_user.name}
-          %li.py-1 吃音: #{current_user.stuttering}
+        %ul.p-2
+          %li.py-1 名前: #{current_user.name} さん
+          %li.py-1 性別: #{current_user.gender_i18n}
+          %li.py-1 年齢層: #{current_user.age_i18n}
+          %li.py-1 吃音の有無: #{current_user.stuttering_i18n}
         = form_for @question do |f|
-          .form-group
+          .form-group.mt-2
             %h5.main-color-bottom-border タイトル
-            =question_error_messages(@question,"title")
-            =f.text_field :title, class: "form-control ",placeholder: "タイトル"
-            .form-group.mt-2
+            = question_error_messages(@question,"title")
+            = f.text_field :title, class: "form-control ",placeholder: "タイトル"
+            .form-group.mt-3.mb-1
               %h5.main-color-bottom-border 質問のジャンルを選択
-              =question_error_messages(@question,"base")
+              = question_error_messages(@question,"base")
               - QuestionTag.tags_i18n.map do |k, v|
                 - @genre = [] if @genre.nil?
                 = f.fields_for :questionTags do |qt|
                   - break form(qt,k,v,@genre)
-          .form-group
+            .small *複数選択可
+          .form-group.mt-2
             %h5.main-color-bottom-border 相談内容
             =question_error_messages(@question,"body")
             = f.text_area :body, class: 'form-control', placeholder: '相談内容',rows: 15

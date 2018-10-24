@@ -4,23 +4,22 @@
       #{question.title}
   %ul
     - question.questionTags.each do |questionTag|
-      %li.list-inline-item
-        .badge.badge-secondary #{questionTag.tag_i18n}
-    %li.list-inline-item.small.text-secondary
-      %i.far.fa-clock
-      #{question.created_at.to_s(:human)}
+      %li.list-inline-item.mr-0
+        .badge.badge-pill.badge-info #{questionTag.tag_i18n}
   %p.mt-2
     #{simple_format question.body.truncate(100)}
-  %ul.list-inline.text-secondary
+  %ul.list-inline.text-secondary.small
     %li.list-inline-item
-      %i.far.fa-user
-      #{question.user.name}
-    %li.list-inline-item
-      %i.far.fa-eye
-      %span.badge 4
+      = link_to user_path question.user do
+        %i.far.fa-user
+        #{question.user.name}
     %li.list-inline-item
       %i.far.fa-comment
       %span.badge
       #{question.answers.count}
-
-
+    %li.list-inline-item
+      %i.far.fa-clock
+      #{question.created_at.to_s(:human)}
+    / %li.list-inline-item
+    /   %i.far.fa-eye
+    /   %span.badge 4
