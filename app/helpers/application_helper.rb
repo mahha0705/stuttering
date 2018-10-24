@@ -1,5 +1,4 @@
 module ApplicationHelper
-
   def error_messages(instance,column)
     message_index = instance.errors.details.find_index {|key, value| key == column.to_sym}
     return if message_index.nil?
@@ -16,14 +15,4 @@ module ApplicationHelper
     EOF
     html.html_safe
   end
-
-  def form(qt,k,v,genre=[])
-     form = ""
-     form += <<-EOF
-       #{qt.label :tag, v}
-       #{qt.check_box(:tag,{:checked=> genre.include?(k)? true : false}, k ,false)}
-     EOF
-     form.html_safe
-   end
-
 end

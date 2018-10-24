@@ -21,7 +21,8 @@
               - QuestionTag.tags_i18n.map do |k, v|
                 - @genre = [] if @genre.nil?
                 = f.fields_for :questionTags do |qt|
-                  - break form(qt,k,v,@genre)
+                  = qt.label :tag, v
+                  = qt.check_box(:tag,{:checked=> @genre.include?(k)? true : false}, k ,false)
             .small *複数選択可
           .form-group.mt-2
             %h5.main-color-bottom-border 相談内容
