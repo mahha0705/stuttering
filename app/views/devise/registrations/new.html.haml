@@ -11,37 +11,37 @@
           .form-group.m-3
             .mb-2
               = f.label :name, "名前"
-            = error_messages("name")
+            = error_messages(resource,"name")
             = f.text_field :name , class: "form-control", placeholder: "名前"
           .form-group.m-3
             .mb-2
               = f.label :email,"Email アドレス"
-            = error_messages("email")
+            = error_messages(resource,"email")
             = f.email_field :email , class: "form-control", placeholder: "name@example.com"
           .form-group.m-3
             .mb-2
               = f.label :password,"パスワード"
-            = error_messages("password")
+            = error_messages(resource, "password")
             = f.password_field :password, class: "form-control", placeholder: "パスワード"
           .form-group.m-3
             .mb-2
               = f.label :password_confirmation,"パスワード(確認)"
-            = error_messages("password_confirmation")
+            = error_messages(resource,"password_confirmation")
             = f.password_field :password_confirmation, class: "form-control", placeholder: "パスワード(確認)"
           .form-group.m-3
             .mb-2
               = f.label :gender ,"性別"
-            = error_messages("gender")
+            = error_messages(resource,"gender")
             = f.select( :gender ,User.genders_i18n.map { |k, v| [v, k]},{},{ class: 'form-control'})
           .form-group.m-3
             .mb-2
-              = f.label :age ,"年齢"
-            = error_messages("age")
+              = f.label :age ,"年齢層"
+            = error_messages(resource,"age")
             = f.select( :age ,User.ages_i18n.map { |k, v| [v, k]},{},{ class: 'form-control'})
           .form-group.m-3
             .mb-2
               = f.label :stuttering ,"吃音に関して"
-            = error_messages("stuttering")
+            = error_messages(resource,"stuttering")
             = f.select( :stuttering ,User.stutterings_i18n.map { |k, v| [v, k]},{},{ class: 'form-control'})
           .form-group.m-3
             = f.submit "登録", type: "submit",class: "btn btn-success"
