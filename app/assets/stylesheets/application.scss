@@ -39,6 +39,57 @@ body {
   border-bottom: 2px solid $answer-color;
 }
 
+.image_trimming{
+  object-fit: cover;
+}
+
+.relative{
+  position: relative;
+}
+
+.avatar-image{
+  height:100px;
+  width: 100px;
+  border-radius:50%;
+  // border: 1px solid $base-color;
+}
+
+.avatar-default{
+  position: relative;
+  height:100px;
+  width: 100px;
+  border-radius:50%;
+  // border: 1px solid $base-color;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+.avatar-preview{
+  position: absolute;
+  height:100px;
+  width: 100px;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  border-radius:50%;
+  // border: 1px solid $base-color;
+}
+
+.camera-psition{
+  position: absolute;
+  top: 35%;
+  left: 30%;
+}
+
+.opacity{
+  opacity: 0.5;
+}
+
+.displaynone{
+  display: none;
+}
+
 #error_explanation li {
   color: red;
 }
