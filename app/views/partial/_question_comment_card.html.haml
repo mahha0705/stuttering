@@ -1,5 +1,5 @@
 .card.p-3.mb-1
-  #{simple_format comment.body}
+  #{simple_format text_url_to_link (comment.body)}
   %ul.list-inline.text-secondary
     %li.list-inline-item.small
       %i.far.fa-clock
