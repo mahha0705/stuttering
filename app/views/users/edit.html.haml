@@ -8,26 +8,20 @@
       .card.rounded-0.shadow.mt-3
         = form_for (current_user) do |f|
           %h4.py-2.main-color.text-white.text-center 編集フォーム
+          .form-group.m-3.relative
+            .mb-2
+            .avatar-preview
+              - if current_user.avatar.present?
+                = image_tag current_user.avatar.url, class: 'image_trimming avatar-image'
+            .avatar-default.mx-auto
+              = f.label :avatar ,class: "camera-psition" do
+                = fa_icon :avatar ,class: 'fa-fw fa-camera fa-2x'
+                = f.file_field :avatar , class: "form-control displaynone"
           .form-group.m-3
             .mb-2
               = f.label :name, "名前"
             = error_messages(current_user,"name")
             = f.text_field :name , class: "form-control", placeholder: "名前"
-          / .form-group.m-3
-          /   .mb-2
-          /     = f.label :email,"Email アドレス"
-          /   = error_messages(current_user, "email")
-          /   = f.email_field :email , class: "form-control", placeholder: "name@example.com"
-          / .form-group.m-3
-          /   .mb-2
-          /     = f.label :password,"パスワード"
-          /   = error_messages(current_user, "password")
-          /   = f.password_field :password, class: "form-control", placeholder: "パスワード"
-          / .form-group.m-3
-          /   .mb-2
-          /     = f.label :password_confirmation,"パスワード(確認)"
-          /   = error_messages(current_user, "password_confirmation")
-          /   = f.password_field :password_confirmation, class: "form-control", placeholder: "パスワード(確認)"
           .form-group.m-3
             .mb-2
               = f.label :gender ,"性別"

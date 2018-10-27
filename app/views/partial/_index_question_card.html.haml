@@ -1,25 +1,35 @@
 .card.rounded-0.mb-3.p-3.shadow-sm
-  = link_to question_path(question) do
-    %h5
-      #{question.title}
-  %ul
-    - question.questionTags.each do |questionTag|
-      %li.list-inline-item.mr-0
-        .badge.badge-pill.badge-info #{questionTag.tag_i18n}
-  %p.mt-2
-    #{simple_format question.body.truncate(100)}
-  %ul.list-inline.text-secondary.small
-    %li.list-inline-item
-      = link_to user_path question.user do
-        %i.far.fa-user
-        #{question.user.name}
-    %li.list-inline-item
-      %i.far.fa-comment
-      %span.badge
-      #{question.answers.count}
-    %li.list-inline-item
-      %i.far.fa-clock
-      #{question.created_at.to_s(:human)}
-    / %li.list-inline-item
-    /   %i.far.fa-eye
-    /   %span.badge 4
+  .container-fluid
+    .row
+      .col-3.col-sm-2.col-md-2
+        - if question.user.avatar.url.present?
+          = image_tag question.user.avatar.url, class: ' avatar-image-index image_trimming ',alt: "avatar 吃音"
+        - else
+          = image_tag set_default_avatar(question.user), class: ' avatar-image-index image_trimming ',alt: "avatar 吃音"
+      .col-9.col-sm-10.col-md-10
+        = link_to question_path(question) do
+          %h5
+            #{question.title}
+        %ul
+          - question.questionTags.each do |questionTag|
+            %li.list-inline-item.mr-0
+              .badge.badge-pill.badge-info #{questionTag.tag_i18n}
+    .row
+      .col-12
+        %p.mt-2
+          #{simple_format question.body.truncate(100)}
+        %ul.list-inline.text-secondary.small
+          %li.list-inline-item
+            = link_to user_path question.user do
+              %i.far.fa-user
+              #{question.user.name}
+          %li.list-inline-item
+            %i.far.fa-comment
+            %span.badge
+            #{question.answers.count}
+          %li.list-inline-item
+            %i.far.fa-clock
+            #{question.created_at.to_s(:human)}
+          / %li.list-inline-item
+          /   %i.far.fa-eye
+          /   %span.badge 4

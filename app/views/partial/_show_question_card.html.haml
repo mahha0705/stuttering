@@ -5,7 +5,7 @@
   %h3
     #{question.title}
   .m-2
-    #{simple_format question.body}
+    #{simple_format text_url_to_link (question.body)}
   %ul.list-inline.text-secondary.small
     %li.list-inline-item
       = link_to user_path question.user do

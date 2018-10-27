@@ -5,7 +5,7 @@
   %h4
     #{answer.title}
   .m-2
-    #{simple_format answer.body}
+    #{simple_format text_url_to_link (answer.body)}
   %ul.list-inline.text-secondary
     %li.list-inline-item
       %i.far.fa-user
@@ -27,4 +27,3 @@
           %li
             = msg
     = f.submit 'コメント', class: 'btn btn-success mt-2'
-
