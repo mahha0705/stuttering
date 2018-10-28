@@ -8,7 +8,6 @@ class QuestionsController < ApplicationController
     else
       @questions = Question.newest.page(params[:page])
     end
-
     # @search_result = nil
     # @newest_school_questions_limit5  = Question.school.newest.limit(3)
     # @newest_work_questions_limit5= Question.work.newest.limit(3)
@@ -37,7 +36,6 @@ class QuestionsController < ApplicationController
     else
       @questions = @questions.where(answers_count: 0)
     end
-
     if params[:keyword].present?
       @questions = @questions.where('title LIKE(?) OR body LIKE(?)', "%#{params[:keyword]}%","%#{params[:keyword]}%")
     else
@@ -52,22 +50,22 @@ class QuestionsController < ApplicationController
     @question.questionTags.build
   end
 
-def create
-   @question = Question.create(question_params)
-   if @question.save
-     redirect_to question_path(@question) , notice: "投稿完了しました"
-   else
-     @question.questionTags.clear
-     @question.questionTags.build
-     @genre = []
-     if question_params["questionTags_attributes"].present?
-       question_params["questionTags_attributes"].each do |key, value|
-         @genre << value["tag"]
+  def create
+     @question = Question.create(question_params)
+     if @question.save
+       redirect_to question_path(@question) , notice: "投稿完了しました"
+     else
+       @question.questionTags.clear
+       @question.questionTags.build
+       @genre = []
+       if question_params["questionTags_attributes"].present?
+         question_params["questionTags_attributes"].each do |key, value|
+           @genre << value["tag"]
+         end
        end
+       render "new"
      end
-     render "new"
    end
- end
 
   def show
     @question = Question.find(params[:id])

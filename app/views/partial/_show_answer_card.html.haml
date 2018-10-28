@@ -2,28 +2,39 @@
   #{answer.user.name}
   さんの回答内容
 .card.rounded-0.p-3.mb-4.shadow
-  %h4
-    #{answer.title}
-  .m-2
-    #{simple_format text_url_to_link (answer.body)}
-  %ul.list-inline.text-secondary
-    %li.list-inline-item
-      %i.far.fa-user
-      #{answer.user.name}
-    %li.list-inline-item.small
-      %i.far.fa-clock
-      #{answer.created_at.to_s(:human)}
-  %hr.mt-4
-  - if answer.comments.present?
-    %h5.mt-4 この回答に対するコメント
-  - else
-    %h5.mt-4 この回答に対するコメントは現在ありません
-  = render partial: "partial/comment_card" ,collection: answer.comments, as:"comment"
-  = form_for [ @question,answer,@comment],html: {class: 'm-2'} do |f|
-    = f.text_area :body, class: "form-control ",placeholder: "コメントする",rows: "1"
-    - if @comment.errors.any? && @comment.answer_id == answer.id
-      %ul.alert.mt-1.alert-warning{role: "alert"}
-        - @comment.errors.full_messages.each do |msg|
-          %li
-            = msg
-    = f.submit 'コメント', class: 'btn btn-success mt-2'
+  .container-fluid
+    .row
+      .col-3.col-sm-2.col-md-2
+        - if answer.user.avatar.url.present?
+          = image_tag answer.user.avatar.url, class: ' avatar-image-index image_trimming ',alt: "avatar 吃音"
+        - else
+          = image_tag set_default_avatar(answer.user), class: ' avatar-image-index image_trimming ',alt: "avatar 吃音"
+      .col-9.col-sm-10.col-md-10
+        %h4.mt-2
+          #{answer.title}
+    .row
+      .col-12
+        .m-2
+          #{simple_format text_url_to_link (answer.body)}
+        %ul.list-inline.text-secondary.small
+          %li.list-inline-item
+            = link_to user_path answer.user do
+              %i.far.fa-user
+              #{answer.user.name}
+          %li.list-inline-item
+            %i.far.fa-clock
+            #{answer.created_at.to_s(:human)}
+        %hr.mt-4
+        - if answer.comments.present?
+          %h5.mt-4 この回答に対するコメント
+        - else
+          %h5.mt-4 この回答に対するコメントは現在ありません
+        = render partial: "partial/comment_card" ,collection: answer.comments, as:"comment"
+        = form_for [ @question,answer,@comment],html: {class: 'm-2'} do |f|
+          = f.text_area :body, class: "form-control ",placeholder: "コメントする",rows: "1"
+          - if @comment.errors.any? && @comment.answer_id == answer.id
+            %ul.alert.mt-1.alert-warning{role: "alert"}
+              - @comment.errors.full_messages.each do |msg|
+                %li
+                  = msg
+          = f.submit 'コメント', class: 'btn btn-success mt-2'

@@ -8,16 +8,16 @@
         = flash[:notice]
 .container-fluid
   .row
-    .col-md-2.col-sm-12
-    .col-md-8.col-sm-12.mt-4
+    .col-md-3.col-sm-12
+    .col-md-6.col-sm-12.mt-4
       = render "partial/top_index"
-    .col-md-2.col-sm-12
+    .col-md-3.col-sm-12
   .row
     .col-md-2.col-sm-12
     .col-md-8.col-sm-12
       .row
         .col-md-8.col-sm-12
-          .mt-5
+          .mt-4
             = render "partial/breadcrumb"
             - if @search_result.present?
               .h5.mt-3.mb-2.text-center

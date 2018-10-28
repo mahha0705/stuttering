@@ -13,11 +13,11 @@
         %ul
           - question.questionTags.each do |questionTag|
             %li.list-inline-item.mr-0
-              .badge.badge-pill.badge-info #{questionTag.tag_i18n}
+              .badge.badge-secondary #{questionTag.tag_i18n}
     .row
       .col-12
         %p.mt-2
-          #{simple_format question.body.truncate(100)}
+          #{simple_format question.body.truncate(150)}
         %ul.list-inline.text-secondary.small
           %li.list-inline-item
             = link_to user_path question.user do
@@ -30,6 +30,3 @@
           %li.list-inline-item
             %i.far.fa-clock
             #{question.created_at.to_s(:human)}
-          / %li.list-inline-item
-          /   %i.far.fa-eye
-          /   %span.badge 4
