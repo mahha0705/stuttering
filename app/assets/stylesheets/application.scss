@@ -66,6 +66,12 @@ body {
   // border: 1px solid $base-color;
 }
 
+.avatar-image-comment{
+  height: 25px;
+  width: 25px;
+  border-radius:50%;
+  // border: 1px solid $base-color;
+}
 
 .avatar-default{
   position: relative;
@@ -105,4 +111,8 @@ body {
 
 #error_explanation li {
   color: red;
+}
+
+.modal-backdrop {
+  z-index: 1010;
 }

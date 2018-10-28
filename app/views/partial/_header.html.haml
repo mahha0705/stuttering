@@ -11,7 +11,7 @@
         .modal-content
           = render "partial/search_form"
           .modal-header.mx-auto
-            %button.btn.btn-secondary{"data-dismiss" => "modal", :type => "button"} Close
+            %button.btn.btn-secondary{"data-dismiss" => "modal", :type => "button"} 閉じる
     - if user_signed_in?
       .dropdown.notification-dropdown
         %button#dropdownMenu1.btn.btn-default.dropdown-toggle{"aria-expanded" => "true", "aria-haspopup" => "true", "data-toggle" => "dropdown", :type => "button"}
@@ -29,12 +29,11 @@
           / %li.text-center
           /   = link_to '通知一覧を見る', notifications_path
           / これは通知一覧を見る機能 現在は不要
-      = link_to "/users/#{current_user.id}" , class: "mr-md-3"do
+      = link_to "/users/#{current_user.id}" do
         - if current_user.avatar.present?
           = image_tag current_user.avatar.url, class: 'image_trimming avatar-image-index',alt: "吃音 kitsuon"
         - else
           = image_tag set_default_avatar(current_user), class: 'image_trimming avatar-image-index',alt: "吃音 kitsuon"
-
     %button.navbar-toggler{"aria-controls": "navbarNavDropdown", "aria-expanded": "false", "aria-label": "Toggle navigation", "data-target": "#navbarNavDropdown", "data-toggle": "collapse", type: "button"}
       %span.navbar-toggler-icon
     #navbarNavDropdown.collapse.navbar-collapse

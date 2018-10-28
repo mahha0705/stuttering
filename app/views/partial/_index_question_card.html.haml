@@ -2,10 +2,11 @@
   .container-fluid
     .row
       .col-3.col-sm-2.col-md-2
-        - if question.user.avatar.url.present?
-          = image_tag question.user.avatar.url, class: ' avatar-image-index image_trimming ',alt: "avatar 吃音"
-        - else
-          = image_tag set_default_avatar(question.user), class: ' avatar-image-index image_trimming ',alt: "avatar 吃音"
+        = link_to "/users/#{question.user.id}" do
+          - if question.user.avatar.present?
+            = image_tag question.user.avatar.url, class: 'image_trimming avatar-image-index',alt: "吃音 kitsuon"
+          - else
+            = image_tag set_default_avatar(question.user), class: 'image_trimming avatar-image-index',alt: "吃音 kitsuon"
       .col-9.col-sm-10.col-md-10
         = link_to question_path(question) do
           %h5
