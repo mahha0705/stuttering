@@ -12,5 +12,5 @@
         - else
           %p 現在回答がありません
       .mt-4.my-4
-      - if user_signed_in? && current_user.id != @question.user_id
-        = render "partial/answer_form"
+        - if user_signed_in? && current_user.id != @question.user_id
+          = render "partial/answer_form"

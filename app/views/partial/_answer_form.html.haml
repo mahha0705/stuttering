@@ -1,10 +1,10 @@
-.card.rounded-0.p-4.shadow
+.card.rounded-0.shadow-sm.p-md-3.p-sm-1.p-1
   - if @answer.errors.any?
     %ul.alert.alert-warning{role: "alert"}
       - @answer.errors.full_messages.each do |msg|
         %li
           = msg
-  %h4.py-2.answer-color.text-white.text-center 回答する
+  %h4.py-2.answer-color.text-white.text-center 回答フォーム
   = form_for [@question , @answer] do |f|
     .form-group
       %h5.answer-color-bottom-border タイトル

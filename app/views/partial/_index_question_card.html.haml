@@ -1,33 +1,32 @@
-.card.rounded-0.mb-3.p-3.shadow-sm
-  .container-fluid
-    .row
-      .col-3.col-sm-2.col-md-2
-        = link_to "/users/#{question.user.id}" do
-          - if question.user.avatar.present?
-            = image_tag question.user.avatar.url, class: 'image_trimming avatar-image-index',alt: "吃音 kitsuon"
-          - else
-            = image_tag set_default_avatar(question.user), class: 'image_trimming avatar-image-index',alt: "吃音 kitsuon"
-      .col-9.col-sm-10.col-md-10
-        = link_to question_path(question) do
-          %h5
-            #{question.title}
-        %ul
-          - question.questionTags.each do |questionTag|
-            %li.list-inline-item.mr-0
-              .badge.badge-secondary #{questionTag.tag_i18n}
-    .row
-      .col-12
-        %p.mt-2
-          #{simple_format question.body.truncate(150)}
-        %ul.list-inline.text-secondary.small
-          %li.list-inline-item
-            = link_to user_path question.user do
-              %i.far.fa-user
-              #{question.user.name}
-          %li.list-inline-item
-            %i.far.fa-comment
-            %span.badge
-            #{question.answers.count}
-          %li.list-inline-item
-            %i.far.fa-clock
-            #{question.created_at.to_s(:human)}
+.card.rounded-0.mb-2.p-md-3.p-sm-3.p-2
+  .row.no-gutters
+    .col-auto.mx-3
+      = link_to "/users/#{question.user.id}" do
+        - if question.user.avatar.present?
+          = image_tag question.user.avatar.url, class: 'image_trimming avatar-image-index',alt: "吃音 kitsuon"
+        - else
+          = image_tag set_default_avatar(question.user), class: 'image_trimming avatar-image-index',alt: "吃音 kitsuon"
+    .col
+      = link_to question_path(question) do
+        %h5
+          #{question.title}
+      %ul
+        - question.questionTags.each do |questionTag|
+          %li.list-inline-item.mr-0
+            .badge.badge-secondary #{questionTag.tag_i18n}
+  .row.no-gutters
+    .col-12
+      %p.mt-2
+        #{simple_format question.body.truncate(150)}
+      %ul.list-inline.text-secondary.small
+        %li.list-inline-item
+          = link_to user_path question.user do
+            %i.far.fa-user
+            #{question.user.name}
+        %li.list-inline-item
+          %i.far.fa-comment
+          %span.badge
+          #{question.answers.count}
+        %li.list-inline-item
+          %i.far.fa-clock
+          #{question.created_at.to_s(:human)}
