@@ -26,15 +26,16 @@
           #{answer.created_at.to_s(:human)}
       %hr.mt-4
       - if answer.comments.present?
-        %h5.mt-4.text-center コメント
+        %h6.mt-4.text-center コメント一覧
       - else
         %h6.mt-4.text-center 現在、コメントはありません
       = render partial: "partial/comment_card" ,collection: answer.comments, as:"comment"
-      = form_for [ @question,answer,@comment],html: {class: 'm-2'} do |f|
-        = f.text_area :body, class: "form-control ",placeholder: "コメントする",rows: "1"
+      = form_for [ @question,answer,@comment] do |f|
+        = f.text_area :body, class: "form-control ",placeholder: "回答に対してコメントする",rows: "1"
         - if @comment.errors.any? && @comment.answer_id == answer.id
           %ul.alert.mt-1.alert-warning{role: "alert"}
             - @comment.errors.full_messages.each do |msg|
               %li
                 = msg
-        = f.submit 'コメント', class: 'btn btn-success mt-2'
+        .text-center
+          = f.submit 'コメント', class: 'btn btn-answer mt-2'

@@ -10,7 +10,7 @@
         - if @answers.present?
           = render partial: "partial/show_answer_card", collection: @answers, as:"answer"
         - else
-          %p 現在回答がありません
+          %p.text-center 現在回答がありません
       .mt-4.my-4
         - if user_signed_in? && current_user.id != @question.user_id
           = render "partial/answer_form"

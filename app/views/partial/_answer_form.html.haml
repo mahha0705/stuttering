@@ -12,4 +12,5 @@
     .form-group
       %h5.answer-color-bottom-border 回答内容
       = f.text_area :body, class: 'form-control', placeholder: '回答内容',rows: "7"
-    = f.submit '回答する', class: 'btn btn-success mb-3'
+    .text-center
+      = f.submit '回答する', class: 'btn btn-answer mb-1'

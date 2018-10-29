@@ -1,5 +1,5 @@
 .container-fluid
-  .row
+  .row.no-gutters
     .col-md-3.col-sm-12
     .col-md-6.col-sm-12
       .card.rounded-0.my-3.p-md-3.p-sm-1.p-1.shadow-sm
@@ -28,4 +28,5 @@
             %h5.main-color-bottom-border 相談内容
             =error_messages(@question,"body")
             = f.text_area :body, class: 'form-control', placeholder: '相談内容',rows: 15
-          = f.submit '相談する', class: 'btn btn-success mb-3'
+          .text-center
+            = f.submit '相談する', class: 'btn btn-main mb-1'

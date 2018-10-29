@@ -44,7 +44,7 @@
                 %h6 #{simple_format @user.about}
             - if user_signed_in? && current_user.id == @user.id
               = link_to edit_user_path(current_user.id) do
-                %button.fas.fa-edit.btn.btn-success{type: "button"} 編集
+                %button.fas.fa-edit.btn.btn-main{type: "button"} 編集
         .col-lg-8.col-md-12.col-sm-12
           %h4.text-center.mt-3 回答した質問一覧
           - if @my_answer_questions.present?

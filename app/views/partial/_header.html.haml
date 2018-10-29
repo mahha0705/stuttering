@@ -1,6 +1,6 @@
 %nav.navbar.navbar-expand-lg.navbar-dark.sticky-top.main-color.shadow
   .container
-    = link_to root_path ,class: "mr-auto"do
+    = link_to root_path ,class: "mr-auto" do
       = image_tag "logo.png",class: "logo-image"
     / Button trigger modal
     %button.btn.text-white.main-color.mx-sm-0.ml-md-4.ml-lg-4{"data-target" => "#exampleModal", "data-toggle" => "modal", :type => "button"}
@@ -11,9 +11,9 @@
         .modal-content
           = render "partial/search_form"
           .modal-header.mx-auto
-            %button.btn.btn-secondary{"data-dismiss" => "modal", :type => "button"} 閉じる
+            %button.btn.btn-main{"data-dismiss" => "modal", :type => "button"} 閉じる
     - if user_signed_in?
-      .dropdown.notification-dropdown.mx-0.mx-sm-0.mx-md-2.mx-lg-2
+      .dropdown.notification-dropdown.mx-1.mx-sm-1.mx-md-2.mx-lg-2
         %button#dropdownMenu1.btn.main-color.text-white.dropdown-toggle{"aria-expanded" => "true", "aria-haspopup" => "true", "data-toggle" => "dropdown", :type => "button"}
           = current_user.notifications.where(read: false).count
           %span.glyphicon.glyphicon-flag

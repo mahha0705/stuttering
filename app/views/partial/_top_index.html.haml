@@ -3,6 +3,6 @@
     %h2 吃音 Q&A
     .small.mt-2 このサイトは、吃音当事者同士が助け合う相談サイトです。
   - if user_signed_in?
-    = link_to "相談してみる" , new_question_path , class: " btn btn-lg btn-success mx-auto mb-3 text-white shadow"
+    = link_to "質問してみる" , new_question_path , class: " btn btn-lg btn-main mx-auto mb-3 text-white shadow"
   - else
-    = link_to "相談してみる" , new_user_session_path , class: " btn btn-lg btn-success mx-auto mb-3 text-white shadow"
+    = link_to "質問してみる" , new_user_session_path , class: " btn btn-lg btn-main mx-auto mb-3 text-white shadow"
