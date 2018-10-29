@@ -1,20 +1,20 @@
 %nav.navbar.navbar-expand-lg.navbar-dark.sticky-top.main-color.shadow
   .container
-    = link_to root_path do
+    = link_to root_path ,class: "mr-auto" do
       = image_tag "logo.png",class: "logo-image"
     / Button trigger modal
-    %button.btn.btn-primary{"data-target" => "#exampleModal", "data-toggle" => "modal", :type => "button"}
-      %i.fas.fa-search
+    %button.btn.text-white.main-color.mx-sm-0.ml-md-4.ml-lg-4{"data-target" => "#exampleModal", "data-toggle" => "modal", :type => "button"}
+      %i.fas.fa-search.fa-lg
     / Modal
     #exampleModal.modal.fade{"aria-hidden" => "ture", "aria-labelledby" => "exampleModalLabel", :role => "dialog", :tabindex => "-1"}
       .modal-dialog{:role => "document"}
         .modal-content
           = render "partial/search_form"
           .modal-header.mx-auto
-            %button.btn.btn-secondary{"data-dismiss" => "modal", :type => "button"} Close
+            %button.btn.btn-main{"data-dismiss" => "modal", :type => "button"} 閉じる
     - if user_signed_in?
-      .dropdown.notification-dropdown
-        %button#dropdownMenu1.btn.btn-default.dropdown-toggle{"aria-expanded" => "true", "aria-haspopup" => "true", "data-toggle" => "dropdown", :type => "button"}
+      .dropdown.notification-dropdown.mx-1.mx-sm-1.mx-md-2.mx-lg-2
+        %button#dropdownMenu1.btn.main-color.text-white.dropdown-toggle{"aria-expanded" => "true", "aria-haspopup" => "true", "data-toggle" => "dropdown", :type => "button"}
           = current_user.notifications.where(read: false).count
           %span.glyphicon.glyphicon-flag
             %i.fa.fa-bell{"aria-hidden" => "true"}
@@ -29,17 +29,17 @@
           / %li.text-center
           /   = link_to '通知一覧を見る', notifications_path
           / これは通知一覧を見る機能 現在は不要
-      = link_to "/users/#{current_user.id}" , class: "mr-md-3"do
+      = link_to "/users/#{current_user.id}",class: "mr-2" do
         - if current_user.avatar.present?
-          = image_tag current_user.avatar.url, class: 'image_trimming avatar-image-index',alt: "吃音 kitsuon"
+          = image_tag current_user.avatar.url, class: 'image_trimming avatar-image-header',alt: "吃音 kitsuon"
         - else
-          = image_tag set_default_avatar(current_user), class: 'image_trimming avatar-image-index',alt: "吃音 kitsuon"
-
+          = image_tag set_default_avatar(current_user), class: 'image_trimming avatar-image-header',alt: "吃音 kitsuon"
     %button.navbar-toggler{"aria-controls": "navbarNavDropdown", "aria-expanded": "false", "aria-label": "Toggle navigation", "data-target": "#navbarNavDropdown", "data-toggle": "collapse", type: "button"}
       %span.navbar-toggler-icon
     #navbarNavDropdown.collapse.navbar-collapse
       / この下の行に mr-auto クラスを付与するだけ
       %ul.navbar-nav.mr-auto
+      %ul.navbar-nav
         %li.nav-item.dropdown.mt-1.small
           %a#navbarDropdown.nav-link.dropdown-toggle{"aria-expanded": "false", "aria-haspopup": "true", "data-toggle": "dropdown", href: "#", role: "button"}
             サイトについて
@@ -47,7 +47,6 @@
             = link_to "サイトの思い" ,docs_about_service_path, class: "dropdown-item small"
             = link_to "利用規約" ,docs_term_of_use_path, class: "dropdown-item small"
             = link_to "プライバシーポリシー" ,docs_privacy_policy_path, class: "dropdown-item small"
-      %ul.navbar-nav
         - if user_signed_in?
           %li.nav-item.small.mt-1
             = link_to destroy_user_session_path, method: :delete, class: 'nav-link' do

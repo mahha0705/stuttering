@@ -1,55 +1,57 @@
-.card.rounded-0.border-bottom-0.py-2.main-color.text-white.text-center.shadow
+.card.rounded-0.border-bottom-0.py-2.main-color.text-white.text-center.shadow-sm
   #{question.user.name}
   さんの質問内容
-.card.rounded-0.p-3.shadow
-  .container-fluid
-    .row
-      .col-3.col-sm-2.col-md-2
-        - if question.user.avatar.url.present?
-          = image_tag question.user.avatar.url, class: ' avatar-image-index image_trimming ',alt: "avatar 吃音"
+.card.rounded-0.p-md-3.p-sm-3.p-2.shadow-sm
+  .row.no-gutters
+    .col-auto.mx-3
+      = link_to "/users/#{question.user.id}" do
+        - if question.user.avatar.present?
+          = image_tag question.user.avatar.url, class: 'image_trimming avatar-image-index',alt: "吃音 kitsuon"
         - else
-          = image_tag set_default_avatar(question.user), class: ' avatar-image-index image_trimming ',alt: "avatar 吃音"
-      .col-9.col-sm-10.col-md-10
-        %h3
-          #{question.title}
-        %ul
-          - question.questionTags.each do |questionTag|
-            %li.list-inline-item.mr-0
-              .badge.badge-secondary #{questionTag.tag_i18n}
-    .row
-      .col-12
-        .m-2
-          #{simple_format text_url_to_link (question.body)}
-        %ul.list-inline.text-secondary.small
-          %li.list-inline-item
-            = link_to user_path question.user do
-              %i.far.fa-user
-              #{question.user.name}
-          %li.list-inline-item
-            %i.far.fa-comment
-            %span.badge
-            #{question.answers.count}
-          %li.list-inline-item
-            %i.far.fa-clock
-            #{question.created_at.to_s(:human)}
-          / %li.list-inline-item
-          /   %i.far.fa-eye
-          /   %span.badge
-          /   #{question.answers.count}
-          %li.list-inline-item.float-right
-            - unless user_signed_in? then
-              = link_to user_session_path do
-                .offset-12.btn.btn-success 回答する
-          %hr.mt-4
-          - if question.questionComments.present?
-            %h6.mt-4 質問者が追記しました
-          = render partial: "partial/question_comment_card" ,collection: @question_comments, as:"comment"
-          - if user_signed_in? && current_user.id == question.user_id
-            = form_for [@question,@question_comment],html: {class: 'm-2'} do |f|
-              = f.text_area :body, class: "form-control ",placeholder: "追記する(質問者のみ追記可能)",rows: "1"
-              - if @question_comment.errors.any?
-                %ul.alert.mt-1.alert-warning{role: "alert"}
-                  - @question_comment.errors.full_messages.each do |msg|
-                    %li
-                      = msg
-              = f.submit '追記する', class: 'btn btn-success mt-2'
+          = image_tag set_default_avatar(question.user), class: 'image_trimming avatar-image-index',alt: "吃音 kitsuon"
+    .col
+      %h3
+        #{question.title}
+      %ul
+        - question.questionTags.each do |questionTag|
+          %li.list-inline-item.mr-0
+            .badge.badge-secondary #{questionTag.tag_i18n}
+  .row.no-gutters
+    .col-12
+      .m-2
+        #{simple_format text_url_to_link (question.body)}
+      %ul.list-inline.text-secondary.ml-2.small
+        %li.list-inline-item
+          = link_to user_path question.user do
+            %i.far.fa-user
+            #{question.user.name}
+        %li.list-inline-item
+          %i.far.fa-comment
+          %span.badge
+          #{question.answers.count}
+        %li.list-inline-item
+          %i.far.fa-clock
+          #{question.created_at.to_s(:human)}
+        / %li.list-inline-item
+        /   %i.far.fa-eye
+        /   %span.badge
+        /   #{question.answers.count}
+      - if question.questionComments.present?
+        %hr.mt-4
+        %h6.mt-4.text-center 質問者が追記しました
+      = render partial: "partial/question_comment_card" ,collection: @question_comments, as:"comment"
+      - if user_signed_in? && current_user.id == question.user_id
+        = form_for [@question,@question_comment],html: {class: 'mt-2'}do |f|
+          = f.text_area :body, class: "form-control ",placeholder: "追記する(質問者のみ追記可能)",rows: "1"
+          - if @question_comment.errors.any?
+            %ul.alert.mt-1.alert-warning{role: "alert"}
+              - @question_comment.errors.full_messages.each do |msg|
+                %li
+                  = msg
+          .text-center
+            = f.submit '追記する', class: 'btn btn-main mt-2'
+      - unless user_signed_in?
+        .text-center
+          = link_to user_session_path do
+            .btn.btn-lg.btn-main.mt-2.shadow 回答する
+

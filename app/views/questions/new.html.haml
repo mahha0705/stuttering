@@ -2,7 +2,7 @@
   .row
     .col-md-3.col-sm-12
     .col-md-6.col-sm-12
-      .card.rounded-0.my-3.p-4.shadow
+      .card.rounded-0.my-3.p-md-3.p-sm-1.p-1.shadow-sm
         %h4.py-2.main-color.text-white.text-center 相談フォーム
         %h5.mt-3.main-color-bottom-border あなたの登録情報
         %ul.p-2
@@ -18,14 +18,18 @@
             .form-group.mt-3.mb-1
               %h5.main-color-bottom-border 質問のジャンルを選択
               = error_messages(@question,"base")
-              - QuestionTag.tags_i18n.map do |k, v|
-                - @genre = [] if @genre.nil?
-                = f.fields_for :questionTags do |qt|
-                  = qt.label :tag, v
-                  = qt.check_box(:tag,{:checked=> @genre.include?(k)? true : false}, k ,false)
+              .form-inline
+                - QuestionTag.tags_i18n.map do |k, v|
+                  - @genre = [] if @genre.nil?
+                  = f.fields_for :questionTags do |qt|
+                    .my-1.ml-1
+                      = qt.check_box(:tag,{:checked=> @genre.include?(k)? true : false}, k ,false)
+                    .my-1.mr-2
+                      = qt.label :tag, v
             .small *複数選択可
           .form-group.mt-2
             %h5.main-color-bottom-border 相談内容
             =error_messages(@question,"body")
             = f.text_area :body, class: 'form-control', placeholder: '相談内容',rows: 15
-          = f.submit '相談する', class: 'btn btn-success mb-3'
+          .text-center
+            = f.submit '相談する', class: 'btn btn-main mb-1'

@@ -8,15 +8,15 @@
         = flash[:notice]
 .container-fluid
   .row
-    .col-md-3.col-sm-12
-    .col-md-6.col-sm-12.mt-4
+    .col-md-2.col-sm-1.col-12
+    .col-md-8.col-sm-10.col-12.mt-4
       = render "partial/top_index"
-    .col-md-3.col-sm-12
+    .col-md-2.col-sm-1.col-12
   .row
-    .col-md-2.col-sm-12
-    .col-md-8.col-sm-12
+    .col-md-2.col-sm-1.col-12
+    .col-md-8.col-sm-10.col-12
       .row
-        .col-md-8.col-sm-12
+        .col-lg-7.col-md-12.col-sm-12.col-12
           .mt-4
             = render "partial/breadcrumb"
             - if @search_result.present?
@@ -24,8 +24,8 @@
                 #{@search_result}
           = render partial: "partial/index_question_card" ,collection: @questions, as:"question"
           = paginate @questions
-        .col-md-4.col-sm-12
-          .mt-5
+        .col-lg-5.col-md-12.col-sm-12.col-12.d-none.d-lg-block
+          .mt-4
             = render "partial/search_form"
-          .mt-3
-            = render partial: "partial/question_each_list" ,locals:{newest_questions: @newest_questions_limit5,newest_school_questions: @newest_school_questions_limit5,newest_work_questions: @newest_work_questions_limit5,newest_jobHunting_questions: @newest_jobHunting_questions_limit5,newest_relationship_questions: @newest_relationship_questions_limit5,newest_other_questions: @newest_other_questions_limit5 }
+          / .mt-3
+          /   = render partial: "partial/question_each_list" ,locals:{newest_questions: @newest_questions_limit5,newest_school_questions: @newest_school_questions_limit5,newest_work_questions: @newest_work_questions_limit5,newest_jobHunting_questions: @newest_jobHunting_questions_limit5,newest_relationship_questions: @newest_relationship_questions_limit5,newest_other_questions: @newest_other_questions_limit5 }

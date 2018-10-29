@@ -1,40 +1,41 @@
-.card.rounded-0.border-bottom-0.py-2.answer-color.text-white.text-center.shadow
+.card.rounded-0.border-bottom-0.py-2.answer-color.text-white.text-center
   #{answer.user.name}
   さんの回答内容
-.card.rounded-0.p-3.mb-4.shadow
-  .container-fluid
-    .row
-      .col-3.col-sm-2.col-md-2
-        - if answer.user.avatar.url.present?
-          = image_tag answer.user.avatar.url, class: ' avatar-image-index image_trimming ',alt: "avatar 吃音"
+.card.rounded-0.mb-4.p-md-3.p-sm-3.p-2
+  .row.no-gutters
+    .col-auto.mx-3
+      = link_to "/users/#{answer.user.id}" do
+        - if answer.user.avatar.present?
+          = image_tag answer.user.avatar.url, class: 'image_trimming avatar-image-index',alt: "吃音 kitsuon"
         - else
-          = image_tag set_default_avatar(answer.user), class: ' avatar-image-index image_trimming ',alt: "avatar 吃音"
-      .col-9.col-sm-10.col-md-10
-        %h4.mt-2
-          #{answer.title}
-    .row
-      .col-12
-        .m-2
-          #{simple_format text_url_to_link (answer.body)}
-        %ul.list-inline.text-secondary.small
-          %li.list-inline-item
-            = link_to user_path answer.user do
-              %i.far.fa-user
-              #{answer.user.name}
-          %li.list-inline-item
-            %i.far.fa-clock
-            #{answer.created_at.to_s(:human)}
-        %hr.mt-4
-        - if answer.comments.present?
-          %h5.mt-4 この回答に対するコメント
-        - else
-          %h5.mt-4 この回答に対するコメントは現在ありません
-        = render partial: "partial/comment_card" ,collection: answer.comments, as:"comment"
-        = form_for [ @question,answer,@comment],html: {class: 'm-2'} do |f|
-          = f.text_area :body, class: "form-control ",placeholder: "コメントする",rows: "1"
-          - if @comment.errors.any? && @comment.answer_id == answer.id
-            %ul.alert.mt-1.alert-warning{role: "alert"}
-              - @comment.errors.full_messages.each do |msg|
-                %li
-                  = msg
-          = f.submit 'コメント', class: 'btn btn-success mt-2'
+          = image_tag set_default_avatar(answer.user), class: 'image_trimming avatar-image-index',alt: "吃音 kitsuon"
+    .col
+      %h4.mt-2
+        #{answer.title}
+  .row.no-gutters
+    .col-12
+      .m-2
+        #{simple_format text_url_to_link (answer.body)}
+      %ul.list-inline.text-secondary.small.ml-2
+        %li.list-inline-item
+          = link_to user_path answer.user do
+            %i.far.fa-user
+            #{answer.user.name}
+        %li.list-inline-item
+          %i.far.fa-clock
+          #{answer.created_at.to_s(:human)}
+      %hr.mt-4
+      - if answer.comments.present?
+        %h6.mt-4.text-center コメント一覧
+      - else
+        %h6.mt-4.text-center 現在、コメントはありません
+      = render partial: "partial/comment_card" ,collection: answer.comments, as:"comment"
+      = form_for [ @question,answer,@comment] do |f|
+        = f.text_area :body, class: "form-control ",placeholder: "回答に対してコメントする",rows: "1"
+        - if @comment.errors.any? && @comment.answer_id == answer.id
+          %ul.alert.mt-1.alert-warning{role: "alert"}
+            - @comment.errors.full_messages.each do |msg|
+              %li
+                = msg
+        .text-center
+          = f.submit 'コメント', class: 'btn btn-answer mt-2'

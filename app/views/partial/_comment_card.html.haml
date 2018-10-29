@@ -1,10 +1,15 @@
 .card.p-3.mb-1
   #{simple_format text_url_to_link (comment.body)}
-  %ul.list-inline.text-secondary
+  %ul.list-inline.text-secondary.small
     %li.list-inline-item
-      %i.far.fa-user
-      #{comment.user.name}
-    %li.list-inline-item.small
+      = link_to "/users/#{comment.user.id}" do
+        - if comment.user.avatar.present?
+          = image_tag comment.user.avatar.url, class: 'image_trimming avatar-image-comment',alt: "吃音 kitsuon"
+        - else
+          = image_tag set_default_avatar(comment.user), class: 'image_trimming avatar-image-comment',alt: "吃音 kitsuon"
+    %li.list-inline-item
+      = link_to user_path comment.user do
+        #{comment.user.name}
+    %li.list-inline-item
       %i.far.fa-clock
       #{comment.created_at.to_s(:human)}
-

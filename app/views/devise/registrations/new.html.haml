@@ -3,9 +3,9 @@
     = flash[:notice]
 .container-fluid
   .row
-    .col-lg-4.col-md-3.col-sm-12
-    .col-lg-4.col-md-6.col-sm-12
-      .card.rounded-0.shadow.mt-3
+    .col-md-3.col-sm-2.col-12
+    .col-md-6.col-sm-8.col-12
+      .card.rounded-0.mt-3
         = form_for(resource, as: resource_name, url: registration_path(resource_name))do |f|
           %h4.py-2.main-color.text-white.text-center 新規登録フォーム
           .form-group.m-3
@@ -44,11 +44,12 @@
             = error_messages(resource,"stuttering")
             = f.select( :stuttering ,User.stutterings_i18n.map { |k, v| [v, k]},{},{ class: 'form-control'})
           .form-group.m-3
-            = f.submit "登録", type: "submit",class: "btn btn-success"
+            = f.submit "登録する", type: "submit",class: "btn btn-main"
+            = link_to "利用規約 >>" ,docs_term_of_use_path,class: "small ml-2"
         / SNS認証を有効化するときはコメントを外して下さい
         / .form-group.m-3
         / = link_to "Sign up with Twitter", user_twitter_omniauth_authorize_path
         / .form-group.m-3
         / = link_to "Sign up with Google", user_google_omniauth_authorize_path
-      .p-2
-        = link_to "ログインはこちら" , new_user_session_path , class: "badge badge-pill badge-success text-white "
+      .p-2.small
+        = link_to "ログインはこちら >>" , new_user_session_path , class: "mark"
