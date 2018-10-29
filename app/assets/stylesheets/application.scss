@@ -219,4 +219,17 @@ body {
   flex: 1;
 }
 
+//gatter削除 bootstrap
+.no-gutters {
+  margin:0;
+  padding:0;
+}
+
+.no-gutters > .col,
+.no-gutters > [class*="col-"] {
+  margin:0;
+  padding:0;
+}
+
+
 

@@ -1,5 +1,5 @@
 .container-fluid
-  .row.no-gutters
+  .row
     .col-md-3.col-sm-12
     .col-md-6.col-sm-12
       .card.rounded-0.my-3.p-md-3.p-sm-1.p-1.shadow-sm
@@ -18,11 +18,14 @@
             .form-group.mt-3.mb-1
               %h5.main-color-bottom-border 質問のジャンルを選択
               = error_messages(@question,"base")
-              - QuestionTag.tags_i18n.map do |k, v|
-                - @genre = [] if @genre.nil?
-                = f.fields_for :questionTags do |qt|
-                  = qt.label :tag, v
-                  = qt.check_box(:tag,{:checked=> @genre.include?(k)? true : false}, k ,false)
+              .form-inline
+                - QuestionTag.tags_i18n.map do |k, v|
+                  - @genre = [] if @genre.nil?
+                  = f.fields_for :questionTags do |qt|
+                    .my-1.ml-1
+                      = qt.check_box(:tag,{:checked=> @genre.include?(k)? true : false}, k ,false)
+                    .my-1.mr-2
+                      = qt.label :tag, v
             .small *複数選択可
           .form-group.mt-2
             %h5.main-color-bottom-border 相談内容

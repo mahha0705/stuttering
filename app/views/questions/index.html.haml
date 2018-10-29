@@ -8,15 +8,15 @@
         = flash[:notice]
 .container-fluid
   .row
-    .col-md-2.col-sm-12.col-12
-    .col-md-8.col-sm-12.col-12.mt-4
+    .col-md-2.col-sm-1.col-12
+    .col-md-8.col-sm-10.col-12.mt-4
       = render "partial/top_index"
-    .col-md-2.col-sm-12.col-12
+    .col-md-2.col-sm-1.col-12
   .row
-    .col-md-2.col-sm-12.col-12
-    .col-md-8.col-sm-12.col-12
+    .col-md-2.col-sm-1.col-12
+    .col-md-8.col-sm-10.col-12
       .row
-        .col-lg-8.col-md-12.col-sm-12.col-12
+        .col-lg-7.col-md-12.col-sm-12.col-12
           .mt-4
             = render "partial/breadcrumb"
             - if @search_result.present?
@@ -24,7 +24,7 @@
                 #{@search_result}
           = render partial: "partial/index_question_card" ,collection: @questions, as:"question"
           = paginate @questions
-        .col-lg-4.col-md-12.col-sm-12.col-12.d-none.d-lg-block
+        .col-lg-5.col-md-12.col-sm-12.col-12.d-none.d-lg-block
           .mt-4
             = render "partial/search_form"
           / .mt-3
