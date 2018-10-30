@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   get 'question_comments/create'
-  devise_for :users
+  devise_for :users, controllers: { confirmations: 'confirmations' }
    # controllers: { omniauth_callbacks: 'users/omniauth_callbacks' } #SNS認証を有効化するときにコメントを外して下さい
   get '/users', to: redirect("/users/sign_up")
   # 新規登録時エラーメッセージを表示させるとURLが/usersになるためredirect先を指定する
