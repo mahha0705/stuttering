@@ -72,6 +72,19 @@ Rails.application.configure do
 
   # Email
   # config.action_mailer.default_url_options = { host: '<サイトのURL>' }
+  #Emails
+  config.action_mailer.default_url_options = { host: "http://www.kitsuon-soudan.com/" || "https://www.kitsuon-soudan.com/"}
+  config.action_mailer.default_options = { from: 'info@kitsuon-soudan.com' }
+  config.action_mailer.delivery_method = :smtp
+# 環境変数を設定した場合
+  config.action_mailer.smtp_settings = {
+  port: ENV["SMTP_PORT"],
+  address: ENV["SMTP_SERVER"],
+  user_name: ENV["SMTP_LOGIN"],
+  password: ENV["SMTP_PASSWORD"],
+  authentication: 'plain',
+  enable_starttls_auto: true
+}
 
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
   # the I18n.default_locale when a translation cannot be found).

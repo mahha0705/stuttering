@@ -37,27 +37,17 @@ Rails.application.configure do
 
   #Emails
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
-  config.action_mailer.default_options = { from: 'notifications@localhost' }
+  config.action_mailer.default_options = { from: 'info@kitsuon-soudan.com' }
   config.action_mailer.delivery_method = :smtp
-  config.action_mailer.smtp_settings = {
-    port: 587,
-    address: 'smtp.sendgrid.net',
-    user_name: 'apikey',
-    password: '',
-    authentication: 'plain',
-    enable_starttls_auto: true
-  }
-
-
 # 環境変数を設定した場合
-  #   config.action_mailer.smtp_settings = {
-  #   port: ENV["SMTP_PORT"],
-  #   address: ENV["SMTP_SERVER"],
-  #   user_name: ENV["SMTP_LOGIN"],
-  #   password: ENV["SMTP_PASSWORD"],
-  #   authentication: 'plain',
-  #   enable_starttls_auto: true
-  # }
+  config.action_mailer.smtp_settings = {
+  port: ENV["SMTP_PORT"],
+  address: ENV["SMTP_SERVER"],
+  user_name: ENV["SMTP_LOGIN"],
+  password: ENV["SMTP_PASSWORD"],
+  authentication: 'plain',
+  enable_starttls_auto: true
+}
 
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
