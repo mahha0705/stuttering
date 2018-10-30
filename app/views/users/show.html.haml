@@ -3,11 +3,11 @@
     = flash[:notice]
 .container-fluid
   .row
-    .col-lg-2.col-md-2.col-sm-12
-    .col-lg-8.col-md-8.col-sm-12.mt-3
+    .col-lg-1.col-md-2.col-sm-1.col-12
+    .col-lg-10.col-md-8.col-sm-10.col-12.mt-3
       .row
         .col-lg-4.col-md-12.col-sm-12.mt-3
-          .card.rounded-0.shadow-sm.p-3
+          .card.rounded-0.p-3
             .mx-auto.mb-3
               - if @user.avatar.url.present?
                 = image_tag @user.avatar.url, class: ' avatar-image image_trimming',alt: "avatar 吃音"
