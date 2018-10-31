@@ -8,6 +8,12 @@ class NotificationMailer < ApplicationMailer
   def send_when_get_answer(user,answer)
     @user = user
     @answer = answer
-    mail to:      user.email , subject: '吃音相談サイト質問に対する回答がありました。'
+    mail to: user.email , subject: '吃音Q&A 質問に対する回答がありました。'
+  end
+
+  def send_when_get_comment(user,comment)
+    @user = user
+    @comment = comment
+    mail to:  user.email , subject: '吃音Q&A 回答に対するコメントがありました。'
   end
 end

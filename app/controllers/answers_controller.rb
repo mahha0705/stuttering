@@ -6,7 +6,7 @@ class AnswersController < ApplicationController
     @question = Question.find(params[:question_id])
     @answer = Answer.create(answer_params)
     if @answer.save
-      NotificationMailer.send_when_get_answer(@question.user, @answer).deliver_later
+      NotificationMailer.send_when_get_answer(@question.user, @answer).deliver
       redirect_to question_path(@question), notice: '投稿完了しました'
     else
       @answers = @question.answers
