@@ -8,8 +8,10 @@ class CommentsController < ApplicationController
       NotificationMailer.send_when_get_comment(@comment.answer.user, @comment).deliver_later(wait: 30.second) if @comment.answer.user != @comment.user
       redirect_to question_path(@question) , notice: '投稿完了しました'
     else
+      @answers = @question.answers
       @answer = Answer.new
       @question_comment = QuestionComment.new
+      @question_comments = @question.questionComments
       render 'questions/show'
     end
   end
