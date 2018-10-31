@@ -1,0 +1,11 @@
+%p
+  回答に対するコメントがありました。
+  %br/
+%hr/
+.text-center
+  #{@comment.user.name}
+  さんの回答内容
+.card
+  .m-2
+    本文:
+    #{simple_format @comment.body}
