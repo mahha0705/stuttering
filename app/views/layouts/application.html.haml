@@ -3,6 +3,14 @@
   %head
     %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
     %meta{:content => "width=device-width, initial-scale=1", :name => "viewport"}/
+    //ツイッターカード
+    %meta{:content => "summary", :name => "twitter:card"}/
+    %meta{:content => "@LoxKCmMC1aHPgzV", :name => "twitter:site"}/
+    %meta{:content => "http://www.kitsuon-soudan.com", :property => "og:url"}/
+    %meta{:content => "吃音 Q&A", :property => "og:title"}/
+    %meta{:content => "吃音に関するQ&Aサービスです。", :property => "og:description"}/
+    %meta{:content => "#{asset_url('logo.jpg')}", :name => "twitter:image"}/
+    //ここまで
     %title 吃音 Q&A
     = favicon_link_tag('favicon.ico')
     = csrf_meta_tags
