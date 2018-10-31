@@ -1,20 +1,18 @@
-%h2
-  = @user.name
-  様
-%hr/
-%p
-  質問に対する回答がありました!
-%p
-  ユーザー名: #{@user.name}
-  %br/
-%hr/
-.text-center
-  #{@answer.user.name}
-  さんの回答内容
-.card
+.box1.center
   %h4
-    タイトル
+    = @user.name
+    さん
+  %span こちら吃音Q&Aです。<br> いつもご利用いただき誠にありがとうございます。
+  %p
+    #{@answer.user.name}さんから回答があります。<br> 確認してみましょう。
+.space 
+  .text-center
+    #{@answer.user.name}
+    さんの回答内容
+.box3.center
+  %h4
     #{@answer.title}
-  .m-2
-    本文
-    #{simple_format @answer.body}
+  %p
+    #{simple_format @answer.body.truncate(100)}
+  .text-center
+    = link_to "詳細はこちらからチェック", @url

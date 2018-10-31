@@ -2,7 +2,14 @@
 %html
   %head
     %meta{:content => "text/html; charset=utf-8", "http-equiv" => "Content-Type"}/
-    :css
-      /* Email styles need to be inline */
+    %meta{:content => "width=device-width, initial-scale=1", :name => "viewport"}/
+    = stylesheet_link_tag  'bootstrap_mailer'
   %body
+    .box1.main-color.center
+      %h1.text-center.text-white 吃音Q＆A
     = yield
+    .box1.center.space
+      .text-center
+        吃音Q&A<br>吃音の経験を共有しよう
+    .text-center
+      = link_to "kitsuon-soudan.com", root_url

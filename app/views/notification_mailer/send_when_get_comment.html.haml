@@ -1,11 +1,16 @@
-%p
-  回答に対するコメントがありました。
-  %br/
-%hr/
-.text-center
-  #{@comment.user.name}
-  さんの回答内容
-.card
-  .m-2
-    本文:
-    #{simple_format @comment.body}
+.box1.center
+  %h4
+    = @user.name
+    さん
+  %span こちら吃音Q&Aです。<br> いつもご利用いただき誠にありがとうございます。
+  %p
+    #{@comment.user.name}さんからコメントがあります。<br> 確認してみましょう。
+.space
+  .text-center
+    #{@comment.user.name}
+    さんのコメント内容
+.box3.center
+  %p
+    #{simple_format @comment.body.truncate(100)}
+  .text-center
+    = link_to "詳細はこちらからチェック", @url
