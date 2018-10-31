@@ -1,4 +1,4 @@
-.card.rounded-0.mb-2.p-md-3.p-sm-3.p-2
+.card.question-card.rounded-0.mb-2.p-md-3.p-sm-3.p-2
   .row.no-gutters
     .col-auto.mx-3
       = link_to "/users/#{question.user.id}" do
@@ -16,8 +16,9 @@
             .badge.badge-secondary #{questionTag.tag_i18n}
   .row.no-gutters
     .col-12
-      %p.mt-2
-        #{simple_format question.body.truncate(150)}
+      = link_to question_path(question) do
+        %p.mt-2
+          #{simple_format question.body.truncate(150)}
       %ul.list-inline.text-secondary.small
         %li.list-inline-item
           = link_to user_path question.user do

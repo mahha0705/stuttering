@@ -10,8 +10,8 @@
       .modal-dialog{:role => "document"}
         .modal-content
           = render "partial/search_form"
-          .modal-header.mx-auto
-            %button.btn.btn-main{"data-dismiss" => "modal", :type => "button"} 閉じる
+          .modal-header.ml-auto
+            %button.btn{"data-dismiss" => "modal", :type => "button"} 閉じる
     - if user_signed_in?
       .dropdown.notification-dropdown.mx-1.mx-sm-1.mx-md-2.mx-lg-2
         %button#dropdownMenu1.btn.main-color.text-white.dropdown-toggle{"aria-expanded" => "true", "aria-haspopup" => "true", "data-toggle" => "dropdown", :type => "button"}
