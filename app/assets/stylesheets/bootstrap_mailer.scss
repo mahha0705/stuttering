@@ -1,0 +1,68 @@
+.box1{
+    width: 85%;
+    max-width: 500px;
+    padding: 0.5em 1em;
+    margin: 2em 0;
+}
+
+.box1 p {
+    margin: 0; 
+    padding: 0;
+}
+
+.main-color{
+    background-color:#dd9b9d;
+}
+.text-white{
+    color:#fff;
+}
+
+img {
+    width: 100%;
+    max-width: 500px;
+    height: auto;
+}
+
+.box2 {
+    width: 80%;
+    max-width: 500px;
+    padding: 0.5em 1em;
+    margin: 2em 0;
+    // font-weight: bold;
+    // color: #6091d3;/*文字色*/
+    // background: #FFF;
+    border: solid 2px #dd9b9d;/*線*/
+    border-radius: 5px;/*角の丸み*/
+}
+.box2 p {
+    margin: 0; 
+    padding: 0;
+}
+
+.box3 {
+    width: 80%;
+    max-width: 500px;
+    padding: 0.5em 1em;
+    margin: 2em 0;
+    // font-weight: bold;
+    // color: #6091d3;/*文字色*/
+    // background: #FFF;
+    border: solid 2px #6fb3af;/*線*/
+    border-radius: 5px;/*角の丸み*/
+}
+.box3 p {
+    margin: 0; 
+    padding: 0;
+}
+
+.center{
+  margin: 0 auto;
+}
+
+.text-center{
+  text-align: center;
+}
+
+.space{
+  margin-top: 50px;
+}
