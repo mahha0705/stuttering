@@ -41,7 +41,6 @@ class QuestionsController < ApplicationController
     else
       @questions
     end
-    @search_result = "検索結果 #{@questions.count}件"
     render 'index'
   end
 
