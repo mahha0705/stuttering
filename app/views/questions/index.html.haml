@@ -19,10 +19,13 @@
         .col-lg-7.col-md-12.col-sm-12.col-12
           .mt-3
             = render "partial/breadcrumb"
-            - if @search_result.present?
+            - if current_page?(controller:'questions', action:'search')
               .h5.mt-3.mb-2.text-center
-                #{@search_result}
+                検索結果<br>
+                = page_entries_info @questions
           = render partial: "partial/index_question_card" ,collection: @questions, as:"question"
+          .text-center.my-1
+            = page_entries_info @questions
           = paginate @questions
         .col-lg-5.col-md-12.col-sm-12.col-12.d-none.d-lg-block
           .mt-3
