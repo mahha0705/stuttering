@@ -10,7 +10,7 @@
         - else
           = image_tag set_default_avatar(answer.user), class: 'image_trimming avatar-image-index',alt: "吃音 kitsuon"
     .col
-      %h4.mt-2
+      %h5.mt-2
         #{answer.title}
   .row.no-gutters
     .col-12
@@ -38,4 +38,8 @@
               %li
                 = msg
         .text-center
-          = f.submit 'コメント', class: 'btn btn-answer mt-2'
+          - if user_signed_in?
+            = f.submit 'コメント', class: 'btn btn-answer mt-2'
+          - else
+            = link_to new_user_registration_path do
+              .btn.btn-answer.mt-2 コメント

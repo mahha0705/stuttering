@@ -10,7 +10,7 @@
         - else
           = image_tag set_default_avatar(question.user), class: 'image_trimming avatar-image-index',alt: "吃音 kitsuon"
     .col
-      %h3
+      %h5
         #{question.title}
       %ul
         - question.questionTags.each do |questionTag|
@@ -52,6 +52,5 @@
             = f.submit '追記する', class: 'btn btn-main mt-2'
       - unless user_signed_in?
         .text-center
-          = link_to user_session_path do
+          = link_to new_user_registration_path do
             .btn.btn-lg.btn-main.mt-2.shadow 回答する
-
