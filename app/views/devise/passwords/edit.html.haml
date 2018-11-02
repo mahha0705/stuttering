@@ -1,19 +1,32 @@
-%h2 Change your password
-= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f|
-  = devise_error_messages!
-  = f.hidden_field :reset_password_token
-  .field
-    = f.label :password, "New password"
-    %br/
-    - if @minimum_password_length
-      %em
-        (#{@minimum_password_length} characters minimum)
-      %br/
-    = f.password_field :password, autofocus: true, autocomplete: "new-password"
-  .field
-    = f.label :password_confirmation, "Confirm new password"
-    %br/
-    = f.password_field :password_confirmation, autocomplete: "off"
-  .actions
-    = f.submit "Change my password"
-= render "devise/shared/links"
+.container-fluid
+  .row
+    .col-md-3.col-sm-2.col-12
+    .col-md-6.col-sm-8.col-12
+      .mb-3
+      .card.rounded-0
+        = form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f|
+          / = devise_error_messages!
+          = f.hidden_field :reset_password_token
+          %h4.py-2.main-color.text-white.text-center パスワード再設定
+          - if !resource.errors.full_messages.empty?
+            %ul.alert.alert-warning.m-3{role: "alert"}
+              - resource.errors.full_messages.each do |error|
+                = content_tag("div", error, :id => "flash_alert")
+          .form-group.m-3
+            .mb-2
+              = f.label :email, "新しいパスワード"
+              / %br/
+              / - if @minimum_password_length
+              /   %em
+              /     (#{@minimum_password_length} characters minimum)
+              /   %br/
+              = f.password_field :password, class: "form-control", autofocus: true, autocomplete: "new-password"
+          .form-group.m-3
+            .mb-2
+              = f.label :password_confirmation, "新しいパスワード再入力"
+              %br/
+              = f.password_field :password_confirmation, class: "form-control", autocomplete: "off"
+          .form-group.m-3
+            .mb-2.actions
+              = f.submit "再設定",class: "btn btn-main"
+      = render "devise/shared/links"

@@ -53,5 +53,4 @@
         / = link_to "Sign up with Twitter", user_twitter_omniauth_authorize_path
         / .form-group.m-3
         / = link_to "Sign up with Google", user_google_omniauth_authorize_path
-      .p-2.small
-        = link_to "ログインはこちら >>" , new_user_session_path , class: "mark"
+      = render "devise/shared/links"
