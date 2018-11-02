@@ -13,35 +13,39 @@
                 = image_tag @user.avatar.url, class: ' avatar-image image_trimming',alt: "avatar 吃音"
               - else
                 = image_tag set_default_avatar(@user), class: ' avatar-image image_trimming',alt: "avatar 吃音"
+            / %hr
             %ul.my-1
               %li.list-inline-item
-                %i.fas.fa-user 名前
+                %p 名前:
               %li.list-inline-item
-                %h5 #{@user.name} さん
+                %h6 #{@user.name} さん
             %ul.my-1
               %li.list-inline-item
-                %i.fas.fa-transgender-alt 性別
+                %p: 性別:
               %li.list-inline-item
-                %h5 #{@user.gender_i18n}
+                %h6 #{@user.gender_i18n}
             %ul.my-1
               %li.list-inline-item
                 %p 年齢層:
               %li.list-inline-item
-                %h5 #{@user.age_i18n}
+                %h6 #{@user.age_i18n}
             %ul
               %li.list-inline-item
                 %p 吃音の有無:
               %li.list-inline-item
-                %h5 #{@user.stuttering_i18n}
-            - if user_signed_in? && current_user.id == @user.id
-              %ul
-                %li.list-inline-item
-                  %i.far.fa-envelope
-                %li.list-inline-item
-                  %h5 #{@user.email}
+                %h6 #{@user.stuttering_i18n}
+            / - if user_signed_in? && current_user.id == @user.id
+            /   %ul
+            /     %li.list-inline-item
+            /       %i.far.fa-envelope
+            /     %li.list-inline-item
+            /       %h6 #{@user.email}
+            %hr
             %ul.my-3
+              %p 自己紹介:
               %li.list-inline-item
                 %h6 #{simple_format @user.about}
+            %hr.mb-3
             - if user_signed_in? && current_user.id == @user.id
               = link_to edit_user_path(current_user.id) do
                 %button.fas.fa-edit.btn.btn-main{type: "button"} 編集
