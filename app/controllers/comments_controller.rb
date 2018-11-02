@@ -12,6 +12,7 @@ class CommentsController < ApplicationController
       @answer = Answer.new
       @question_comment = QuestionComment.new
       @question_comments = @question.questionComments
+      flash.now[:alert] = '処理できませんでした。もう一度投稿してください'
       render 'questions/show'
     end
   end

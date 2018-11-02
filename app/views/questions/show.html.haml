@@ -1,6 +1,9 @@
 - if flash[:notice]
   #foo.alert.alert-success.mb-0.text-center.rounded-0
     = flash[:notice]
+- if flash[:alert]
+  #foo.alert.alert-warning.mb-0.text-center.rounded-0
+    = flash[:alert]
 .container-fluid
   .row
     .col-lg-3.col-md-2.col-sm-1.col-12
