@@ -1,4 +1,19 @@
-%p
-  Welcome #{@resource.name}!
-%p You can confirm your account email through the link below:
-%p= link_to 'Confirm my account', confirmation_url(@resource, confirmation_token: @token)
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=utf-8", "http-equiv" => "Content-Type"}/
+    %meta{:content => "width=device-width, initial-scale=1", :name => "viewport"}/
+    = stylesheet_link_tag  'mailer'
+  %body
+    .box1.main-color.center
+      %h1.text-center.text-white 吃音Q＆A
+    .box1.center.space
+      %p #{@resource.name}さん、吃音Q&Aをご登録いただきありがとうございます。
+      %P こちらのリンクをクリックして、メンバー登録の完了です！
+      %h3.text-center.space
+        = link_to '最終登録はこちら', confirmation_url(@resource, confirmation_token: @token)
+    .box1.center.space
+      .text-center
+        吃音Q&A<br>吃音の経験を共有しよう
+    .text-center
+      = link_to "kitsuon-soudan.com", root_url
