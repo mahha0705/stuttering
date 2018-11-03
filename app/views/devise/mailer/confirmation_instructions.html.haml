@@ -11,7 +11,7 @@
       %p #{@resource.name}さん、吃音Q&Aをご登録いただきありがとうございます。
       %P こちらのリンクをクリックして、メンバー登録の完了です！
       %h3.text-center.space
-        = link_to '最終登録はこちら', confirmation_url(@resource, confirmation_token: @token)
+        = link_to '登録はこちら', confirmation_url(@resource, confirmation_token: @token)
     .box1.center.space
       .text-center
         吃音Q&A<br>吃音の経験を共有しよう
