@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_23_055953) do
+ActiveRecord::Schema.define(version: 2018_11_03_000909) do
 
   create_table "answer_likes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "user_id", null: false
@@ -99,6 +99,7 @@ ActiveRecord::Schema.define(version: 2018_10_23_055953) do
     t.integer "gender", limit: 1, default: 0, null: false
     t.integer "age", limit: 1, default: 0, null: false
     t.string "avatar"
+    t.boolean "display_allowed", default: true, null: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"

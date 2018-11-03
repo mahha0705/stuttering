@@ -7,7 +7,6 @@ class Answer < ApplicationRecord
   has_many :users , through: :answer_likes
   # has_many :notifications, dependent: :destroy
 
-
   counter_culture :question ,touch: true
 
   validates :title, presence: true
