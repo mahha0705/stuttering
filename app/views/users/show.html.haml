@@ -45,21 +45,33 @@
               %p 自己紹介:
               %li.list-inline-item
                 %h6 #{simple_format @user.about}
-            %hr.mb-3
             - if user_signed_in? && current_user.id == @user.id
-              = link_to edit_user_path(current_user.id) do
-                %button.fas.fa-edit.btn.btn-main{type: "button"} 編集
+              %hr.mb-3
+                = link_to edit_user_path(current_user.id) do
+                  %button.fas.fa-edit.btn.btn-main{type: "button"} 編集
         .col-lg-8.col-md-12.col-sm-12
+          - if user_signed_in? && current_user.id == @user.id
+            = form_for @user do |f|
+              - if @user.display_allowed == true
+                = f.hidden_field :display_allowed, value: false
+                .text-center
+                  = f.submit '非表示にする', class: 'btn btn-answer my-2'
+                .text-center.small 現在、あなたの回答と質問一覧は、他のユーザーに見れるようになっています。
+              - if @user.display_allowed == false
+                = f.hidden_field :display_allowed, value: true
+                .text-center
+                  = f.submit '表示する', class: 'btn btn-answer my-2'
+                .text-center.small 現在、あなたの回答と質問一覧は、他のユーザーに見れないようになっています。
           %h4.text-center.mt-3 回答した質問一覧
-          - if @my_answer_questions.present?
+          - if (@my_answer_questions.present? && @user.display_allowed == true) || ((user_signed_in? && current_user.id == @user.id) && @my_answer_questions.present?)
             = render partial: "partial/index_question_card" ,collection: @my_answer_questions, as:"question"
             = paginate @my_answer_questions
           - else
-            %h5.text-center 現在回答した質問はありません
-          %h4.text-center.mt-5 回答した質問一覧
-          - if @questions.present?
+            %h5.text-center 現在回答した質問がないか、非表示設定にしています。
+          %h4.text-center.mt-5 質問一覧
+          - if (@questions.present? && @user.display_allowed == true) || ((user_signed_in? && current_user.id == @user.id) && @questions.present?)
             = render partial: "partial/index_question_card" ,collection: @questions, as:"question"
             = paginate @questions
           - else
-            %h5.text-center 現在質問はありません
+            %h5.text-center 現在質問がないか、非表示設定にしています。
 
