@@ -19,9 +19,7 @@ $(document).on('turbolinks:load', function() {
           // .prevewの領域の中にロードした画像を表示するimageタグを追加
           $preview.append($('<img>').attr({
                     src: e.target.result,
-                    width: "100px",
-                    height: "100px",
-                    class: "rounded-circle image_trimming opacity",
+                    class: "avatar-image image_trimming opacity",
                     title: file.name,
           }));
         };
