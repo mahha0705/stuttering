@@ -1,0 +1,24 @@
+#carouselIndicators.carousel.slide{"data-ride": "carousel"}
+  %ol.carousel-indicators
+    %li.active{"data-slide-to": "0", "data-target": "#carouselIndicators"}
+    %li{"data-slide-to": "1", "data-target": "#carouselIndicators"}
+    / %li{"data-slide-to": "2", "data-target": "#carouselIndicators"}
+  .carousel-inner
+    .carousel-item.active.text-center
+      = link_to docs_about_service_path do
+        = image_tag "news1.png" , class: "news-image ", alt: "吃音Q&A リリース"
+        .carousel-caption.d-none.d-block
+          %h6 吃音Q&Aをリリースしました
+          .small 先ずはこちらをクリックしてください
+    .carousel-item.text-center
+      = link_to 'https://kitsuon-panph.domo-work.com/' do
+        = image_tag "news2.png" , class: "news-image ", alt: "これだけは知ってほしい吃音の10のこと"
+        .carousel-caption.d-none.d-block.text-secondary
+          %h6
+          .small from NPO法人どーもわーく
+  %a.carousel-control-prev{"data-slide": "prev", href: "#carouselIndicators", role: "button"}
+    %span.carousel-control-prev-icon{"aria-hidden": "true"}
+    %span.sr-only.text-black Previous
+  %a.carousel-control-next{"data-slide": "next", href: "#carouselIndicators", role: "button"}
+    %span.carousel-control-next-icon{"aria-hidden": "true"}
+    %span.sr-only Next

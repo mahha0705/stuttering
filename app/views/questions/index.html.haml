@@ -18,6 +18,8 @@
       .row
         .col-lg-7.col-md-12.col-sm-12.col-12
           .mt-3
+            = render "partial/news"
+          .mt-3
             = render "partial/breadcrumb"
             - if current_page?(controller:'questions', action:'search')
               .h5.mt-3.mb-2.text-center
