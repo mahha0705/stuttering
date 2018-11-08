@@ -7,4 +7,6 @@ class DocsController < ApplicationController
   end
   def about_service
   end
+  def news
+  end
 end

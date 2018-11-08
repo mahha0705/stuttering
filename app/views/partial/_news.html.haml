@@ -2,20 +2,35 @@
   %ol.carousel-indicators
     %li.active{"data-slide-to": "0", "data-target": "#carouselIndicators"}
     %li{"data-slide-to": "1", "data-target": "#carouselIndicators"}
-    / %li{"data-slide-to": "2", "data-target": "#carouselIndicators"}
+    %li{"data-slide-to": "2", "data-target": "#carouselIndicators"}
   .carousel-inner
     .carousel-item.active.text-center
       = link_to docs_about_service_path do
-        = image_tag "news1.png" , class: "news-image ", alt: "吃音Q&A リリース"
-        .carousel-caption.d-none.d-block
+        .d-none.d-sm-block
+          = image_tag "news1.png" ,class: "news-image", alt: "吃音Q&A リリース"
+        .d-block.d-sm-none
+          = image_tag "news1.png", class: "news-image-smartphone", alt: "吃音Q&A リリース"
+        .carousel-caption
           %h6 吃音Q&Aをリリースしました
-          .small 先ずはこちらをクリックしてください
+          .small 先ずはこちらをクリックして、このサイトについての簡単な説明を見てみましょう
     .carousel-item.text-center
       = link_to 'https://kitsuon-panph.domo-work.com/' do
-        = image_tag "news2.png" , class: "news-image ", alt: "これだけは知ってほしい吃音の10のこと"
-        .carousel-caption.d-none.d-block.text-secondary
+        .d-none.d-sm-block
+          = image_tag "news2.png" , class: "news-image", alt: "これだけは知ってほしい吃音の10のこと"
+        .d-block.d-sm-none
+          = image_tag "news2.png" , class: "news-image-smartphone", alt: "これだけは知ってほしい吃音の10のこと"
+        .carousel-caption.text-secondary
           %h6
           .small from NPO法人どーもわーく
+    .carousel-item.text-center
+      = link_to docs_news_path do
+        .d-none.d-sm-block
+          = image_tag "vr-1.png" , class: "news-image", alt: "吃音VRに関するアンケート"
+        .d-block.d-sm-none
+          = image_tag "vr-1.png" , class: "news-image-smartphone", alt: "吃音VRに関するアンケート"
+        .carousel-caption.text-white
+          %h6 吃音当事者向けVR研究に関するアンケートのお願い
+          .small from 吃音VR研究
   %a.carousel-control-prev{"data-slide": "prev", href: "#carouselIndicators", role: "button"}
     %span.carousel-control-prev-icon{"aria-hidden": "true"}
     %span.sr-only.text-black Previous
