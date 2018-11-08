@@ -19,6 +19,7 @@ Rails.application.routes.draw do
   get :group_info
   get :term_of_use
   get :about_service
+  get :news
   end
 
   resources :users, only: [:show,:edit,:update]
