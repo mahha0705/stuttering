@@ -17,7 +17,7 @@
   .row.no-gutters
     .col-12
       = link_to question_path(question) do
-        %p.mt-2
+        .mt-2.line-height_question_answer
           #{simple_format question.body.truncate(130)}
       %ul.list-inline.text-secondary.small
         %li.list-inline-item

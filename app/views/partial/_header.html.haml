@@ -40,13 +40,28 @@
       / この下の行に mr-auto クラスを付与するだけ
       %ul.navbar-nav.mr-auto
       %ul.navbar-nav
-        %li.nav-item.dropdown.mt-1.small
-          %a#navbarDropdown.nav-link.dropdown-toggle{"aria-expanded": "false", "aria-haspopup": "true", "data-toggle": "dropdown", href: "#", role: "button"}
-            サイトについて
-          .dropdown-menu{"aria-labelledby": "navbarDropdown"}
-            = link_to "サイトの思い" ,docs_about_service_path, class: "dropdown-item small"
-            = link_to "利用規約" ,docs_term_of_use_path, class: "dropdown-item small"
-            = link_to "プライバシーポリシー" ,docs_privacy_policy_path, class: "dropdown-item small"
+        .d-none.d-lg-block
+          %li.nav-item.dropdown.mt-1.small
+            %a#navbarDropdown.nav-link.dropdown-toggle{"aria-expanded": "false", "aria-haspopup": "true", "data-toggle": "dropdown", href: "#", role: "button"}
+              サイトについて
+            .dropdown-menu{"aria-labelledby": "navbarDropdown"}
+              = link_to "サイトの思い" ,docs_about_service_path, class: "dropdown-item small"
+              = link_to "利用規約" ,docs_term_of_use_path, class: "dropdown-item small"
+              = link_to "プライバシーポリシー" ,docs_privacy_policy_path, class: "dropdown-item small"
+              = link_to "お問い合わせ" ,"https://docs.google.com/forms/d/e/1FAIpQLSca4fJUzG0IY_HgR9blCm0gBzx2jQnSdy7lcwh2VyCygJcBLw/viewform", class: "dropdown-item small"
+        .d-lg-none
+          %li.nav-item.small.mt-1
+            = link_to docs_about_service_path, method: :get, class: 'nav-link' do
+              %i.far.fa-comment-dots.font-weight-bold サイトの思い/運営に関して
+          %li.nav-item.small.mt-1
+            = link_to docs_term_of_use_path, method: :get, class: 'nav-link' do
+              %i.far.fa-file-alt.font-weight-bold 利用規約
+          %li.nav-item.small.mt-1
+            = link_to docs_privacy_policy_path, method: :get, class: 'nav-link' do
+              %i.fas.fa-shield-alt プライバシーポリシー
+          %li.nav-item.small.mt-1.font-weight-bold
+            = link_to "https://docs.google.com/forms/d/e/1FAIpQLSca4fJUzG0IY_HgR9blCm0gBzx2jQnSdy7lcwh2VyCygJcBLw/viewform", class: 'nav-link' do
+              %i.fas.fa-question お問い合わせ
         - if user_signed_in?
           %li.nav-item.small.mt-1
             = link_to destroy_user_session_path, method: :delete, class: 'nav-link' do
