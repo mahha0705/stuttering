@@ -3,7 +3,7 @@
     .col-lg-3.col-md-2.col-sm-1.col-12
     .col-lg-6.col-md-8.col-sm-10.col-12
       .card.rounded-0.my-3.p-md-3.p-sm-1.p-1.shadow-sm
-        %h4.py-2.main-color.text-white.text-center 相談フォーム
+        %h4.py-2.main-color.text-white.text-center 質問フォーム
         %h5.mt-3.main-color-bottom-border あなたの登録情報
         %ul.p-2
           %li.py-1 名前: #{current_user.name} さん
@@ -28,8 +28,12 @@
                       = qt.label :tag, v
             .small *複数選択可
           .form-group.mt-2
-            %h5.main-color-bottom-border 相談内容
+            %h5.main-color-bottom-border 質問内容
             =error_messages(@question,"body")
-            = f.text_area :body, class: 'form-control', placeholder: '相談内容',rows: 15
+            = f.text_area :body, class: 'form-control', placeholder: '質問内容',rows: 15
+          %ul.small
+            %li・回答された場合、<strong>メール通知</strong>します。
+            %li.mt-1 ・回答に対して<strong>お礼のコメント</strong>をしましょう。
           .text-center
-            = f.submit '相談する', class: 'btn btn-main mb-1'
+            = f.submit '相談する', class: 'btn btn-main mt-3'
+
