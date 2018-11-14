@@ -6,7 +6,7 @@ class AnswersController < ApplicationController
     @question = Question.find(params[:question_id])
     @answer = Answer.create(answer_params)
     if @answer.save
-      NotificationMailer.send_when_get_answer(@question.user, @answer).deliver_later(wait: 30.second)
+      NotificationMailer.send_when_get_answer(@question.user, @answer).deliver_later(wait: 30.seconds)
       redirect_to question_path(@question), notice: '投稿完了しました'
     else
       @answers = @question.answers
@@ -25,9 +25,10 @@ class AnswersController < ApplicationController
 
     def create_notifications
       return if @answer.question.user_id == current_user.id
-       @notification = Notification.create(user_id: @answer.question.user_id,
-        notified_by_id: current_user.id,
-        question_id: @answer.question_id,
-        notified_type: "回答")
+
+      @notification = Notification.create(user_id: @answer.question.user_id,
+      notified_by_id: current_user.id,
+      question_id: @answer.question_id,
+      notified_type: "回答")
     end
 end

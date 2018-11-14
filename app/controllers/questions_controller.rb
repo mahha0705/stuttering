@@ -1,5 +1,5 @@
 class QuestionsController < ApplicationController
-  before_action :authenticate_user!, only: [:new , :create]
+  before_action :authenticate_user!, only: %i[new create]
 
   def index
     if params[:sort].present?
@@ -8,12 +8,6 @@ class QuestionsController < ApplicationController
     else
       @questions = Question.newest.page(params[:page])
     end
-    # @search_result = nil
-    # @newest_school_questions_limit5  = Question.school.newest.limit(3)
-    # @newest_work_questions_limit5= Question.work.newest.limit(3)
-    # @newest_jobHunting_questions_limit5  = Question.job_hunting.newest.limit(3)
-    # @newest_relationship_questions_limit5  = Question.relationship.newest.limit(3)
-    # @newest_other_questions_limit5  = Question.other.newest.limit(3)
   end
 
   def search
@@ -29,9 +23,9 @@ class QuestionsController < ApplicationController
     else
       @questions
     end
-    if (params[:has_answers] && params[:no_answers]) || (params[:has_answers].nil?  && params[:no_answers].nil? ) then
+    if (params[:has_answers] && params[:no_answers]) || (params[:has_answers].nil? && params[:no_answers].nil? ) then
       @questions
-    elsif params[:has_answers] && (params[:no_answers].nil?) then
+    elsif params[:has_answers] && params[:no_answers].nil? then
       @questions = @questions.where.not(answers_count: 0)
     else
       @questions = @questions.where(answers_count: 0)
@@ -50,21 +44,21 @@ class QuestionsController < ApplicationController
   end
 
   def create
-     @question = Question.create(question_params)
-     if @question.save
-       redirect_to root_path, notice: "投稿完了しました"
-     else
-       @question.questionTags.clear
-       @question.questionTags.build
-       @genre = []
-       if question_params["questionTags_attributes"].present?
-         question_params["questionTags_attributes"].each do |key, value|
-           @genre << value["tag"]
-         end
-       end
-       render "new"
-     end
-   end
+    @question = Question.create(question_params)
+    if @question.save
+      redirect_to root_path, notice: "投稿完了しました"
+    else
+      @question.questionTags.clear
+      @question.questionTags.build
+      @genre = []
+      if question_params["questionTags_attributes"].present?
+        question_params["questionTags_attributes"].each do |_key, value|
+          @genre << value["tag"]
+        end
+      end
+    render "new"
+    end
+  end
 
   def show
     @question = Question.find(params[:id])

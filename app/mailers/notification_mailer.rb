@@ -16,6 +16,6 @@ class NotificationMailer < ApplicationMailer
     @user = user
     @comment = comment
     @url = question_url(comment.answer.question)
-    mail to:  user.email , subject: '吃音Q&A 回答に対するコメントがありました。'
+    mail to: user.email , subject: '吃音Q&A 回答に対するコメントがありました。'
   end
 end
