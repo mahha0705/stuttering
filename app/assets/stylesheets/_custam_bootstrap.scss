@@ -1,5 +1,90 @@
+@import "variable";
 
 // ヘッダーのモーダルを表示させるためにz-indexの値をオーバーライド
 .modal-backdrop {
   z-index: 1010;
+}
+
+// ヘッダーのモーダルを表示させるためにz-indexの値をオーバーライド
+.page-item.active .page-link {
+    z-index: 1;
+    color: #fff;
+    background-color: $main-color;
+    border-color: $main-color;
+}
+
+.page-link:hover {
+    z-index: 2;
+    color: #fff;
+    text-decoration: none;
+    background-color: lighten($main-color,10%);
+    border-color: #dee2e6;
+}
+
+// bootstrapボタンのオーバーライド カラー変更
+.btn-main {
+  background: $main-color; //ボタンの背景色
+  color: #fff; //ボタンのテキストの色
+  border-color: $main-color;
+}
+.btn-main:hover, .btn-main:focus,
+.btn-main:active, .btn-main:active:focus, .btn-main:active:hover, .btn-main:active.focus,
+.btn-main.active, .btn-main.active:focus, .btn-main.active:hover, .btn-main.active.focus,
+.open > .dropdown-toggle.btn-main,
+.open > .dropdown-toggle.btn-main:hover,
+.open > .dropdown-toggle.btn-main:focus,
+.open > .dropdown-toggle.btn-main.focus,
+.btn-main.disabled:hover, .btn-main[disabled]:hover, fieldset[disabled] .btn-main:hover,
+.btn-main.disabled:focus, .btn-main[disabled]:focus, fieldset[disabled] .btn-main:focus,
+.btn-main.disabled.focus, .btn-main[disabled].focus, fieldset[disabled] .btn-main.focus
+{
+  background: darken($main-color,20%); //ボタンの上にポインタを持ってきたり、クリックしたりした時の背景色
+  color: #fff; //ボタンの上にポインタを持ってきたり、クリックしたりした時のテキストの色
+  border-color: darken($main-color,20%);
+}
+
+.btn-main.outline {
+    border: 3px solid $main-color; //アウトラインのみのボタンの線の色
+    color: #fff; //アウトラインのみのボタンのテキストの色
+}
+
+// bootstrapボタンのオーバーライド カラー変更
+.btn-answer {
+  background: $answer-color; //ボタンの背景色
+  color: #fff; //ボタンのテキストの色
+  border-color: $answer-color;
+}
+.btn-answer:hover, .btn-answer:focus,
+.btn-answer:active, .btn-answer:active:focus, .btn-answer:active:hover, .btn-answer:active.focus,
+.btn-answer.active, .btn-answer.active:focus, .btn-answer.active:hover, .btn-answer.active.focus,
+.open > .dropdown-toggle.btn-answer,
+.open > .dropdown-toggle.btn-answer:hover,
+.open > .dropdown-toggle.btn-answer:focus,
+.open > .dropdown-toggle.btn-answer.focus,
+.btn-answer.disabled:hover, .btn-answer[disabled]:hover, fieldset[disabled] .btn-answer:hover,
+.btn-answer.disabled:focus, .btn-answer[disabled]:focus, fieldset[disabled] .btn-answer:focus,
+.btn-answer.disabled.focus, .btn-answer[disabled].focus, fieldset[disabled] .btn-answer.focus
+
+{
+  background: darken($answer-color,20%); //ボタンの上にポインタを持ってきたり、クリックしたりした時の背景色
+  color: #fff; //ボタンの上にポインタを持ってきたり、クリックしたりした時のテキストの色
+  border-color: darken($answer-color,20%);
+}
+
+.btn-answer.outline {
+    border: 3px solid $answer-color; //アウトラインのみのボタンの線の色
+    color: #fff; //アウトラインのみのボタンのテキストの色
+}
+
+
+//gatter削除 bootstrap
+.no-gutters {
+  margin:0;
+  padding:0;
+}
+
+.no-gutters > .col,
+.no-gutters > [class*="col-"] {
+  margin:0;
+  padding:0;
 }
