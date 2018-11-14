@@ -5,9 +5,9 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     provider = __callee__.to_s
     @user = User.from_omniauth(request.env["omniauth.auth"])
 
-    unless request.env["omniauth.auth"].present?
+    if request.env["omniauth.auth"].blank?
       set_flash_message(:notice, :failure, kind: provider.capitalize, reason: "") if is_navigational_format?
-      redirect_to root_url and return
+      redirect_to root_url && return
     end
 
     if @user.persisted?
