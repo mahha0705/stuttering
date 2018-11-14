@@ -27,5 +27,13 @@ class Question < ApplicationRecord
   scope :improvement, -> { where(id: QuestionTag.select("question_id").where(tag: 4)) }
   scope :hospital, -> { where(id: QuestionTag.select("question_id").where(tag: 5)) }
   scope :other, -> { where(id: QuestionTag.select("question_id").where(tag: 10)) }
+  scope :new_or_old, -> (time){ order(created_at: time) }
+  scope :has_answers, -> { where.not(answers_count: 0) }
+  scope :no_answers, -> { where(answers_count: 0) }
+  scope :keyword_search, -> (keyword){where('title LIKE(?) OR body LIKE(?)', "%#{keyword}%","%#{keyword}%")}
 
+  def self.select_tag_questions(tags,page)
+    question_ids = QuestionTag.select("question_id").where(tag: tags)
+    Question.where(id: question_ids).page(page)
+  end
 end

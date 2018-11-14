@@ -3,38 +3,29 @@ class QuestionsController < ApplicationController
 
   def index
     if params[:sort].present?
-      question_ids = QuestionTag.select("question_id").where(tag: params[:sort])
-      @questions = Question.where(id: question_ids).newest.page(params[:page])
+      @questions = Question.select_tag_questions(params[:sort] , params[:page]).newest
     else
       @questions = Question.newest.page(params[:page])
     end
   end
 
   def search
+    #タグを選択したか判定
     if params[:seacrh_sort].present?
-      question_ids = QuestionTag.select("question_id").where(tag: params[:seacrh_sort])
-      @questions = Question.where(id: question_ids).page(params[:page])
+      @questions = Question.select_tag_questions(params[:seacrh_sort] , params[:page])
     else
       @questions = Question.page(params[:page])
     end
-
-    if params[:time_sort].present?
-      @questions = @questions.order(created_at: params[:time_sort])
-    else
-      @questions
+    #回答の有無判定
+    if params[:has_answers] && params[:no_answers].nil? #回答あり選択
+      @questions = @questions.has_answers
+    elsif params[:has_answers].nil? && params[:no_answers]
+      @questions = @questions.no_answers #回答なし選択
     end
-    if (params[:has_answers] && params[:no_answers]) || (params[:has_answers].nil? && params[:no_answers].nil? ) then
-      @questions
-    elsif params[:has_answers] && params[:no_answers].nil? then
-      @questions = @questions.where.not(answers_count: 0)
-    else
-      @questions = @questions.where(answers_count: 0)
-    end
-    if params[:keyword].present?
-      @questions = @questions.where('title LIKE(?) OR body LIKE(?)', "%#{params[:keyword]}%","%#{params[:keyword]}%")
-    else
-      @questions
-    end
+    #キーワード検索の有無判定
+    @questions = @questions.keyword_search(params[:keyword]) if params[:keyword].present?
+    #新着、古い順判定
+    @questions = @questions.new_or_old(params[:time_sort]) if params[:time_sort].present?
     render 'index'
   end
 
