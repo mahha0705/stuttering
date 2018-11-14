@@ -31,6 +31,8 @@ class Question < ApplicationRecord
   scope :has_answers, -> { where.not(answers_count: 0) }
   scope :no_answers, -> { where(answers_count: 0) }
   scope :keyword_search, -> (keyword){where('title LIKE(?) OR body LIKE(?)', "%#{keyword}%","%#{keyword}%")}
+  scope :my_questions, -> (user_id){ where(user_id: user_id) }
+  scope :my_answers_questions, -> (user_id){ where(id: Answer.select("question_id").where(user_id: user_id)) }
 
   def self.select_tag_questions(tags,page)
     question_ids = QuestionTag.select("question_id").where(tag: tags)
