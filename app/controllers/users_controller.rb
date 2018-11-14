@@ -3,9 +3,8 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @questions = Question.where(user_id: @user.id).page(params[:page])
-    @my_answer_questions = Question.where(id: Answer.select("question_id").where(user_id: @user.id)).page(params[:page])
-
+    @questions = Question.my_questions(@user.id).page(params[:page])
+    @my_answer_questions = Question.my_answers_questions(@user.id).page(params[:page])
   end
 
   def edit; end
