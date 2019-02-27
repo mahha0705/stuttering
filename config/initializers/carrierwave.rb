@@ -12,7 +12,7 @@ CarrierWave.configure do |config|
       aws_secret_access_key: Rails.application.secrets.aws_secret_access_key,
       region: 'ap-northeast-1'
     }
-    config.fog_directory  = 'kitsuon-soudan-upload'
+    config.fog_directory = 'kitsuon-soudan-upload'
     config.asset_host = 'https://s3-ap-northeast-1.amazonaws.com/kitsuon-soudan-upload'
     config.fog_attributes = { cache_control: "public, max-age=#{365.days.to_i}" }
   else
