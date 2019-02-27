@@ -73,10 +73,6 @@ group :test do
   gem 'chromedriver-helper'
 end
 
-group :production, :staging do
-    gem 'unicorn'
-end
-
 gem 'omniauth-google-oauth2'
 gem 'omniauth-twitter'
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

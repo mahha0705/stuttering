@@ -13,13 +13,13 @@ default: &default
   adapter: mysql2
   encoding: utf8
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  username: root
+  username: sakurai
   password:
   socket: /tmp/mysql.sock
 
 development:
   <<: *default
-  database: stuttering_development
+  database: stuttering_production
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
