@@ -50,6 +50,6 @@ test:
 production:
   <<: *default
   database: stuttering_production
-  username: root
-  password: <%= ENV['DATABASE_PASSWORD'] %>
+  username: sakurai
+  password:
 
