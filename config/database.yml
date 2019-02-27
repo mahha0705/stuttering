@@ -49,7 +49,7 @@ test:
 #
 production:
   <<: *default
-  database: stuttering_production
-  username: sakurai
-  password:
+  database: heroku_4220c4d3fc2cfbd
+  username: bb852f048dbc3b
+  password: <%= ENV['DATABASE_PASSWORD'] %>
 
