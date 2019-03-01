@@ -10,16 +10,15 @@
 #   https://dev.mysql.com/doc/refman/5.7/en/password-hashing.html
 #
 default: &default
-  adapter: mysql2
+  adapter: postgresql
   encoding: utf8
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  username: sakurai
+  username: naoyasakurai
   password:
-  socket: /tmp/mysql.sock
 
 development:
   <<: *default
-  database: stuttering_production
+  database: stuttering_development
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -49,7 +48,6 @@ test:
 #
 production:
   <<: *default
-  database: heroku_4220c4d3fc2cfbd
-  username: bb852f048dbc3b
-  password: <%= ENV['DATABASE_PASSWORD'] %>
-
+  database: stuttering_production
+  username: stuttering
+  password: <%= ENV['STUTTERING_DATABASE_PASSWORD'] %>

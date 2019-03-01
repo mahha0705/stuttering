@@ -11,7 +11,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.2]
       t.string :old,                null: false
       t.string :sex,                null: false
       t.string :occupation,         null: false
-      t.string :stuttering,         null: false
+      t.integer :stuttering,        default: 0
       t.string :about
 
       ## Recoverable
