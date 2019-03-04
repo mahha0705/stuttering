@@ -1,17 +1,17 @@
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable, :confirmable
+  # devise :database_authenticatable, :registerable,
+  #        :recoverable, :rememberable, :validatable, :confirmable
          # :omniauthable #SNS認証用
          # :confirmable #メール認証
   #Validation
   # Overwriting Devise method
-  validates :name, presence: true, if: :name_required?
-  validates :name, uniqueness: true
-  validates :stuttering, presence: true
-  validates :age, presence: true
-  validates :gender, presence: true
+  # validates :name, presence: true, if: :name_required?
+  # validates :name, uniqueness: true
+  # validates :stuttering, presence: true
+  # validates :age, presence: true
+  # validates :gender, presence: true
 
   has_many :questions, dependent: :destroy
   has_many :answers, dependent: :nullify
