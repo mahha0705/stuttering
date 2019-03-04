@@ -5,19 +5,19 @@ class Question < ApplicationRecord
   has_many :questionTags, dependent: :destroy
   has_many :questionComments, dependent: :destroy
   has_many :questionLikes, dependent: :destroy
-  has_many :users, through: :questionLikes
+  has_many :users , through: :questionLikes
   has_many :notifications, dependent: :destroy
 
   accepts_nested_attributes_for :questionTags
-  # validate :require_any_questionTags
-  # def require_any_questionTags
-  #   errors.add(:base, :no_questionTag) if questionTags.blank?
-  # end
+  validate :require_any_questionTags
+  def require_any_questionTags
+    errors.add(:base, :no_questionTag) if questionTags.blank?
+  end
   # validates :questionTag, presence: true
   paginates_per 10
 
-  # validates :title, presence: true
-  # validates :body, presence: true
+  validates :title, presence: true
+  validates :body, presence: true
 
   scope :newest, -> { order("created_at DESC") }
   scope :school, -> { where(id: QuestionTag.select("question_id").where(tag: 0)) }
