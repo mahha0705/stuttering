@@ -31,3 +31,5 @@
 public/uploads/*
 config/secrets.yml
 db/seeds.rb
+coverage
+rails_best_practices_output.html

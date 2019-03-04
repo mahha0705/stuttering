@@ -38,8 +38,9 @@ Rails.application.configure do
   #Emails
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
   config.action_mailer.default_options = { from: '"吃音Q&A" <info@kitsuon-soudan.com>' }
-  config.action_mailer.delivery_method = :smtp
-# 環境変数を設定した場合
+  # config.action_mailer.delivery_method = :smtp
+  config.action_mailer.delivery_method = :letter_opener_web
+  # 環境変数を設定した場合
   config.action_mailer.smtp_settings = {
   port: ENV["SMTP_PORT"],
   address: ENV["SMTP_SERVER"],
@@ -72,4 +73,12 @@ Rails.application.configure do
   # Use an evented file watcher to asynchronously detect changes in source code,
   # routes, locales, etc. This feature depends on the listen gem.
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
+
+  config.after_initialize do
+    Bullet.enable = true
+    Bullet.alert = true
+    Bullet.bullet_logger = true
+    Bullet.console = true
+    Bullet.rails_logger = true
+  end
 end

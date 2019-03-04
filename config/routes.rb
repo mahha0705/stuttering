@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  # mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
   get 'question_comments/create'
   devise_for :users, controllers: { confirmations: 'confirmations' }
    # controllers: { omniauth_callbacks: 'users/omniauth_callbacks' } #SNS認証を有効化するときにコメントを外して下さい
@@ -32,5 +33,7 @@ Rails.application.routes.draw do
       get :search
     end
   end
+
+  mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
 end
 

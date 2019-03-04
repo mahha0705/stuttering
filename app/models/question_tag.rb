@@ -1,3 +1,14 @@
+# == Schema Information
+#
+# Table name: question_tags
+#
+#  id          :bigint(8)        not null, primary key
+#  question_id :bigint(8)        not null
+#  tag         :integer          default("school"), not null
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#
+
 class QuestionTag < ApplicationRecord
   belongs_to :question
 

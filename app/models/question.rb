@@ -1,3 +1,16 @@
+# == Schema Information
+#
+# Table name: questions
+#
+#  id            :bigint(8)        not null, primary key
+#  user_id       :bigint(8)        not null
+#  title         :string           not null
+#  body          :text             not null
+#  created_at    :datetime         not null
+#  updated_at    :datetime         not null
+#  answers_count :integer          default(0), not null
+#
+
 class Question < ApplicationRecord
 
   belongs_to :user
