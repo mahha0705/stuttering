@@ -30,10 +30,7 @@
           /   = link_to '通知一覧を見る', notifications_path
           / これは通知一覧を見る機能 現在は不要
       = link_to "/users/#{current_user.id}",class: "mr-2" do
-        - if current_user.avatar.present?
-          = image_tag current_user.avatar.url, class: 'image_trimming avatar-image-header',alt: "吃音 kitsuon"
-        - else
-          = image_tag set_default_avatar(current_user), class: 'image_trimming avatar-image-header',alt: "吃音 kitsuon"
+        = image_tag set_default_avatar(current_user), class: 'image_trimming avatar-image-header',alt: "吃音 kitsuon"
     %button.navbar-toggler{"aria-controls": "navbarNavDropdown", "aria-expanded": "false", "aria-label": "Toggle navigation", "data-target": "#navbarNavDropdown", "data-toggle": "collapse", type: "button"}
       %span.navbar-toggler-icon
     #navbarNavDropdown.collapse.navbar-collapse

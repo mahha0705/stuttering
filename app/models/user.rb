@@ -43,7 +43,7 @@ class User < ApplicationRecord
   has_many :answers, through: :answerLikes
   has_many :notifications, dependent: :destroy
 
-  mount_uploader :avatar, ImageUploader
+  # mount_uploader :avatar, ImageUploader
 
   enum stuttering: { has_stuttering: 0, no_stuttering: 1, stuttering_no_answer: 2 }
   enum gender: { male: 0, female: 1, other: 2, gender_no_answer: 3 }
