@@ -38,8 +38,9 @@ Rails.application.configure do
   #Emails
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
   config.action_mailer.default_options = { from: '"吃音Q&A" <info@kitsuon-soudan.com>' }
-  config.action_mailer.delivery_method = :smtp
-# 環境変数を設定した場合
+  # config.action_mailer.delivery_method = :smtp
+  config.action_mailer.delivery_method = :letter_opener_web
+  # 環境変数を設定した場合
   config.action_mailer.smtp_settings = {
   port: ENV["SMTP_PORT"],
   address: ENV["SMTP_SERVER"],
