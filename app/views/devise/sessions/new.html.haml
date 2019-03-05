@@ -23,10 +23,5 @@
             = f.password_field :password, class: "form-control", placeholder: "パスワード"
           .form-group.m-3
             = f.submit "ログイン",class: "btn btn-main"
-        / SNS認証を有効化するときはコメントを外して下さい
-        / .form-group.m-3
-        / = link_to "Sign up with Twitter", user_twitter_omniauth_authorize_path
-        / .form-group.m-3
-        / = link_to "Sign up with Google", user_google_omniauth_authorize_path
       = render "devise/shared/links"
 

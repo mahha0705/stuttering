@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
+  # mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
   get 'question_comments/create'
   devise_for :users, controllers: { confirmations: 'confirmations' }
-   # controllers: { omniauth_callbacks: 'users/omniauth_callbacks' } #SNS認証を有効化するときにコメントを外して下さい
   get '/users', to: redirect("/users/sign_up")
   # 新規登録時エラーメッセージを表示させるとURLが/usersになるためredirect先を指定する
   root 'questions#index'                       #ルートパスの指定
