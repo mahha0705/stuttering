@@ -40,7 +40,22 @@ class User < ApplicationRecord
   has_many :answers, through: :answerLikes
   has_many :notifications, dependent: :destroy
 
-  enum stuttering: { has_stuttering: 0, no_stuttering: 1, stuttering_no_answer: 2 }
-  enum gender: { male: 0, female: 1, other: 2, gender_no_answer: 3 }
-  enum age: { teens: 0, early_twenties: 1, late_twenties: 2, early_thirties: 3, late_thirties: 4, forties: 5, fifties: 6, sixties_more: 7, age_no_answer: 8 }
+  enum stuttering: { has_stuttering: 0,
+                     no_stuttering: 1,
+                     stuttering_no_answer: 2 }
+
+  enum gender: { male: 0,
+                 female: 1,
+                 other: 2,
+                 gender_no_answer: 3 }
+
+  enum age: { teens: 0,
+              early_twenties: 1,
+              late_twenties: 2,
+              early_thirties: 3,
+              late_thirties: 4,
+              forties: 5,
+              fifties: 6,
+              sixties_more: 7,
+              age_no_answer: 8 }
 end
