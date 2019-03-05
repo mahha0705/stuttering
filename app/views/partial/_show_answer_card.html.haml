@@ -5,10 +5,7 @@
   .row.no-gutters
     .col-auto.mx-3
       = link_to "/users/#{answer.user.id}" do
-        - if answer.user.avatar.present?
-          = image_tag answer.user.avatar.url, class: 'image_trimming avatar-image-index',alt: "吃音 kitsuon"
-        - else
-          = image_tag set_default_avatar(answer.user), class: 'image_trimming avatar-image-index',alt: "吃音 kitsuon"
+        = image_tag set_default_avatar(answer.user), class: 'image_trimming avatar-image-index',alt: "吃音 kitsuon"
     .col
       %h5.mt-2
         #{answer.title}
