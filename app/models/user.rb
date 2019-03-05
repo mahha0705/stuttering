@@ -1,13 +1,31 @@
+# == Schema Information
+#
+# Table name: users
+#
+#  id                     :bigint(8)        not null, primary key
+#  name                   :string           default(""), not null
+#  email                  :string           default(""), not null
+#  encrypted_password     :string           default(""), not null
+#  stuttering             :integer          default("has_stuttering")
+#  about                  :string
+#  reset_password_token   :string
+#  reset_password_sent_at :datetime
+#  remember_created_at    :datetime
+#  created_at             :datetime         not null
+#  updated_at             :datetime         not null
+#  confirmation_token     :string
+#  confirmed_at           :datetime
+#  confirmation_sent_at   :datetime
+#  unconfirmed_email      :string
+#  gender                 :integer          default("male"), not null
+#  age                    :integer          default("teens"), not null
+#  display_allowed        :boolean          default(TRUE), not null
+#
+
 class User < ApplicationRecord
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :confirmable
-         # :omniauthable #SNS認証用
-         # :confirmable #メール認証
-  #Validation
-  # Overwriting Devise method
-  validates :name, presence: true, if: :name_required?
+  validates :name, presence: true
   validates :name, uniqueness: true
   validates :stuttering, presence: true
   validates :age, presence: true
@@ -21,8 +39,6 @@ class User < ApplicationRecord
   has_many :answerLikes, dependent: :nullify
   has_many :answers, through: :answerLikes
   has_many :notifications, dependent: :destroy
-
-  mount_uploader :avatar, ImageUploader
 
   enum stuttering: { has_stuttering: 0, no_stuttering: 1, stuttering_no_answer: 2 }
   enum gender: { male: 0, female: 1, other: 2, gender_no_answer: 3 }
