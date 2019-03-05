@@ -21,7 +21,6 @@
 #  age                    :integer          default("teens"), not null
 #  display_allowed        :boolean          default(TRUE), not null
 #
-
 FactoryBot.define do
   factory :user do
     name { "test" }
