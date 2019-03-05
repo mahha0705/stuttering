@@ -14,7 +14,7 @@
 require 'rails_helper'
 
 RSpec.describe Question, type: :model do
-  let(:user) { FactoryBot.create(:user) }
+  let(:user) { create(:user) }
   it "user_id, title, bodyがあればquestionは有効になる" do
     question = Question.new(
       user_id: user.id,
