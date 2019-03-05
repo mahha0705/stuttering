@@ -33,7 +33,6 @@ gem 'jbuilder', '~> 2.5'
 # gem 'capistrano-rails', group: :development
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
-gem 'carrierwave'
 gem 'counter_culture'
 gem 'devise'
 gem 'dotenv-rails'
@@ -44,7 +43,6 @@ gem 'haml-rails'
 gem 'kaminari'
 gem 'premailer-rails'
 gem 'rails-i18n'
-gem 'rmagick'
 
 group :development, :test do
   gem 'rspec-rails', '~> 3.8'
