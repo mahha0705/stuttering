@@ -13,13 +13,10 @@
 #  remember_created_at    :datetime
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
-#  avatar                 :string
 #  confirmation_token     :string
 #  confirmed_at           :datetime
 #  confirmation_sent_at   :datetime
 #  unconfirmed_email      :string
-#  provider               :string
-#  uid                    :string
 #  gender                 :integer          default("male"), not null
 #  age                    :integer          default("teens"), not null
 #  display_allowed        :boolean          default(TRUE), not null

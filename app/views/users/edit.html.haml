@@ -9,10 +9,6 @@
         = form_for (current_user) do |f|
           %h4.py-2.main-color.text-white.text-center 編集フォーム
           .form-group.m-3.relative
-            .mb-2
-            .avatar-preview
-              - if current_user.avatar.present?
-                = image_tag current_user.avatar.url, class: 'image_trimming avatar-image'
             .avatar-default.mx-auto
               = f.label :avatar ,class: "camera-psition" do
                 = fa_icon :avatar ,class: 'fa-fw fa-camera fa-2x'
