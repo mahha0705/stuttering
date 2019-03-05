@@ -119,8 +119,6 @@ GEM
     enum_help (0.0.17)
       activesupport (>= 3.0.0)
     equalizer (0.0.11)
-    erb2haml (0.1.5)
-      html2haml
     erubi (1.8.0)
     erubis (2.7.0)
     execjs (2.7.0)
@@ -420,7 +418,6 @@ DEPENDENCIES
   devise
   dotenv-rails
   enum_help
-  erb2haml
   factory_bot_rails
   faker
   font-awesome-rails
