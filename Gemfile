@@ -60,6 +60,9 @@ group :development, :test do
   gem 'guard'
   gem "guard-rspec"
   gem "guard-rubocop"
+  gem 'bullet'
+  gem 'letter_opener_web', '~> 1.0'
+  gem 'factory_bot_rails'
 end
 
 group :development do
@@ -72,8 +75,6 @@ group :development do
   gem "rails_best_practices"
   gem 'reek'
   gem 'annotate'
-  gem 'bullet'
-  gem 'letter_opener_web', '~> 1.0'
 end
 
 group :test do
@@ -82,7 +83,6 @@ group :test do
   gem 'selenium-webdriver'
   # Easy installation and use of chromedriver to run system tests with Chrome
   gem 'chromedriver-helper'
-  gem 'factory_bot_rails'
   gem 'shoulda-matchers'
 end
 
