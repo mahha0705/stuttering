@@ -12,6 +12,9 @@
 #
 
 class Question < ApplicationRecord
+  validates :title, presence: true
+  validates :body, presence: true
+
   belongs_to :user
   has_many :answers, dependent: :destroy
   has_many :questionTags, dependent: :destroy
@@ -27,9 +30,6 @@ class Question < ApplicationRecord
   end
 
   paginates_per 10
-
-  validates :title, presence: true
-  validates :body, presence: true
 
   scope :newest, -> { order("created_at DESC") }
   scope :school, -> { where(id: QuestionTag.select("question_id").where(tag: 0)) }

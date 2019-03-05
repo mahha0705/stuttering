@@ -12,17 +12,14 @@
 #
 
 class Answer < ApplicationRecord
+  validates :title, presence: true
+  validates :body, presence: true
 
   belongs_to :user
   belongs_to :question
   has_many :comments, dependent: :destroy
   has_many :answer_likes, dependent: :destroy
-  has_many :users , through: :answer_likes
-  # has_many :notifications, dependent: :destroy
+  has_many :users, through: :answer_likes
 
-  counter_culture :question ,touch: true
-
-  validates :title, presence: true
-  validates :body, presence: true
-
+  counter_culture :question, touch: true
 end
