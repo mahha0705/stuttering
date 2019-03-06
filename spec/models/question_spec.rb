@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: questions
@@ -23,16 +25,16 @@ RSpec.describe Question, type: :model do
 
   specify { is_expected.to accept_nested_attributes_for(:questionTags) }
 
-  describe ".validate :require_any_question_tags " do
+  describe '.validate :require_any_question_tags ' do
     let(:user) { create(:user) }
     let(:question) { Question.new(attribute) }
     let(:attribute) { { user: user, title: 'title', body: 'body', questionTags: questionTags } }
-    context "questionTagsが存在する場合" do
+    context 'questionTagsが存在する場合' do
       let(:questionTags) { [build(:questionTag)] }
       specify { expect(question).to be_valid }
     end
 
-    context "questionTagsが無い場合" do
+    context 'questionTagsが無い場合' do
       let(:questionTags) { [] }
       specify { expect(question).to_not be_valid }
     end

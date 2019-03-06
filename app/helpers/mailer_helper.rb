@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module MailerHelper
   def email_image_tag(image, options = {})
     image_tag email_image_url(image), options
