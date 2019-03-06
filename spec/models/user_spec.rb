@@ -39,15 +39,50 @@ RSpec.describe User, type: :model do
     expect(user).to be_valid
   end
 
-  it { is_expected.to validate_presence_of :name }
-  it { is_expected.to validate_uniqueness_of :name }
-  it { is_expected.to validate_presence_of :age }
-  it { is_expected.to validate_presence_of :gender }
-  it { is_expected.to validate_presence_of :stuttering }
+  specify { is_expected.to validate_presence_of :name }
+  specify { is_expected.to validate_uniqueness_of :name }
+  specify { is_expected.to validate_presence_of :age }
+  specify { is_expected.to validate_presence_of :gender }
+  specify { is_expected.to validate_presence_of :stuttering }
 
-  it { is_expected.to validate_presence_of :email }
-  # it { is_expected.to validate_uniqueness_of(:email) }
-  it { is_expected.to validate_presence_of :password }
-  it { is_expected.to validate_confirmation_of :password }
-  it { is_expected.to validate_length_of(:password).is_at_least(6) }
+  specify { is_expected.to validate_presence_of :email }
+  specify { is_expected.to validate_presence_of :password }
+  specify { is_expected.to validate_confirmation_of :password }
+  specify { is_expected.to validate_length_of(:password).is_at_least(6) }
+
+  specify { should have_many(:questions).dependent(:destroy) }
+  specify { should have_many(:answers).dependent(:nullify) }
+  specify { should have_many(:comments).dependent(:nullify) }
+  specify { should have_many(:notifications).dependent(:destroy) }
+
+  specify do
+    should define_enum_for(:stuttering).with_values(
+      has_stuttering: 0,
+      no_stuttering: 1,
+      stuttering_no_answer: 2
+    )
+  end
+
+  specify do
+    should define_enum_for(:gender).with_values(
+      male: 0,
+      female: 1,
+      other: 2,
+      gender_no_answer: 3
+    )
+  end
+
+  specify do
+    should define_enum_for(:age).with_values(
+      teens: 0,
+      early_twenties: 1,
+      late_twenties: 2,
+      early_thirties: 3,
+      late_thirties: 4,
+      forties: 5,
+      fifties: 6,
+      sixties_more: 7,
+      age_no_answer: 8
+    )
+  end
 end

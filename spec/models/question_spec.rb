@@ -13,7 +13,18 @@
 
 RSpec.describe Question, type: :model do
   let(:user) { create(:user) }
-  it "user_id, title, bodyがあればquestionは有効になる" do
+
+  specify { is_expected.to validate_presence_of :title }
+  specify { is_expected.to validate_presence_of :body }
+
+  specify { should belong_to(:user) }
+  specify { should have_many(:answers).dependent(:destroy) }
+  specify { should have_many(:questionTags).dependent(:destroy) }
+  specify { should have_many(:questionComments).dependent(:destroy) }
+  specify { should have_many(:notifications).dependent(:destroy) }
+
+  specify { should accept_nested_attributes_for(:questionTags) }
+  it "user_id, title, body,questionTags_attributesがあればquestionは有効になる" do
     question = Question.new(
       user_id: user.id,
       title: "test",
@@ -22,7 +33,12 @@ RSpec.describe Question, type: :model do
     )
     expect(question).to be_valid
   end
-
-  it { is_expected.to validate_presence_of :title }
-  it { is_expected.to validate_presence_of :body }
+  it "questionTags_attributesがなければquestionは無効になる" do
+    question = Question.new(
+      user_id: user.id,
+      title: "test",
+      body: "test body"
+    )
+    expect(question).to_not be_valid
+  end
 end
