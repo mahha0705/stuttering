@@ -19,16 +19,14 @@ class Question < ApplicationRecord
   has_many :answers, dependent: :destroy
   has_many :questionTags, dependent: :destroy
   has_many :questionComments, dependent: :destroy
-  has_many :questionLikes, dependent: :destroy
-  has_many :users, through: :questionLikes
   has_many :notifications, dependent: :destroy
-  
+
   accepts_nested_attributes_for :questionTags
   validate :require_any_question_tags
   def require_any_question_tags
     errors.add(:base, :no_questionTag) if questionTags.blank?
   end
- 
+
   paginates_per 10
 
   scope :newest, -> { order("created_at DESC") }

@@ -34,10 +34,6 @@ class User < ApplicationRecord
   has_many :questions, dependent: :destroy
   has_many :answers, dependent: :nullify
   has_many :comments, dependent: :nullify
-  has_many :questionLikes, dependent: :destroy
-  has_many :questions, through: :questionLikes
-  has_many :answerLikes, dependent: :nullify
-  has_many :answers, through: :answerLikes
   has_many :notifications, dependent: :destroy
 
   enum stuttering: { has_stuttering: 0,
