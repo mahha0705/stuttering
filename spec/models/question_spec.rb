@@ -11,8 +11,6 @@
 #  answers_count :integer          default(0), not null
 #
 
-require 'rails_helper'
-
 RSpec.describe Question, type: :model do
   let(:user) { create(:user) }
   it "user_id, title, bodyがあればquestionは有効になる" do
