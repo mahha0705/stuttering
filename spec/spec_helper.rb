@@ -1,4 +1,3 @@
-require 'spec_helper'
 require 'faker'
 require 'simplecov'
 require 'rspec/collection_matchers'
