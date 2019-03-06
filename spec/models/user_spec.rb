@@ -55,7 +55,7 @@ RSpec.describe User, type: :model do
   specify { is_expected.to have_many(:comments).dependent(:nullify) }
   specify { is_expected.to have_many(:notifications).dependent(:destroy) }
 
-  it do
+  it "sutturtingのenumに各vauleが定義されていること" do
     is_expected.to define_enum_for(:stuttering).with_values(
       has_stuttering: 0,
       no_stuttering: 1,
@@ -63,7 +63,7 @@ RSpec.describe User, type: :model do
     )
   end
 
-  it do
+  it "genderのenumに各vauleが定義されていること" do
     is_expected.to define_enum_for(:gender).with_values(
       male: 0,
       female: 1,
@@ -72,7 +72,7 @@ RSpec.describe User, type: :model do
     )
   end
 
-  it do
+  it "ageのenumに各vauleが定義されていること" do
     is_expected.to define_enum_for(:age).with_values(
       teens: 0,
       early_twenties: 1,
