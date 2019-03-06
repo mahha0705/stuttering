@@ -10,19 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_05_065545) do
+ActiveRecord::Schema.define(version: 2019_03_06_094715) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "answer_likes", force: :cascade do |t|
-    t.bigint "user_id", null: false
-    t.bigint "answer_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["answer_id"], name: "index_answer_likes_on_answer_id"
-    t.index ["user_id"], name: "index_answer_likes_on_user_id"
-  end
 
   create_table "answers", force: :cascade do |t|
     t.bigint "question_id", null: false
@@ -64,15 +55,6 @@ ActiveRecord::Schema.define(version: 2019_03_05_065545) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["question_id"], name: "index_question_comments_on_question_id"
-  end
-
-  create_table "question_likes", force: :cascade do |t|
-    t.bigint "user_id", null: false
-    t.bigint "question_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["question_id"], name: "index_question_likes_on_question_id"
-    t.index ["user_id"], name: "index_question_likes_on_user_id"
   end
 
   create_table "question_tags", force: :cascade do |t|
@@ -117,8 +99,6 @@ ActiveRecord::Schema.define(version: 2019_03_05_065545) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "answer_likes", "answers"
-  add_foreign_key "answer_likes", "users"
   add_foreign_key "answers", "questions"
   add_foreign_key "answers", "users"
   add_foreign_key "comments", "answers"
@@ -127,8 +107,6 @@ ActiveRecord::Schema.define(version: 2019_03_05_065545) do
   add_foreign_key "notifications", "users"
   add_foreign_key "notifications", "users", column: "notified_by_id"
   add_foreign_key "question_comments", "questions"
-  add_foreign_key "question_likes", "questions"
-  add_foreign_key "question_likes", "users"
   add_foreign_key "question_tags", "questions"
   add_foreign_key "questions", "users"
 end
