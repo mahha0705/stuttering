@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: users
@@ -24,9 +26,9 @@
 
 FactoryBot.define do
   factory :user do
-    name { "test" }
+    name { 'test' }
     sequence(:email) { |n| "tester#{n}@example.com" }
-    password { "dottle-nouveau-pavilion-tights-furze" }
+    password { 'dottle-nouveau-pavilion-tights-furze' }
     age { 0 }
     gender { 0 }
     stuttering { 0 }

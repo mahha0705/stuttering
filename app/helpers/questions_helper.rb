@@ -1,9 +1,11 @@
+# frozen_string_literal: true
+
 module QuestionsHelper
   def check_box_judge(key)
     if params[:seacrh_sort].nil?
-      return false
+      false
     elsif params[:seacrh_sort].include?(key)
-      return true
+      true
     end
   end
 end

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: users
@@ -23,7 +25,7 @@
 #
 
 RSpec.describe User, type: :model do
-  it "有効なファクトリを持つこと" do
+  it '有効なファクトリを持つこと' do
     expect(build(:user)).to be_valid
   end
 
@@ -43,7 +45,7 @@ RSpec.describe User, type: :model do
   specify { is_expected.to have_many(:comments).dependent(:nullify) }
   specify { is_expected.to have_many(:notifications).dependent(:destroy) }
 
-  it "sutturtingのenumに各vauleが定義されていること" do
+  it 'sutturtingのenumに各vauleが定義されていること' do
     is_expected.to define_enum_for(:stuttering).with_values(
       has_stuttering: 0,
       no_stuttering: 1,
@@ -51,7 +53,7 @@ RSpec.describe User, type: :model do
     )
   end
 
-  it "genderのenumに各vauleが定義されていること" do
+  it 'genderのenumに各vauleが定義されていること' do
     is_expected.to define_enum_for(:gender).with_values(
       male: 0,
       female: 1,
@@ -60,7 +62,7 @@ RSpec.describe User, type: :model do
     )
   end
 
-  it "ageのenumに各vauleが定義されていること" do
+  it 'ageのenumに各vauleが定義されていること' do
     is_expected.to define_enum_for(:age).with_values(
       teens: 0,
       early_twenties: 1,

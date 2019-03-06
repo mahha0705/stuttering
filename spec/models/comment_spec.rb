@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.describe Comment, type: :model do
   specify { is_expected.to validate_presence_of :body }
 

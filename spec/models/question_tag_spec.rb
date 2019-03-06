@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 RSpec.describe QuestionTag, type: :model do
   specify { is_expected.to belong_to(:question) }
 
-  it "tagのenumに各vauleが定義されていること" do
+  it 'tagのenumに各vauleが定義されていること' do
     is_expected.to define_enum_for(:tag).with_values(
       school: 0,
       work: 1,

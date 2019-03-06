@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CommentsController < ApplicationController
   before_action :authenticate_user!, only: [:create]
   def create
@@ -6,7 +8,7 @@ class CommentsController < ApplicationController
     if @comment.save
       NotificationMailer.send_when_get_comment(@question.user, @comment).deliver_later(wait: 30.seconds) if @question.user != @comment.user
       NotificationMailer.send_when_get_comment(@comment.answer.user, @comment).deliver_later(wait: 30.seconds) if @comment.answer.user != @comment.user
-      redirect_to question_path(@question) , notice: '投稿完了しました'
+      redirect_to question_path(@question), notice: '投稿完了しました'
     else
       @answers = @question.answers
       @answer = Answer.new
@@ -18,7 +20,8 @@ class CommentsController < ApplicationController
   end
 
   private
-    def comment_params
-      params.require(:comment).permit(:body).merge(user_id: current_user.id ,answer_id: params[:answer_id])
-    end
+
+  def comment_params
+    params.require(:comment).permit(:body).merge(user_id: current_user.id, answer_id: params[:answer_id])
+  end
 end
