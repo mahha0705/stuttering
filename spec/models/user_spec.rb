@@ -50,21 +50,21 @@ RSpec.describe User, type: :model do
   specify { is_expected.to validate_confirmation_of :password }
   specify { is_expected.to validate_length_of(:password).is_at_least(6) }
 
-  specify { should have_many(:questions).dependent(:destroy) }
-  specify { should have_many(:answers).dependent(:nullify) }
-  specify { should have_many(:comments).dependent(:nullify) }
-  specify { should have_many(:notifications).dependent(:destroy) }
+  specify { is_expected.to have_many(:questions).dependent(:destroy) }
+  specify { is_expected.to have_many(:answers).dependent(:nullify) }
+  specify { is_expected.to have_many(:comments).dependent(:nullify) }
+  specify { is_expected.to have_many(:notifications).dependent(:destroy) }
 
-  specify do
-    should define_enum_for(:stuttering).with_values(
+  it do
+    is_expected.to define_enum_for(:stuttering).with_values(
       has_stuttering: 0,
       no_stuttering: 1,
       stuttering_no_answer: 2
     )
   end
 
-  specify do
-    should define_enum_for(:gender).with_values(
+  it do
+    is_expected.to define_enum_for(:gender).with_values(
       male: 0,
       female: 1,
       other: 2,
@@ -72,8 +72,8 @@ RSpec.describe User, type: :model do
     )
   end
 
-  specify do
-    should define_enum_for(:age).with_values(
+  it do
+    is_expected.to define_enum_for(:age).with_values(
       teens: 0,
       early_twenties: 1,
       late_twenties: 2,
