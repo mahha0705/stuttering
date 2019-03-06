@@ -77,6 +77,7 @@ ActiveRecord::Schema.define(version: 2019_03_06_094715) do
 
   create_table "users", force: :cascade do |t|
     t.string "name", default: "", null: false
+    t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.integer "stuttering", default: 0
     t.string "about"
@@ -92,7 +93,6 @@ ActiveRecord::Schema.define(version: 2019_03_06_094715) do
     t.integer "gender", limit: 2, default: 0, null: false
     t.integer "age", limit: 2, default: 0, null: false
     t.boolean "display_allowed", default: true, null: false
-    t.string "email", default: "", null: false
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["name"], name: "index_users_on_name", unique: true
