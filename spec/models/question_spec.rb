@@ -28,7 +28,7 @@ RSpec.describe Question, type: :model do
     let(:question) { Question.new(attribute) }
     let(:attribute) { { user: user, title: 'title', body: 'body', questionTags: questionTags } }
     context "questionTagsが存在する場合" do
-      let(:questionTags) { [QuestionTag.new] }
+      let(:questionTags) { [build(:questionTag)] }
       specify { expect(question).to be_valid }
     end
 
