@@ -27,18 +27,6 @@ RSpec.describe User, type: :model do
     expect(build(:user)).to be_valid
   end
 
-  it "名前と年齢と性別と吃音の有無があれば、ユーザーが有効になる" do
-    user = User.new(
-      name: "test",
-      email: "tester@example.com",
-      password: "dottle-nouveau-pavilion-tights-furze",
-      age: 0,
-      gender: 0,
-      stuttering: 0
-    )
-    expect(user).to be_valid
-  end
-
   specify { is_expected.to validate_presence_of :name }
   specify { is_expected.to validate_uniqueness_of :name }
   specify { is_expected.to validate_presence_of :age }
