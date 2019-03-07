@@ -62,6 +62,10 @@ RSpec.configure do |config|
   # config.filter_gems_from_backtrace("gem name")
   config.include FactoryBot::Syntax::Methods
 
+  config.before(:each) do |example|
+    driven_by :selenium, using: :headless_chrome if example.metadata[:type] == :system
+  end
+
   if Bullet.enable?
     config.before(:each) do
       Bullet.start_request
