@@ -1,6 +1,6 @@
 RSpec.describe "VisitHomes", type: :system do
-  scenario "visit home page" do
+  it "'質問してみる'ボタンがある" do
     visit root_path
-    expect(page).to have_content("質問してみる")
+    page.has_button?('質問してみる')
   end
 end
