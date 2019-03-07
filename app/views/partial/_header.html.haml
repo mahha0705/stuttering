@@ -8,10 +8,11 @@
     / Modal
     #exampleModal.modal.fade{"aria-hidden" => "ture", "aria-labelledby" => "exampleModalLabel", :role => "dialog", :tabindex => "-1"}
       .modal-dialog{:role => "document"}
-        .modal-content
-          = render "partial/search_form"
-          .modal-header.ml-auto
-            %button.btn{"data-dismiss" => "modal", :type => "button"} 閉じる
+        -# .modal-content
+        -#   = render "partial/search_form"
+        -#   .modal-header.ml-auto
+        -#     %button.btn{"data-dismiss" => "modal", :type => "button"} 閉じる
+        -# "systemテスト上で同じ検索viewがあるため、コメントアウトする。必要になればidを変更して追加する"
     - if user_signed_in?
       .dropdown.notification-dropdown.mx-1.mx-sm-1.mx-md-2.mx-lg-2
         %button#dropdownMenu1.btn.main-color.text-white.dropdown-toggle{"aria-expanded" => "true", "aria-haspopup" => "true", "data-toggle" => "dropdown", :type => "button"}
