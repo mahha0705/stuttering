@@ -15,4 +15,15 @@ RSpec.describe "SignIn", type: :system do
     click_button 'ログイン'
     expect(page).to have_content('ログインしました。')
   end
+
+  context "再度コンフォメーションパスをクリックする" do
+    before do
+      token = user.confirmation_token
+      visit user_confirmation_path(confirmation_token: token)
+    end
+
+    it "エラーが発生する" do
+      expect(page).to have_content('エラーが発生したため user は保存されませんでした')
+    end
+  end
 end
