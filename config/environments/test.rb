@@ -37,8 +37,8 @@ Rails.application.configure do
   # The :test delivery method accumulates sent emails in the
   # ActionMailer::Base.deliveries array.
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
-  config.action_mailer.default_options = { from: '"吃音Q&A" <info@kitsuon-soudan.com>' }
-  config.action_mailer.delivery_method = :letter_opener_web
+  config.action_mailer.default_options = { from: '"kitsuonQ&A" <info@kitsuon-soudan.com>' }
+  config.action_mailer.delivery_method = :test
 
   # Print deprecation notices to the stderr.
   config.active_support.deprecation = :stderr

@@ -33,4 +33,16 @@ FactoryBot.define do
     gender { 0 }
     stuttering { 0 }
   end
+
+  trait :men do
+    gender { 0 }
+  end
+
+  trait :teen do
+    age { 0 }
+  end
+
+  trait :has_stuttering do
+    stuttering { 0 }
+  end
 end

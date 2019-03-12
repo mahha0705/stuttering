@@ -44,7 +44,7 @@
                 %h6 #{simple_format @user.about}
             - if user_signed_in? && current_user.id == @user.id
               %hr.mb-3
-                = link_to edit_user_path(current_user.id) do
+                = link_to edit_user_path(current_user.id), { id: 'user-edit-btn' } do
                   %button.fas.fa-edit.btn.btn-main{type: "button"} 編集
         .col-lg-8.col-md-12.col-sm-12
           - if user_signed_in? && current_user.id == @user.id
